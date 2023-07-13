@@ -30,6 +30,7 @@ public class MyList<E> {
         }
         elements[size++] = e;
     }
+
     public void addElements(int index, E element) {
         for (int i = elements.length - 1; i > index; i--) {
             elements[i] = elements[i - 1];
@@ -47,8 +48,8 @@ public class MyList<E> {
     }
 
     public E remove(int index) {
-        for (int i = 0; i < elements.length ; i++) {
-            if (elements[i].equals(index)){
+        for (int i = 0; i < elements.length; i++) {
+            if (elements[i].equals(index)) {
 
             }
         }
@@ -58,7 +59,7 @@ public class MyList<E> {
 
     public int size() {
 
-        return 0;
+        return this.size;
     }
 
 
@@ -73,8 +74,14 @@ public class MyList<E> {
     }
 
     public int indexOf(E o) {
-
-        return 0;
+        int index = -1;
+        for (int i = 0; i < this.size; i++) {
+            if (o == this.elements[i]) {
+                index = i;
+                break;
+            }
+        }
+        return index;
     }
 
     public void ensureCapacity(int minCapacity) {
