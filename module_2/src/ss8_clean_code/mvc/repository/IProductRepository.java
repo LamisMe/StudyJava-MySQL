@@ -1,6 +1,6 @@
-package ss10_dsa_danh_sach.mvc.repository;
+package ss8_clean_code.mvc.repository;
 
-import ss10_dsa_danh_sach.mvc.model.Product;
+import ss8_clean_code.mvc.model.Product;
 
 import java.util.List;
 

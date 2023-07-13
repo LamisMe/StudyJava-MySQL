@@ -1,7 +1,7 @@
-package ss10_dsa_danh_sach.mvc.repository;
+package ss8_clean_code.mvc.repository;
 
-import ss10_dsa_danh_sach.mvc.common.ReadWriteToFile;
-import ss10_dsa_danh_sach.mvc.model.Product;
+import ss8_clean_code.mvc.common.ReadWriteToFile;
+import ss8_clean_code.mvc.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;

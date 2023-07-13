@@ -1,4 +1,4 @@
-package ss10_dsa_danh_sach.mvc.common;
+package ss8_clean_code.mvc.common;
 
 import java.io.*;
 import java.util.ArrayList;

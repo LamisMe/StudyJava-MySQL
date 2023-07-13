@@ -1,7 +1,7 @@
-package ss10_dsa_danh_sach.mvc.controller;
+package ss8_clean_code.mvc.controller;
 
-import ss10_dsa_danh_sach.mvc.service.IProductService;
-import ss10_dsa_danh_sach.mvc.service.ProductService;
+import ss8_clean_code.mvc.service.IProductService;
+import ss8_clean_code.mvc.service.ProductService;
 
 import java.util.Scanner;
 

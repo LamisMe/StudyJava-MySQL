@@ -1,4 +1,4 @@
-package ss10_dsa_danh_sach.mvc.service;
+package ss8_clean_code.mvc.service;
 
 public interface IProductService {
     // Đọc file

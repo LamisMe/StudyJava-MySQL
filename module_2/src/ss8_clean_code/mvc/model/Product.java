@@ -1,4 +1,4 @@
-package ss10_dsa_danh_sach.mvc.model;
+package ss8_clean_code.mvc.model;
 
 public class Product {
     private String idProduct;

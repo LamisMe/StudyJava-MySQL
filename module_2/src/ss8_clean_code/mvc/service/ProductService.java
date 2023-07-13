@@ -1,7 +1,7 @@
-package ss10_dsa_danh_sach.mvc.service;
+package ss8_clean_code.mvc.service;
 
-import ss10_dsa_danh_sach.mvc.repository.IProductRepository;
-import ss10_dsa_danh_sach.mvc.repository.ProductRepository;
+import ss8_clean_code.mvc.repository.IProductRepository;
+import ss8_clean_code.mvc.repository.ProductRepository;
 
 import java.util.Scanner;
 
