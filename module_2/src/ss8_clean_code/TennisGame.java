@@ -6,9 +6,14 @@ public class TennisGame {
     private static final int SCORE_SECOND = 2;
     private static final int SCORE_THIRD = 3;
 
+
     public static String getScore(String player1Name, String player2Name, int scorePlayer1, int scorePlayer2) {
         StringBuilder score = new StringBuilder();
         int tempScore;
+        final int FIRST_POINT = 1;
+        final int SECOND_POINT = 2;
+        final int THIRD_POINT = 3;
+        final int NO_POINT = 0;
         if (scorePlayer1 == scorePlayer2) {
             switch (scorePlayer1) {
                 case NO_SCORE:
@@ -38,16 +43,16 @@ public class TennisGame {
                     tempScore = scorePlayer2;
                 }
                 switch (tempScore) {
-                    case 0:
+                    case NO_POINT:
                         score.append("Love");
                         break;
-                    case 1:
+                    case FIRST_POINT:
                         score.append("Fifteen");
                         break;
-                    case 2:
+                    case SECOND_POINT:
                         score.append("Thirty");
                         break;
-                    case 3:
+                    case THIRD_POINT:
                         score.append("Forty");
                         break;
                 }
@@ -59,10 +64,15 @@ public class TennisGame {
     private static String getAdvantage(String player1Name, String player2Name, int scorePlayer1, int scorePlayer2) {
         String score;
         int minusResult = scorePlayer1 - scorePlayer2;
-        if (minusResult == 1) score = "Advantage " + player1Name;
-        else if (minusResult == -1) score = "Advantage " + player2Name;
-        else if (minusResult >= 2) score = "Win for " + player1Name;
-        else score = "Win for " + player2Name;
+        if (minusResult == 1) {
+            score = "Advantage " + player1Name;
+        } else if (minusResult == -1) {
+            score = "Advantage " + player2Name;
+        } else if (minusResult >= 2) {
+            score = "Win for " + player1Name;
+        } else {
+            score = "Win for " + player2Name;
+        }
         return score;
     }
 }

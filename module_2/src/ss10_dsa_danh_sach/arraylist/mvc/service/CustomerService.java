@@ -55,36 +55,38 @@ public class CustomerService implements ICustomerService{
         if(customer == null){
             System.out.println("Mã khách hàng không tồn tại");
         }else {
-            System.out.println("Chọn thông tin cần sửa");
-            System.out.println("1.Tên");
-            System.out.println("2.Tuổi");
-            System.out.println("3.Loại khách hàng");
-            System.out.println("0.Lưu thông tin");
-            System.out.println("Chọn :");
-            String choice = scanner.nextLine();
-            switch (choice){
-                case "1":
-                    System.out.println("Nhập tên khách hàng");
-                    String name = scanner.nextLine();
-                    customer.setName(name);
-                    break;
-                case "2":
-                    System.out.println("Nhập tuổi khách hàng");
-                    int age = Integer.parseInt(scanner.nextLine());
-                    customer.setAge(age);
-                    break;
-                case "3":
-                    System.out.println("Nhập loại khách hàng");
-                    String typeCustomer = scanner.nextLine();
-                    customer.setTypeCustomer(typeCustomer);
-                    break;
-                case "0":
-                    customerRepository.update(code,customer);
-                    break;
-                default:
-                    System.out.println("Nhập sai nhập lại");
-                    break;
-            }
+            do {
+                System.out.println("Chọn thông tin cần sửa");
+                System.out.println("1.Tên");
+                System.out.println("2.Tuổi");
+                System.out.println("3.Loại khách hàng");
+                System.out.println("0.Lưu thông tin");
+                System.out.println("Chọn :");
+                String choice = scanner.nextLine();
+                switch (choice) {
+                    case "1":
+                        System.out.println("Nhập tên khách hàng");
+                        String name = scanner.nextLine();
+                        customer.setName(name);
+                        break;
+                    case "2":
+                        System.out.println("Nhập tuổi khách hàng");
+                        int age = Integer.parseInt(scanner.nextLine());
+                        customer.setAge(age);
+                        break;
+                    case "3":
+                        System.out.println("Nhập loại khách hàng");
+                        String typeCustomer = scanner.nextLine();
+                        customer.setTypeCustomer(typeCustomer);
+                        break;
+                    case "0":
+                        customerRepository.update(code, customer);
+                        return;
+                    default:
+                        System.out.println("Nhập sai nhập lại");
+                        break;
+                }
+            }while (true);
         }
     }
 

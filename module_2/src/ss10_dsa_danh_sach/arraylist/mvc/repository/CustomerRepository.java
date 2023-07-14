@@ -32,12 +32,6 @@ public class CustomerRepository implements ICustomerRepository {
     @Override
     public void update(int id, Customer customer) {
         customerList = display();
-        for (Customer c : customerList) {
-            if (c.getCode() == id) {
-                c = customer;
-            }
-            customerList.add(c);
-        }
     }
 
     @Override
