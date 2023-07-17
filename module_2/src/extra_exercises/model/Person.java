@@ -45,7 +45,7 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return " Mã khách hàng: " + codePerson + '\'' +
+        return " Mã khách hàng: " + codePerson +
                 ", tên khách hàng: " + namePerson;
     }
 }
