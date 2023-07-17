@@ -20,9 +20,9 @@ public class ReadToFile {
             bufferedReader.close();
             fileReader.close();
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("FileNotFound");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("IOException");
         }
         return stringList;
     }
