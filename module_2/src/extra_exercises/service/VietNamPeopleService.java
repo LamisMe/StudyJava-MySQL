@@ -5,11 +5,13 @@ import extra_exercises.repository.IPersonRepository;
 import extra_exercises.repository.VietNamPeopleRepository;
 
 import java.util.List;
-import java.util.Scanner;
+
+import static extra_exercises.view.Main.scanner;
+
 
 public class VietNamPeopleService implements IPersonService {
-    private Scanner scanner = new Scanner(System.in);
-    private IPersonRepository<VietNamPeople> personRepository = new VietNamPeopleRepository();
+
+    private final IPersonRepository<VietNamPeople> personRepository = new VietNamPeopleRepository();
     @Override
     public void read() {
         List<VietNamPeople> vietNamPeople = personRepository.display();
@@ -20,7 +22,16 @@ public class VietNamPeopleService implements IPersonService {
 
     @Override
     public void create() {
-
+        System.out.println("Nhâp mã khách hàng");
+        String codePerson = scanner.nextLine();
+        System.out.println("Nhập tên khách hàng");
+        String namePerson = scanner.nextLine();
+        System.out.println("Nhập loại khách hàng");
+        String customerType = scanner.nextLine();
+        System.out.println("Nhập định mức tiêu thụ");
+        long consumptionNorms = Long.parseLong(scanner.nextLine());
+        VietNamPeople vietNamPeople = new VietNamPeople(codePerson,namePerson,customerType,consumptionNorms);
+        personRepository.add(vietNamPeople);
     }
 
     @Override
@@ -30,6 +41,11 @@ public class VietNamPeopleService implements IPersonService {
 
     @Override
     public void delete() {
+
+    }
+
+    @Override
+    public void search() {
 
     }
 }

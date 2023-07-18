@@ -5,4 +5,5 @@ public interface IPersonService {
     void read();
     void update();
     void delete();
+    void search();
 }

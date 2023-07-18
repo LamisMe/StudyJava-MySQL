@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class ForeignerPeopleService implements IPersonService{
     private final Scanner scanner = new Scanner(System.in);
-    private IPersonRepository<ForeignerPeople> foreignerPeopleIPersonRepository = new ForeignerPeopleRepository();
+    private final IPersonRepository<ForeignerPeople> foreignerPeopleIPersonRepository = new ForeignerPeopleRepository();
     @Override
     public void read() {
         List<ForeignerPeople> foreignerPeople = foreignerPeopleIPersonRepository.display();
@@ -20,7 +20,14 @@ public class ForeignerPeopleService implements IPersonService{
 
     @Override
     public void create() {
-
+        System.out.println("Nhâp mã khách hàng");
+        String codePerson = scanner.nextLine();
+        System.out.println("Nhập tên khách hàng");
+        String namePerson = scanner.nextLine();
+        System.out.println("Nhập quốc tịch khách hàng");
+        String nationality = scanner.nextLine();
+        ForeignerPeople foreignerPeople = new ForeignerPeople(codePerson,namePerson,nationality);
+        foreignerPeopleIPersonRepository.add(foreignerPeople);
     }
 
     @Override
@@ -30,6 +37,11 @@ public class ForeignerPeopleService implements IPersonService{
 
     @Override
     public void delete() {
+
+    }
+
+    @Override
+    public void search() {
 
     }
 }

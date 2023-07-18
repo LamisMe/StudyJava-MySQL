@@ -20,7 +20,7 @@ public class PersonController {
                     "3. Tìm kiếm khách hàng\n" +
                     "4. Thêm mới hóa đơn\n" +
                     "5. Chỉnh sửa hóa đơn\n" +
-                    "6. Hiện thị thông  tin chi tiết hóa đơn\n" +
+                    "6. Hiển thị thông  tin chi tiết hóa đơn\n" +
                     "0.Thoát");
             String choice = scanner.nextLine();
             switch (choice) {
@@ -28,7 +28,13 @@ public class PersonController {
                     System.out.println("1. Thêm khách hàng Việt Nam\n" +
                             "2. Thêm khách hàng nước ngoài");
                     String select = scanner.nextLine();
-
+                    if(select.equals("1")){
+                        vietNamPeopleService.create();
+                    }else if(select.equals("2")){
+                        foreignerPeopleService.create();
+                    }else {
+                        System.out.println("Bạn đã nhập sai");
+                    }
                     break;
                 case "2":
                     System.out.println("-------------HIỂN THỊ--------------");
