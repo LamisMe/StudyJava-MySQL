@@ -34,18 +34,15 @@ public class VietNamPeopleService implements IPersonService {
         personRepository.add(vietNamPeople);
     }
 
-    @Override
-    public void update() {
-
-    }
-
-    @Override
-    public void delete() {
-
-    }
-
-    @Override
+     @Override
     public void search() {
-
+        System.out.println("Nhập mã khách hàng mà bạn muốn tìm kiếm");
+        String code = scanner.nextLine();
+        VietNamPeople vietNamPeople = personRepository.getByID(code);
+        if(vietNamPeople == null){
+            System.out.println("Không tìm thấy khách hàng");
+        }else {
+            System.out.println(vietNamPeople);
+        }
     }
 }

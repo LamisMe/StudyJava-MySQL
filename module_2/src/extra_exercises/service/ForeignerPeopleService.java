@@ -1,11 +1,14 @@
 package extra_exercises.service;
 
 import extra_exercises.model.ForeignerPeople;
+import extra_exercises.model.VietNamPeople;
 import extra_exercises.repository.ForeignerPeopleRepository;
 import extra_exercises.repository.IPersonRepository;
 
 import java.util.List;
 import java.util.Scanner;
+
+import static extra_exercises.view.Main.scanner;
 
 public class ForeignerPeopleService implements IPersonService{
     private final Scanner scanner = new Scanner(System.in);
@@ -31,17 +34,14 @@ public class ForeignerPeopleService implements IPersonService{
     }
 
     @Override
-    public void update() {
-
-    }
-
-    @Override
-    public void delete() {
-
-    }
-
-    @Override
     public void search() {
-
+        System.out.println("Nhập mã khách hàng mà bạn muốn tìm kiếm");
+        String code = scanner.nextLine();
+        ForeignerPeople foreignerPeople = foreignerPeopleIPersonRepository.getByID(code);
+        if(foreignerPeople == null){
+            System.out.println("Không tìm thấy khách hàng");
+        }else {
+            System.out.println(foreignerPeople);
+        }
     }
 }

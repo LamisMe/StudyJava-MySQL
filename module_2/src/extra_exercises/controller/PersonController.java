@@ -1,14 +1,13 @@
 package extra_exercises.controller;
 
-import extra_exercises.service.ForeignerPeopleService;
-import extra_exercises.service.IPersonService;
-import extra_exercises.service.VietNamPeopleService;
+import extra_exercises.service.*;
 
 import java.util.Scanner;
 
 public class PersonController {
     private final IPersonService foreignerPeopleService = new ForeignerPeopleService();
     private final IPersonService vietNamPeopleService = new VietNamPeopleService();
+    private final IBillService billService = new BillService();
     private final Scanner scanner = new Scanner(System.in);
 
     public void showMenu() {
@@ -50,12 +49,26 @@ public class PersonController {
                     }
                     break;
                 case "3":
+                    System.out.println("-------------Tìm Kiếm--------------");
+                    System.out.println("1. Tìm kiếm khách hàng Việt Nam\n" +
+                            "2. Tìm kiếm khách hàng nước ngoài");
+                    String select2 = scanner.nextLine();
+                    if(select2.equals("1")){
+                        vietNamPeopleService.search();
+                    }else if (select2.equals("2")){
+                        foreignerPeopleService.search();
+                    }else {
+                        System.out.println("Bạn đã nhập sai");
+                    }
                     break;
                 case "4":
+                    billService.add();
                     break;
                 case "5":
+                    billService.update();
                     break;
                 case "6":
+                    billService.display();
                     break;
                 case "0":
                     return;
