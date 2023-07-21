@@ -2,7 +2,7 @@ package extra_exercises.model;
 
 import java.util.Objects;
 
-public class Bill {
+public class Bill  {
     private String codeBill;
     private String codePerson ;
     private String invoiceDate;
@@ -77,6 +77,7 @@ public class Bill {
     public void setIntoMoney(long intoMoney) {
         this.intoMoney = intoMoney;
     }
+
 
     @Override
     public boolean equals(Object o) {
