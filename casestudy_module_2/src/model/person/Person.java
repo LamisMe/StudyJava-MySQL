@@ -92,14 +92,15 @@ public abstract class Person {
     public int hashCode() {
         return Objects.hash(id);
     }
+
     @Override
     public String toString() {
-        return "Mã :'" + id + '\'' +
-                ", Tên: '" + name + '\'' +
-                ", Ngày Sinh: '" + dateOfBirth + '\'' +
-                ", Giới Tính: '" + gender + '\'' +
-                ", Số CMND: '" + idCard + '\'' +
-                ", Số Điện Thoại: '" + phoneNumber + '\'' +
-                ", Email: '" + email ;
+        return "Mã : " + id +
+                ", Tên: " + name +
+                ", Ngày Sinh: " + dateOfBirth +
+                ", Giới Tính: " + gender +
+                ", Số CMND: " + idCard +
+                ", Số Điện Thoại: " + phoneNumber +
+                ", Email: " + email;
     }
 }

@@ -33,14 +33,15 @@ public class Customer extends Person {
     public void setAddress(String address) {
         this.address = address;
     }
-    public String toInfoCSVCustomer(){
-        return this.getId()+","+this.getName()+","+this.getDateOfBirth()+","+this.getGender()+","+this.getIdCard()+","+this.getPhoneNumber()+","+this.getEmail()+","+this.getCustomerType()+","+this.getAddress();
+
+    public String toInfoCSVCustomer() {
+        return this.getId() + "," + this.getName() + "," + this.getDateOfBirth() + "," + this.getGender() + "," + this.getIdCard() + "," + this.getPhoneNumber() + "," + this.getEmail() + "," + this.getCustomerType() + "," + this.getAddress();
     }
 
     @Override
     public String toString() {
         return "Khách hàng: " +
-                ", Loại Khách hàng: '" + customerType + '\'' +
-                ", Địa chỉ: '" + address;
+                ", Loại Khách hàng: " + customerType +
+                ", Địa chỉ: " + address;
     }
 }

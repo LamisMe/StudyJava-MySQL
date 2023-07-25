@@ -1,9 +1,10 @@
 package model.person;
 
-public class Employee extends Person{
+public class Employee extends Person {
     private String level;
     private String location;
     private long wage;
+
     public Employee() {
     }
 
@@ -43,14 +44,16 @@ public class Employee extends Person{
     public void setWage(long wage) {
         this.wage = wage;
     }
-       public String toInfoCSVEmployee(){
-        return this.getId()+","+this.getName()+","+this.getDateOfBirth()+","+this.getGender()+","+this.getIdCard()+","+this.getPhoneNumber()+","+this.getEmail()+","+this.getLevel()+","+this.getLocation()+","+this.getWage();
-       }
+
+    public String toInfoCSVEmployee() {
+        return this.getId() + "," + this.getName() + "," + this.getDateOfBirth() + "," + this.getGender() + "," + this.getIdCard() + "," + this.getPhoneNumber() + "," + this.getEmail() + "," + this.getLevel() + "," + this.getLocation() + "," + this.getWage();
+    }
+
     @Override
     public String toString() {
-        return "Nhân Viên: " + super.toString()+
-                ", Trình Độ: '" + level + '\'' +
-                ", Vị Trí: '" + location + '\'' +
-                ", Lương" + wage;
+        return "Nhân Viên: " + super.toString() +
+                ", Trình Độ: " + level +
+                ", Vị Trí: " + location +
+                ", Lương: " + wage;
     }
 }
