@@ -1,4 +1,12 @@
 package repository.person;
 
-public interface IPersonRepository {
+import java.util.List;
+
+public interface IPersonRepository<T> {
+    List<T> getAll();
+    void add(T t);
+    void remove(T t);
+    List<T> searchByName();
+    void edit(String id, T t);
+    T getById(String id);
 }

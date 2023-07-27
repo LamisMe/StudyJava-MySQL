@@ -1,4 +1,6 @@
-package model.person;
+package model.person.sub_class;
+
+import model.person.Person;
 
 public class Customer extends Person {
     private String customerType;
@@ -40,7 +42,7 @@ public class Customer extends Person {
 
     @Override
     public String toString() {
-        return "Khách hàng: " +
+        return "Khách hàng: " + super.toString() +
                 ", Loại Khách hàng: " + customerType +
                 ", Địa chỉ: " + address;
     }

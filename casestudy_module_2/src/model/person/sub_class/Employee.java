@@ -1,4 +1,6 @@
-package model.person;
+package model.person.sub_class;
+
+import model.person.Person;
 
 public class Employee extends Person {
     private String level;
