@@ -5,7 +5,9 @@ import controller.sub_classes_mandates.FacilityController;
 import controller.sub_classes_mandates.PromotionController;
 import controller.sub_classes_person.CustomerController;
 import controller.sub_classes_person.EmployeeController;
+import utils.ColorInConsole;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class FuramaController {
@@ -18,14 +20,26 @@ public class FuramaController {
 
     public void showMenuFurama() {
         do {
-            System.out.println();
-            System.out.println("-----------Quản lý Furama------------");
-            System.out.println("1.Quản lý nhân viên");
-            System.out.println("2.Quản lý khách hàng");
-            System.out.println("3.Quản lý cơ sở");
-            System.out.println("4.Quản lý Booking");
-            System.out.println("5.Quản lý khuyến mãi");
-            System.out.println("6.Exit");
+            System.out.println(
+                    ColorInConsole.ANSI_GREEN
+                            + "\n---------------------------------------------------"
+                            + ColorInConsole.ANSI_BLUE
+            );
+            System.out.println(
+                    "|             ----- QUẢN LÝ FURAMA -----           |"
+                            + ColorInConsole.ANSI_BLUE
+            );
+
+            System.out.println("|               1.Quản lý nhân viên                |\n" +
+                    "|               2.Quản lý khách hàng               |\n" +
+                    "|               3.Quản lý cơ sở                    |\n" +
+                    "|               4.Quản lý Booking                  |\n" +
+                    "|               5.Quản lý khuyến mãi               |\n" +
+                    "|               6.Exit                             |");
+            System.out.println(ColorInConsole.ANSI_GREEN +
+                    "\n---------------------------------------------------"
+                    + ColorInConsole.ANSI_BLUE
+            );
             System.out.print("Chọn chức năng: ");
             String select = scanner.nextLine();
             switch (select) {
@@ -50,6 +64,8 @@ public class FuramaController {
                     System.out.println("Nhập sai nhập lại");
                     break;
             }
-        }while (true);
+
+        } while (true);
+
     }
 }

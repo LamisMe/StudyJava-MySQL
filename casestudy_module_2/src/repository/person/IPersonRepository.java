@@ -6,7 +6,7 @@ public interface IPersonRepository<T> {
     List<T> getAll();
     void add(T t);
     void remove(T t);
-    List<T> searchByName();
+    List<T> searchByName(String name);
     void edit(String id, T t);
     T getById(String id);
 }
