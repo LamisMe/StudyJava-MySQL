@@ -14,7 +14,7 @@ public class Regex {
     private static final String VALIDATE_ID_CUSTOMER = "^KH-\\d{4}$";
     private static final String VALIDATE_ID_EMPLOYEE = "^NV-\\d{4}$";
     private static final String VALIDATE_NAME_PERSON = "^[A-Z][a-z]{0,6}(\\s[A-Z][a-z]{1,6}){1,8}$";
-    private static final String VALIDATE_DATE = "^\\d{4}-((0\\d|1[0-2])-[01]\\d|30|31)|-02-[0-2]\\d$";
+    private static final String VALIDATE_DATE = "^((19|20)\\d\\d)/(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])$";
     private static final String VALIDATE_ID_CARD = "^\\d{9}|\\d{12}$";
     private static final String VALIDATE_PHONE_NUMBER = "^0\\d{9}$";
     private static final String VALIDATE_EMAIL = "^[a-zA-Z0-9]\\w{5,31}@[a-z]{1,11}\\.[a-z]{1,11}(\\.[a-z]{1,11})?$";
@@ -73,15 +73,21 @@ public class Regex {
     public static String getValidateDate() {
         Scanner scanner = new Scanner(System.in);
         LocalDate localDate = LocalDate.now();
+        String dateOfBirth;
         do {
-            System.out.println("Nhập ngày sinh của bạn theo định dạng");
-            String dateOfBirth = scanner.nextLine();
-            while (!dateOfBirth.matches(VALIDATE_DATE)) {
-                System.out.println("Nhập sai định dạng");
-            }
-            String[] info = new String[2];
+            do {
+                System.out.println("Nhập ngày sinh của bạn theo định dạng(yyyy/MM/dd)");
+                dateOfBirth = scanner.nextLine();
+                if (dateOfBirth.matches(VALIDATE_DATE)) {
+                    break;
+                }else {
+                    System.out.println("Nhập sai định dạng");
+                }
+            } while (true);
+
+                        String[] info = new String[2];
             for (int i = 0; i < dateOfBirth.length(); i++) {
-                info = dateOfBirth.split("-");
+                info = dateOfBirth.split("/");
             }
             if (localDate.getYear() - Integer.parseInt(info[0]) >= 18) {
                 if (Integer.parseInt(info[1]) - localDate.getMonthValue() < 0) {
@@ -267,7 +273,7 @@ public class Regex {
         } while (true);
     }
 
-    public static String getAddress(){
+    public static String getAddress() {
         System.out.println("Nhập địa chỉ khách hàng");
         String address = scanner.nextLine();
         String[] strings = new String[0];
@@ -277,7 +283,7 @@ public class Regex {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < strings.length; i++) {
             stringBuilder.append(strings[i]);
-            stringBuilder.append(";");
+            stringBuilder.append("-");
         }
         return String.valueOf(stringBuilder);
     }

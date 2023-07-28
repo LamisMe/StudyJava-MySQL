@@ -31,12 +31,12 @@ public class EmployeeRepository implements IPersonRepository<Employee> {
     public void add(Employee employee) {
         List<String> stringList = ReadToFile.readToFile(PATH_EMPLOYEE);
         stringList.add(employee.toInfoCSVEmployee());
-        WriteToFile.writeToFile(PATH_EMPLOYEE, stringList, true);
+        WriteToFile.writeToFile(PATH_EMPLOYEE, stringList, false);
     }
 
     @Override
     public void remove(Employee employee) {
-        List<String> stringList = ReadToFile.readToFile(PATH_EMPLOYEE);
+        List<String> stringList = new ArrayList<>();
         List<Employee> employeeList = getAll();
         employeeList.remove(employee);
         for (Employee employees : employeeList) {

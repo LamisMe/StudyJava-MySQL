@@ -30,8 +30,8 @@ public class CustomerRepository implements IPersonRepository<Customer> {
     @Override
     public void add(Customer customer) {
         List<String> stringList = ReadToFile.readToFile(PATH_CUSTOMER);
-        stringList.add(customer.getCustomerType());
-        WriteToFile.writeToFile(PATH_CUSTOMER, stringList, true);
+        stringList.add(customer.toInfoCSVCustomer());
+        WriteToFile.writeToFile(PATH_CUSTOMER, stringList, false);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class CustomerRepository implements IPersonRepository<Customer> {
             if (customers.getId().equals(id)) {
                 customers = customer;
             }
-            stringList.add(customers.getCustomerType());
+            stringList.add(customers.toInfoCSVCustomer());
         }
         WriteToFile.writeToFile(PATH_CUSTOMER, stringList, false);
     }

@@ -44,6 +44,7 @@ public class CustomerController {
                     break;
                 case "3":
                     personService.update();
+                    System.out.println("Cập nhật thông tin thành công");
                     break;
                 case "4":
                     personService.delete();
