@@ -9,7 +9,7 @@ import repository.person.classes.EmployeeRepository;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class Regex {
+public class ValidatePerson {
     private static final Scanner scanner = new Scanner(System.in);
     private static final String VALIDATE_ID_CUSTOMER = "^KH-\\d{4}$";
     private static final String VALIDATE_ID_EMPLOYEE = "^NV-\\d{4}$";
@@ -80,12 +80,11 @@ public class Regex {
                 dateOfBirth = scanner.nextLine();
                 if (dateOfBirth.matches(VALIDATE_DATE)) {
                     break;
-                }else {
+                } else {
                     System.out.println("Nhập sai định dạng");
                 }
             } while (true);
-
-                        String[] info = new String[2];
+            String[] info = new String[2];
             for (int i = 0; i < dateOfBirth.length(); i++) {
                 info = dateOfBirth.split("/");
             }

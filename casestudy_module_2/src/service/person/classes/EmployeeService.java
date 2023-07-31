@@ -1,12 +1,11 @@
 package service.person.classes;
 
-import model.person.sub_class.Customer;
 import model.person.sub_class.Employee;
 import repository.person.IPersonRepository;
 import repository.person.classes.EmployeeRepository;
 import service.person.IPersonService;
 import utils.IdNotFoundException;
-import utils.Regex;
+import utils.ValidatePerson;
 
 import java.util.List;
 import java.util.Scanner;
@@ -29,22 +28,22 @@ public class EmployeeService implements IPersonService {
     @Override
     public void create() {
         System.out.println("Nhập mã nhân viên(Theo định dạng NV-YYYY, với YYYY là số tư 0-9)");
-        String id = Regex.getValidateIdEmployee();
+        String id = ValidatePerson.getValidateIdEmployee();
         System.out.println("Nhập tên nhân viên (Phải viết hoa ký tự đầu của mỗi từ)");
-        String name = Regex.getValidateNamePerson();
+        String name = ValidatePerson.getValidateNamePerson();
         System.out.println("Nhập ngày sinh nhân viên (Phải đủ 18 tuổi tính cả ngày + tháng)");
-        String dateOfBirth = Regex.getValidateDate();
-        String gender = Regex.getGenderPerson();
+        String dateOfBirth = ValidatePerson.getValidateDate();
+        String gender = ValidatePerson.getGenderPerson();
         System.out.println("Nhập số CMND (Phải đủ 9 hoặc 12 số)");
-        String idCard = Regex.getValidateIdCard();
+        String idCard = ValidatePerson.getValidateIdCard();
         System.out.println("Nhập số điện thoại (Bắt đầu bằng 0 và có đủ 10 số)");
-        String phoneNumber = Regex.getValidatePhoneNumber();
+        String phoneNumber = ValidatePerson.getValidatePhoneNumber();
         System.out.println("Nhập email nhân viên");
-        String email = Regex.getValidateEmail();
-        String level = Regex.getLevelEmployee();
-        String location = Regex.getLocationEmployee();
+        String email = ValidatePerson.getValidateEmail();
+        String level = ValidatePerson.getLevelEmployee();
+        String location = ValidatePerson.getLocationEmployee();
         System.out.println("Nhập lương của nhân viên");
-        long salary = Regex.getSalary();
+        long salary = ValidatePerson.getSalary();
         Employee employee = new Employee(id, name, dateOfBirth, gender, idCard, phoneNumber, email, level, location, salary);
         employeeIPersonRepository.add(employee);
     }
@@ -120,43 +119,43 @@ public class EmployeeService implements IPersonService {
                         switch (select) {
                             case "1":
                                 System.out.println("Nhập tên nhân viên (Phải viết hoa ký tự đầu của mỗi từ)");
-                                String name = Regex.getValidateNamePerson();
+                                String name = ValidatePerson.getValidateNamePerson();
                                 employee.setName(name);
                                 break;
                             case "2":
                                 System.out.println("Nhập ngày sinh nhân viên (Phải đủ 18 tuổi tính cả ngày + tháng)");
-                                String dateOfBirth = Regex.getValidateDate();
+                                String dateOfBirth = ValidatePerson.getValidateDate();
                                 employee.setDateOfBirth(dateOfBirth);
                                 break;
                             case "3":
-                                String gender = Regex.getGenderPerson();
+                                String gender = ValidatePerson.getGenderPerson();
                                 employee.setGender(gender);
                                 break;
                             case "4":
                                 System.out.println("Nhập số CMND (Phải đủ 9 hoặc 12 số)");
-                                String idCard = Regex.getValidateIdCard();
+                                String idCard = ValidatePerson.getValidateIdCard();
                                 employee.setIdCard(idCard);
                                 break;
                             case "5":
                                 System.out.println("Nhập số điện thoại (Bắt đầu bằng 0 và có đủ 10 số)");
-                                String phoneNumber = Regex.getValidatePhoneNumber();
+                                String phoneNumber = ValidatePerson.getValidatePhoneNumber();
                                 employee.setPhoneNumber(phoneNumber);
                                 break;
                             case "6":
                                 System.out.println("Nhập email nhân viên");
-                                String email = Regex.getValidateEmail();
+                                String email = ValidatePerson.getValidateEmail();
                                 employee.setEmail(email);
                                 break;
                             case "7":
-                                String level = Regex.getLevelEmployee();
+                                String level = ValidatePerson.getLevelEmployee();
                                 employee.setLevel(level);
                                 break;
                             case "8":
-                                String location = Regex.getLocationEmployee();
+                                String location = ValidatePerson.getLocationEmployee();
                                 employee.setLocation(location);
                                 break;
                             case "9":
-                                long salary = Regex.getSalary();
+                                long salary = ValidatePerson.getSalary();
                                 employee.setWage(salary);
                                 break;
                             case "0":

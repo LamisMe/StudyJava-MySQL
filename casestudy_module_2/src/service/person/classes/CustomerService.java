@@ -5,7 +5,7 @@ import repository.person.IPersonRepository;
 import repository.person.classes.CustomerRepository;
 import service.person.IPersonService;
 import utils.IdNotFoundException;
-import utils.Regex;
+import utils.ValidatePerson;
 
 import java.util.List;
 import java.util.Scanner;
@@ -28,20 +28,20 @@ public class CustomerService implements IPersonService {
     @Override
     public void create() {
         System.out.println("Nhập mã khách hàng (theo định dạng: KH-YYYY, với YYYY là số tư 0-9)");
-        String id = Regex.getValidateIdCustomer();
+        String id = ValidatePerson.getValidateIdCustomer();
         System.out.println("Nhập tên khách hàng (Phải viết hoa ký tự đầu của mỗi từ)");
-        String name = Regex.getValidateNamePerson();
+        String name = ValidatePerson.getValidateNamePerson();
         System.out.println("Nhập ngày sinh khách hàng (Phải đủ 18 tuổi tính cả ngày + tháng)");
-        String dateOfBirth = Regex.getValidateDate();
-        String gender = Regex.getGenderPerson();
+        String dateOfBirth = ValidatePerson.getValidateDate();
+        String gender = ValidatePerson.getGenderPerson();
         System.out.println("Nhập số CMND (Phải đủ 9 hoặc 12 số)");
-        String idCard = Regex.getValidateIdCard();
+        String idCard = ValidatePerson.getValidateIdCard();
         System.out.println("Nhập số điện thoại (Bắt đầu bằng 0 và có đủ 10 số)");
-        String phoneNumber = Regex.getValidatePhoneNumber();
+        String phoneNumber = ValidatePerson.getValidatePhoneNumber();
         System.out.println("Nhập email khách hàng");
-        String email = Regex.getValidateEmail();
-        String typeCustomer = Regex.getTypeCustomer();
-        String address = Regex.getAddress();
+        String email = ValidatePerson.getValidateEmail();
+        String typeCustomer = ValidatePerson.getTypeCustomer();
+        String address = ValidatePerson.getAddress();
         Customer customer = new Customer(id, name, dateOfBirth, gender, idCard, phoneNumber, email, typeCustomer, address);
         customerIPersonRepository.add(customer);
     }
@@ -116,39 +116,39 @@ public class CustomerService implements IPersonService {
                         switch (select) {
                             case "1":
                                 System.out.println("Nhập tên khách hàng (Phải viết hoa ký tự đầu của mỗi từ)");
-                                String name = Regex.getValidateNamePerson();
+                                String name = ValidatePerson.getValidateNamePerson();
                                 customer.setName(name);
                                 break;
                             case "2":
                                 System.out.println("Nhập ngày sinh khách hàng (Phải đủ 18 tuổi tính cả ngày + tháng)");
-                                String dateOfBirth = Regex.getValidateDate();
+                                String dateOfBirth = ValidatePerson.getValidateDate();
                                 customer.setDateOfBirth(dateOfBirth);
                                 break;
                             case "3":
-                                String gender = Regex.getGenderPerson();
+                                String gender = ValidatePerson.getGenderPerson();
                                 customer.setGender(gender);
                                 break;
                             case "4":
                                 System.out.println("Nhập số CMND (Phải đủ 9 hoặc 12 số)");
-                                String idCard = Regex.getValidateIdCard();
+                                String idCard = ValidatePerson.getValidateIdCard();
                                 customer.setIdCard(idCard);
                                 break;
                             case "5":
                                 System.out.println("Nhập số điện thoại (Bắt đầu bằng 0 và có đủ 10 số)");
-                                String phoneNumber = Regex.getValidatePhoneNumber();
+                                String phoneNumber = ValidatePerson.getValidatePhoneNumber();
                                 customer.setPhoneNumber(phoneNumber);
                                 break;
                             case "6":
                                 System.out.println("Nhập email khách hàng");
-                                String email = Regex.getValidateEmail();
+                                String email = ValidatePerson.getValidateEmail();
                                 customer.setEmail(email);
                                 break;
                             case "7":
-                                String typeCustomer = Regex.getTypeCustomer();
+                                String typeCustomer = ValidatePerson.getTypeCustomer();
                                 customer.setCustomerType(typeCustomer);
                                 break;
                             case "8":
-                                String address = Regex.getAddress();
+                                String address = ValidatePerson.getAddress();
                                 customer.setAddress(address);
                                 break;
                             case "0":

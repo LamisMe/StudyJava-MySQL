@@ -1,11 +1,14 @@
 package controller.sub_classes_mandates;
 
+import service.facility.IFacilityService;
+import service.facility.classes.FacilityService;
 import utils.ColorInConsole;
 
 import java.util.Scanner;
 
 public class FacilityController {
     private final Scanner scanner = new Scanner(System.in);
+    private final IFacilityService facilityService = new FacilityService();
 
     public void showMenuFacility() {
         do {
@@ -32,9 +35,18 @@ public class FacilityController {
             String select = scanner.nextLine();
             switch (select) {
                 case "1":
+                    facilityService.display();
+                    break;
                 case "2":
+                    facilityService.add();
+                    break;
                 case "3":
+                    System.out.println("Danh sách cơ sở cần phải bảo trì ");
+                    facilityService.displayAllMaintenance();
+                    break;
                 case "4":
+                    facilityService.remove();
+                    break;
                 case "5":
                     return;
                 default:
