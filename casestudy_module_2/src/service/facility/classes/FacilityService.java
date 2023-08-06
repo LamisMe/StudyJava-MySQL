@@ -10,7 +10,6 @@ import service.facility.IFacilityService;
 import utils.ValidateFacility;
 
 import java.util.Map;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class FacilityService implements IFacilityService {
@@ -96,7 +95,7 @@ public class FacilityService implements IFacilityService {
           -Số tầng phải là số nguyên dương.
           - Kiểu thuê, Tiêu chuẩn phòng chuẩn hóa dữ liệu giống tên dịch vụ
          */
-        if (Objects.equals(facility, new Villa())) {
+        if (facility instanceof Villa) {
             String codeFacility;
             do {
                 System.out.println("Nhập mã dịch vụ(theo định dạng SVVL-YYYY,YYYY là các số tư 0-9)");
@@ -229,7 +228,7 @@ public class FacilityService implements IFacilityService {
             Villa villa = new Villa(codeFacility, nameService, usableArea, rentalCost, maximumNumberOfPeople, typeRental, roomStandard, poolArea, floorsNumber);
             facilityRepository.add(villa);
 
-        } else if (Objects.equals(facility, new House())) {
+        } else if (facility instanceof House) {
             String codeFacility;
             do {
                 System.out.println("Nhập mã dịch vụ(theo định dạng SVHO-YYYY,YYYY là các số tư 0-9)");

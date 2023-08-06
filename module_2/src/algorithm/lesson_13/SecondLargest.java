@@ -1,23 +1,34 @@
 package algorithm.lesson_13;
 
-import java.util.Arrays;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SecondLargest {
-    public static int findFirstLargest(String str){
+    public static int checkSecondLargest(String str) {
         String[] arr = str.split(",");
-        int[] arrInt = new int[arr.length];
+        List<Integer> integerList = new ArrayList<>();
         for (int i = 0; i < arr.length; i++) {
-            arrInt[i] = Integer.parseInt(arr[i]);
+            integerList.add(Integer.valueOf(arr[i]));
         }
-        int max = arrInt[0];
-        for (int i = 0; i < arrInt.length; i++) {
-            if(max <arrInt[i]){
-                max = arrInt[i];
+        int max = integerList.get(0);
+        for (int i = 0; i < integerList.size(); i++) {
+            if (max < integerList.get(i)) {
+                max = integerList.get(i);
             }
         }
-        return max;
+        int second = 0;
+        int index = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (second < Integer.parseInt(arr[i])) {
+                second = Integer.parseInt(arr[i]);
+                if(second<max){
+                    index = i;
+                }else {
+                    second = 0;
+                }
+            }
+        }
+        return index;
     }
-//    public static int findSecondLargest(int max){
-//
-//    }
 }

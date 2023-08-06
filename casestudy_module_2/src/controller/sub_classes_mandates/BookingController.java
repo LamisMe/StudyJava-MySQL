@@ -1,12 +1,14 @@
 package controller.sub_classes_mandates;
 
+import service.booking.IBookingService;
+import service.booking.classes.BookingService;
 import utils.ColorInConsole;
 
 import java.util.Scanner;
 
-public class BookingController
-{
+public class BookingController {
     private final Scanner scanner = new Scanner(System.in);
+    private final IBookingService bookingService = new BookingService();
 
     public void showMenuBooking() {
         do {
@@ -34,10 +36,20 @@ public class BookingController
             String select = scanner.nextLine();
             switch (select) {
                 case "1":
+                    bookingService.addBooking();
+                    break;
                 case "2":
+                    bookingService.displayBooking();
+                    break;
                 case "3":
+                    bookingService.creatContract();
+                    break;
                 case "4":
+                    bookingService.displayContract();
+                    break;
                 case "5":
+                    bookingService.editContract();
+                    break;
                 case "6":
                     return;
                 default:

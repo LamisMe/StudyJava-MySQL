@@ -82,7 +82,9 @@ public class Facility {
     public int hashCode() {
         return Objects.hash(codeService);
     }
-
+    public static Facility parseFacility(String s) {
+        return parseFacility(s);
+    }
     @Override
     public String toString() {
         return "Mã dịch vụ: " + codeService +

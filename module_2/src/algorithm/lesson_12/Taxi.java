@@ -25,7 +25,7 @@ public class Taxi {
                         break;
                     }
                 }
-            }else {
+            } else {
                 count++;
             }
         }
