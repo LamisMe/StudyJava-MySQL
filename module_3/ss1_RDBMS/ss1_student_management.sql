@@ -2,26 +2,26 @@ create database ss1_student_managerment;
 
 use ss1_student_managerment;
 
-create table Class(
+create table classroom(
 		id int primary key auto_increment,
         `name` varchar(45)
 );
 
-create table Teacher(
+create table teacher(
 		id int primary key auto_increment,
         `name` varchar(45),
         age int,
         country varchar(45)
 );
 
-insert into Class(`name`) 
+insert into classroom(`name`) 
 values ("Lê Quang Toản"),("Đinh Thanh Hải"),("Kim Ngọc Thành"),("Trần Văn Lâm"),("Võ Nhân Trí");
 
-insert into Teacher(`name`,age,country)
+insert into teacher(`name`,age,country)
 values ("Trần Văn Chánh",38,"Việt Nam"),("Trương Tấn Hải",25,"Việt Nam"),("Nguyễn Công",32,"Việt Nam");
 
 select *
-from Class;
+from classroom;
 
 select * 
-from Teacher;
+from teacher;
