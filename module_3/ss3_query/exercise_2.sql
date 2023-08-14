@@ -63,7 +63,7 @@ join products on products.product_id = order_detail.product_id;
 -- Hiển thị tên những khách hàng không mua bất kỳ một sản phẩm nào
 select customers.customer_name 
 from customers
-left join orders on customers.customer_id = `orders`.customer_id
+left join `orders` on customers.customer_id = `orders`.customer_id
 where orders.customer_id is null;
 
 -- Hiển thị mã hóa đơn, ngày bán và giá tiền của từng hóa đơn (giá một hóa đơn được tính bằng tổng giá bán
