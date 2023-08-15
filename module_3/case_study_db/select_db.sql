@@ -12,11 +12,9 @@ where (substring_index(ho_ten," ",1) like 'H%' or substring_index(ho_ten," ",1) 
 
 select* 
 from khach_hang
--- where (select round (datediff(curdate(), ngay_sinh) / 365, 0))
--- between 18 and 50
--- and (dia_chi like '% Đà Nẵng' or dia_chi like '% Quảng Trị');
-where (dia_chi like '%Đà Nẵng%' or dia_chi like '%Quảng Trị')
-and timestampdiff(year,ngay_sinh,curdate()) between 18 and 50;
+where (select round (datediff(curdate(), ngay_sinh) / 365, 0))
+between 18 and 50
+and (dia_chi like '% Đà Nẵng' or dia_chi like '% Quảng Trị');
 
 -- 4.Đếm xem tương ứng với mỗi khách hàng đã từng đặt phòng bao nhiêu lần.
 -- Kết quả hiển thị được sắp xếp tăng dần theo số lần đặt phòng của khách hàng. 
