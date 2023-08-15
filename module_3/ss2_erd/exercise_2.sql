@@ -22,7 +22,7 @@ create table products(
     prouct_price int
 );
 
-create table order_detail(
+create table order_details(
 	order_id int,
     product_id int,
 	primary key(order_id,product_id),

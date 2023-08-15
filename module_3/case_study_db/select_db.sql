@@ -12,9 +12,11 @@ where (substring_index(ho_ten," ",1) like 'H%' or substring_index(ho_ten," ",1) 
 
 select* 
 from khach_hang
-where (select round (datediff(curdate(), ngay_sinh) / 365, 0))
-between 18 and 50
-and (dia_chi like '% Đà Nẵng' or dia_chi like '% Quảng Trị');
+-- where (select round (datediff(curdate(), ngay_sinh) / 365, 0))
+-- between 18 and 50
+-- and (dia_chi like '% Đà Nẵng' or dia_chi like '% Quảng Trị');
+where (dia_chi like '%Đà Nẵng%' or dia_chi like '%Quảng Trị')
+and timestampdiff(year,ngay_sinh,curdate()) between 18 and 50;
 
 -- 4.Đếm xem tương ứng với mỗi khách hàng đã từng đặt phòng bao nhiêu lần.
 -- Kết quả hiển thị được sắp xếp tăng dần theo số lần đặt phòng của khách hàng. 
@@ -32,10 +34,11 @@ order by so_lan_dat_phong;
 -- (Với tổng tiền được tính theo công thức như sau: Chi Phí Thuê + Số Lượng * Giá, với Số Lượng và Giá là từ bảng dich_vu_di_kem, hop_dong_chi_tiet) 
 -- cho tất cả các khách hàng đã từng đặt phòng. 
 -- (những khách hàng nào chưa từng đặt phòng cũng phải hiển thị ra).
+/* set sql_mode = 0 (Lỗi group by)*/
 
 select kh.ma_khach_hang,kh.ho_ten,lk.ten_loai_khach,hd.ma_hop_dong,
 dv.ten_dich_vu,hd.ngay_lam_hop_dong,hd.ngay_ket_thuc,
-if(hdct.so_luong is null,dv.chi_phi_thue,sum(dv.chi_phi_thue + hdct.so_luong * dvdk.gia)) as "tong_tien"
+ifnull(dv.chi_phi_thue,sum(dv.chi_phi_thue + hdct.so_luong * dvdk.gia)) as "tong_tien"
 from khach_hang kh
 left join loai_khach lk on lk.ma_loai_khach = kh.ma_loai_khach
 left join hop_dong hd on hd.ma_khach_hang = kh.ma_khach_hang
@@ -59,3 +62,4 @@ order by dv.chi_phi_thue desc;
 -- 7.Hiển thị thông tin ma_dich_vu, ten_dich_vu, dien_tich, so_nguoi_toi_da, chi_phi_thue,
 -- ten_loai_dich_vu của tất cả các loại dịch vụ đã từng được 
 -- khách hàng đặt phòng trong năm 2020 nhưng chưa từng được khách hàng đặt phòng trong năm 2021.
+
