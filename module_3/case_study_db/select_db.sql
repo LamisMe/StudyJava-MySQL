@@ -38,7 +38,7 @@ order by so_lan_dat_phong;
 
 select kh.ma_khach_hang,kh.ho_ten,lk.ten_loai_khach,hd.ma_hop_dong,
 dv.ten_dich_vu,hd.ngay_lam_hop_dong,hd.ngay_ket_thuc,
-ifnull(sum(dv.chi_phi_thue + hdct.so_luong * dvdk.gia),dv.chi_phi_thue) as "tong_tien"
+sum(ifnull(ifnull(dv.chi_phi_thue,0) + ifnull(hdct.so_luong,0) * ifnull(dvdk.gia,0),0)) as "tong_tien"
 from khach_hang kh
 left join loai_khach lk on lk.ma_loai_khach = kh.ma_loai_khach
 left join hop_dong hd on hd.ma_khach_hang = kh.ma_khach_hang
@@ -116,7 +116,7 @@ order by ma_hop_dong;
 -- 11.Hiển thị thông tin các dịch vụ đi kèm đã được sử dụng bởi những khách hàng 
 -- có ten_loai_khach là “Diamond” và có dia_chi ở “Vinh” hoặc “Quảng Ngãi”.
 
-select kh.ho_ten,lk.ten_loai_khach,kh.dia_chi,dvdk.ten_dich_vu_di_kem
+select kh.ho_ten,lk.ten_loai_khach,kh.dia_chi,dvdk.ma_dich_vu_di_kem,dvdk.ten_dich_vu_di_kem
 from loai_khach lk
 join khach_hang kh on kh.ma_loai_khach = lk.ma_loai_khach
 join hop_dong hd on hd.ma_khach_hang = kh.ma_khach_hang
@@ -124,3 +124,31 @@ join hop_dong_chi_tiet hdct on hdct.ma_hop_dong = hd.ma_hop_dong
 join dich_vu_di_kem dvdk on dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
 where ten_loai_khach = "Dinamond" and (dia_chi like "%Vinh%" or dia_chi like "%Quảng Ngãi%")
 order by dvdk.ma_dich_vu_di_kem;
+
+
+-- 12.Hiển thị thông tin ma_hop_dong, ho_ten (nhân viên), ho_ten (khách hàng), so_dien_thoai (khách hàng),
+-- ten_dich_vu, so_luong_dich_vu_di_kem (được tính dựa trên việc sum so_luong ở 	),
+-- tien_dat_coc của tất cả các dịch vụ đã từng được khách hàng đặt vào 3 tháng cuối năm 2020 nhưng chưa từng được
+-- khách hàng đặt vào 6 tháng đầu năm 2021.
+
+select hd.ma_hop_dong, nv.ho_ten,kh.ho_ten,kh.so_dien_thoai,hd.ma_dich_vu,dv.ten_dich_vu,
+sum(ifnull(so_luong,0)) as "so_luong_dich_vu_di_kem",hd.tien_dat_coc
+from nhan_vien nv
+left join hop_dong hd on hd.ma_nhan_vien = nv.ma_nhan_vien
+left join khach_hang kh on kh.ma_khach_hang = hd.ma_khach_hang
+left join dich_vu dv on dv.ma_dich_vu = hd.ma_dich_vu
+left join hop_dong_chi_tiet hdct on hdct.ma_hop_dong = hd.ma_hop_dong
+left join dich_vu_di_kem dvdk on dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
+where dv.ma_dich_vu in (select hop_dong.ma_dich_vu
+from hop_dong 
+where hop_dong.ngay_lam_hop_dong between "2020-10-01" and "2020-12-31")
+and dv.ma_dich_vu not in  (
+select dich_vu.ma_dich_vu
+from dich_vu 
+join hop_dong 
+on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+where hop_dong.ngay_lam_hop_dong between "2021-01-01" and "2021-06-30")
+group by hd.ma_hop_dong;
+
+-- 13.Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng. 
+-- (Lưu ý là có thể có nhiều dịch vụ có số lần sử dụng nhiều như nhau).
