@@ -61,7 +61,7 @@ drop view view_product;
 -- Tạo store procedure lấy tất cả thông tin của tất cả các sản phẩm trong bảng product
 
 delimiter $$
-create procedure getAllProduct (in search_name varchar(50))
+create procedure get_all_product (in search_name varchar(50))
 begin
 select *
 from products
@@ -69,12 +69,12 @@ where product_name = search_name ;
 end $$
 delimiter ;
 
-call getAllProduct("7UP");
+call get_all_product("7UP");
 
 -- Tạo store procedure thêm một sản phẩm mới
 
 delimiter $$
-create procedure addProduct (
+create procedure add_product (
 in id int,
 product_code int,
 product_name varchar(50),
@@ -88,7 +88,7 @@ values(id,product_code,product_name,product_price,product_amount,product_descrip
 end $$
 delimiter $$
 
-call addProduct(5,5,"C2",10000,10,"cool & clean","Còn hàng");
+call add_product(5,5,"C2",10000,10,"cool & clean","Còn hàng");
 
 select products.product_code,products.product_name
 from products;
@@ -96,7 +96,7 @@ from products;
 -- Tạo store procedure sửa thông tin sản phẩm theo id
 
 delimiter $$
-create procedure updateProduct(
+create procedure update_product(
 in search_id int,
 new_product_code int,
 new_product_name varchar(50),
@@ -116,11 +116,11 @@ where id = search_id;
 end $$
 delimiter ;
 
-call updateProduct(5,5,"C2",10000,10,"cool & clean","Còn hàng");
+call update_product(5,5,"C2",10000,10,"cool & clean","Còn hàng");
 -- Tạo store procedure xoá sản phẩm theo id
 
 delimiter $$
-create procedure deleteProduct(in search_id int)
+create procedure delete_product(in search_id int)
 begin
 delete
 from products
@@ -128,4 +128,4 @@ where id = search_id;
 end $$
 delimiter ;
 
-call deleteProduct(5);
+call delete_product(5);
