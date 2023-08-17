@@ -131,7 +131,7 @@ values ("Nguyễn Văn An","1970-11-07","456231786",1000000,"0901234121","annguy
 ("Nguyễn Công Đạo","1994-01-08","755434343",8000000,"0988767111","nguyencongdao12@gmail.com","6 Hoà Khánh, Đồng Nai",2,3,2);
 
 insert into loai_khach(ten_loai_khach)
-values ("Dinamond"),("Platininum"),("Gold"),("Silver"),("Member");
+values ("Diamond"),("Platininum"),("Gold"),("Silver"),("Member");
 
 insert into khach_hang(ho_ten,ngay_sinh,gioi_tinh,so_cmnd,so_dien_thoai,email,dia_chi,ma_loai_khach)
 values ("Nguyễn Thị Hào", "1970-11-07", 0, "643431213", "0945423362", "thihao07@gmail.com", "23 Nguyễn Hoàng, Đà Nẵng", 5),
