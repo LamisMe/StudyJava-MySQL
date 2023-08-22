@@ -8,16 +8,14 @@
 }
 
 #sidebar {
-    background: linear-gradient(150deg, dodgerblue, honeydew);
-    height: 900px;
+    height: 950px;
     width: 30%;
     float: left;
     margin-bottom: 5px;
 }
 
 #main {
-    background: linear-gradient(150deg, dodgerblue, honeydew);
-    height: 900px;
+    height: 950px;
     width: 68%;
     float: right;
     margin-bottom: 2px;
@@ -59,4 +57,10 @@ iframe {
 h1{
     padding: 5px;
     color: black;
+}
+
+nav ul li {
+    display: inline;
+    margin: 5px;
+
 }
