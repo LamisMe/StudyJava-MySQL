@@ -1,117 +1,154 @@
-body {
-    font-family: Arial, sans-serif;
-    position: relative;
-    margin: 0;
-}
-#menu {
-    height: 40px;
-    padding-top: 10px;
-    margin: 0;
-    background-color: #000000;
-    border: 1px solid #CDCDCD;
-    color: slategray;
+* {
+    box-sizing: border-box;
 }
 
-#menu ul, #menu li {
-    padding: 0;
-    margin: 0;
-}
-
-#menu li {
-    position: relative;
+[class*="col-"] {
+    /*Quyết định độ trôi nổi của phần tử trên trang web*/
     float: left;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    padding: 15px;
+    width: 100%;
 }
 
-#menu li a {
-    width: 100px;
-    height: 30px;
-    display: block;
-    text-decoration: none;
+.row::after {
+    /*:: -> CSS3 -> element : -> class
+    : -> CSS2*/
+    content: "";
+    /*Xóa thuộc tính float*/
+    clear: both;
+    display: table;
+}
+@media only screen and (min-width: 600px) {
+    .col-m-1 {
+        width: 8.33%;
+    }
+
+    .col-m-2 {
+        width: 16.66%;
+    }
+
+    .col-m-3 {
+        width: 25%;
+    }
+
+    .col-m-4 {
+        width: 33.33%;
+    }
+
+    .col-m-5 {
+        width: 41.66%;
+    }
+
+    .col-m-6 {
+        width: 50%;
+    }
+
+    .col-m-7 {
+        width: 58.33%;
+    }
+
+    .col-m-8 {
+        width: 66.66%;
+    }
+
+    .col-m-9 {
+        width: 75%;
+    }
+
+    .col-m-10 {
+        width: 83.33%;
+    }
+
+    .col-m-11 {
+        width: 91.66%;
+    }
+
+    .col-m-12 {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .col-1 {
+        width: 8.33%;
+    }
+
+    .col-2 {
+        width: 16.66%;
+    }
+
+    .col-3 {
+        width: 25%;
+    }
+
+    .col-4 {
+        width: 33.33%;
+    }
+
+    .col-5 {
+        width: 41.66%;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+
+    .col-7 {
+        width: 58.33%;
+    }
+
+    .col-8 {
+        width: 66.66%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+
+    .col-10 {
+        width: 83.33%;
+    }
+
+    .col-11 {
+        width: 91.66%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
+}
+#footer{
+    clear: both;
     text-align: center;
-    line-height: 30px;
-    background-color: black;
+    background: gray;
+}
+
+#footer h4 {
+    padding-top: 5px;
+}
+
+#menu a{
+    display: contents;
+    text-decoration: none;
     color: whitesmoke;
     font-weight: bold;
+    padding: 100px;
 }
 
-#menu ul ul li a {
-    width: 200px;
-    text-align: left;
-    padding-left: 10px;
+#menu{
+    background: black;
 }
 
-#menu li a:hover {
-    background-color: red;
-    color: white;
-}
-
-#menu ul ul {
-    position: absolute;
-    top: 30px;
-    left: 15px;
-    visibility: hidden;
-}
-
-#menu ul li:hover ul {
-    visibility: visible;
-}
-
-#sidebar_1,#sidebar_2 {
+#sidebar_1,#sidebar_2{
     background-color: whitesmoke;
     height: 500px;
-    float: left;
-    width: 20%;
 }
+
+#sidebar_2 {
+    text-align: center;
+    padding-top: 10px;
+ }
 
 #sidebar_2 button{
     text-align: center;
-    display: block;
-    border: 1px solid grey;
-    padding: 10px;
-    margin: 10px;
-    background-color: darkgray;
-    color: black;
-    text-decoration: none;
-}
-
-#main {
-    background-color: white;
-    height: 500px;
-    position: relative;
-    float: left;
-    width: 60%;
-}
-
-#footer {
-    background-color: gray;
-    height: 50px;
-    width: 100%;
-    clear: both;
-    color: white;
-}
-
-
-#login:hover {
-    background-color: slategray;
-}
-
-button{
-    width: 150px;
-    height: 80px;
-    margin-left: 50%;
-    margin-top: 20%;
-    text-align: center;
-    position: center;
-}
-
-h4 {
-    text-align: center;
-    padding-top: 1rem;
-}
-
-#login {
-    position: absolute;
+    margin-top: 10px;
 }
