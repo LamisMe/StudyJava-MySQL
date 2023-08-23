@@ -1,34 +1,35 @@
-body{
-    font-family: Arial,sans-serif;
+body {
+    font-family: Arial, sans-serif;
+    position: relative;
+    margin: 0;
 }
-
-#menu{
+#menu {
     height: 40px;
-    padding-top:10px;
-    margin:0;
+    padding-top: 10px;
+    margin: 0;
     background-color: #000000;
     border: 1px solid #CDCDCD;
     color: slategray;
 }
 
-#menu ul, #menu li{
-    padding:0;
-    margin:0;
+#menu ul, #menu li {
+    padding: 0;
+    margin: 0;
 }
 
-#menu li{
+#menu li {
     position: relative;
     float: left;
     list-style: none;
     margin: 0;
-    padding:0;
+    padding: 0;
 }
 
-#menu li a{
-    width:100px;
+#menu li a {
+    width: 100px;
     height: 30px;
     display: block;
-    text-decoration:none;
+    text-decoration: none;
     text-align: center;
     line-height: 30px;
     background-color: black;
@@ -36,50 +37,52 @@ body{
     font-weight: bold;
 }
 
-#menu ul ul li a{
+#menu ul ul li a {
     width: 200px;
     text-align: left;
     padding-left: 10px;
 }
 
-#menu li a:hover{
+#menu li a:hover {
     background-color: red;
     color: white;
 }
 
-#menu ul ul{
+#menu ul ul {
     position: absolute;
     top: 30px;
     left: 15px;
     visibility: hidden;
 }
 
-#menu ul li:hover ul{
+#menu ul li:hover ul {
     visibility: visible;
 }
 
-#sidebar_1 {
+#sidebar_1,#sidebar_2 {
     background-color: whitesmoke;
     height: 500px;
-    width: 20%;
     float: left;
-
+    width: 20%;
 }
 
-#sidebar_2 {
-    background-color: whitesmoke;
-    height: 500px;
-    width: 20%;
-    float: right;
+#sidebar_2 button{
+    text-align: center;
+    display: block;
+    border: 1px solid grey;
+    padding: 10px;
+    margin: 10px;
+    background-color: darkgray;
+    color: black;
+    text-decoration: none;
 }
 
 #main {
     background-color: white;
     height: 500px;
-    width: 60%;
     position: relative;
-    left: 20px ;
     float: left;
+    width: 60%;
 }
 
 #footer {
@@ -90,33 +93,25 @@ body{
     color: white;
 }
 
-hr{
-    margin-right: 15px;
-}
 
-#login{
-    position: absolute;
-    right: 0;
-    float: right;
-    padding: 2px;
-    text-align: right;
-    margin-right: 30px;
-    color: whitesmoke;
-    font-family: "Arial Black",sans-serif;
-
-}
-#login:hover{
+#login:hover {
     background-color: slategray;
 }
-button{
-    position: relative;
-    left: 65px;
-    margin-top: 20px;
-    width: 60%;
-    height: 80px;
 
+button{
+    width: 150px;
+    height: 80px;
+    margin-left: 50%;
+    margin-top: 20%;
+    text-align: center;
+    position: center;
 }
-h4{
+
+h4 {
     text-align: center;
     padding-top: 1rem;
+}
+
+#login {
+    position: absolute;
 }
