@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +7,7 @@
     <meta charset="utf-8">
 </head>
 <body>
-<form action="/discount-servlet" method="post">
+<form action="/discount" method="post">
     <label for="description">Product Description</label><br/>
     <input type="text" name="product" id="description" value="${product}"><br/>
     <label for="price">List Price</label><br/>
@@ -16,6 +17,6 @@
     <button type="submit">Calculate Discount</button>
     <br/>
 </form>
-${result}
+<c:out value="${result}"/>
 </body>
 </html>

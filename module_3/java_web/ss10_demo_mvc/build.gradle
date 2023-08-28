@@ -11,7 +11,7 @@ repositories {
 }
 
 ext {
-    junitVersion = '5.9.1'
+    junitVersion = '5.8.1'
 }
 
 sourceCompatibility = '1.8'
@@ -23,6 +23,7 @@ tasks.withType(JavaCompile) {
 
 dependencies {
     compileOnly('javax.servlet:javax.servlet-api:4.0.1')
+    // Bắt buộc import để sử dụng được thư viện JSTL.
     implementation group: 'jstl', name: 'jstl', version: '1.2'
     compileJava.options.encoding = 'UTF-8'
     tasks.withType(JavaCompile) {   options.encoding = 'UTF-8'}
