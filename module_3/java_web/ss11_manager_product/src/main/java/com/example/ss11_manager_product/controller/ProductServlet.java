@@ -25,9 +25,9 @@ public class ProductServlet extends HttpServlet {
             case "showformcreateproduct":
                 showFormCreateProduct(request, response);
                 break;
-
             default:
                 displayList(request, response);
+                break;
         }
     }
 
@@ -46,7 +46,7 @@ public class ProductServlet extends HttpServlet {
     private void displayList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> productList = productService.showAllProduct();
         request.setAttribute("productList", productList);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("display.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/display.jsp");
         requestDispatcher.forward(request, response);
     }
 
@@ -65,7 +65,16 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void createProduct(HttpServletRequest request, HttpServletResponse response) {
-        
+        String name = request.getParameter("name");
+        int price = Integer.parseInt(request.getParameter("price"));
+        String description = request.getParameter("description");
+        String supplier = request.getParameter("supplier");
+        productService.addProduct(new Product(name,price,description,supplier));
+        try {
+            response.sendRedirect("/product");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

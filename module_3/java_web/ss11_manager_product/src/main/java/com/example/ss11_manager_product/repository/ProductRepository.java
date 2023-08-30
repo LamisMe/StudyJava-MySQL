@@ -42,6 +42,7 @@ public class ProductRepository implements IProductRepository{
             preparedStatement.setInt(2,product.getPrice());
             preparedStatement.setString(3,product.getDescription());
             preparedStatement.setString(4,product.getSupplier());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
