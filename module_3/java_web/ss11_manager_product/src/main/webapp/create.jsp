@@ -13,7 +13,14 @@
     <title>Thêm Sản Phẩm</title>
 </head>
 <body>
-<a href="/product"><button type="submit" class="btn btn-danger">Trở về</button></a>
+<div class="container-fluid">
+    <!-- As a link -->
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a href="/product"><button type="submit" class="btn btn-danger" >Trở về</button></a>
+        </div>
+    </nav>
+
 <form action="/product?action=create" method="post">
         <div class="mb-3">
             <label for="name" class="form-label">Tên Sản Phẩm</label>
@@ -32,5 +39,6 @@
     </div>
         <button type="submit" class="btn btn-danger">Thêm Mới</button>
 </form>
+</div>
 </body>
 </html>
