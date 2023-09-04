@@ -16,9 +16,10 @@
 <center>
     <h1>User Management</h1>
     <h2>
-        <a href="/users?action=create">Add New User</a>
-        <a href="/users?action=sort">Sort By Name</a>
-        <a href="/users?action=find">Search By Country</a>
+        <a href="/users?action=create">Add New User</a><br>
+        <a href="/users?action=add-transaction">Add new user transaction</a><br>
+        <a href="/users?action=sort">Sort By Name</a><br>
+        <a href="/users?action=find">Search By Country</a><br>
     </h2>
 </center>
 <div align="center">

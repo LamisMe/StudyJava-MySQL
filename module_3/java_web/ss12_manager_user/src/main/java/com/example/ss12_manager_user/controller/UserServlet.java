@@ -47,6 +47,9 @@ public class UserServlet extends HttpServlet {
                 case "sort":
                     sortUser(request, response);
                     break;
+                case "add-transaction":
+                    showAddTransactionForm(request, response);
+                    break;
                 default:
                     listUser(request, response);
                     break;
@@ -84,19 +87,47 @@ public class UserServlet extends HttpServlet {
                     updateUser(request, response);
                     break;
                 case "find":
-                    searchByCountry(request,response);
+                    searchByCountry(request, response);
                     break;
+                case "add-transaction":
+                    addTransaction(request, response);
+                    break;
+
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
         }
     }
 
+    private void addTransaction(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String country = request.getParameter("country");
+        User user = new User(name, email, country);
+        userService.addUserTransaction(user);
+        try {
+            response.sendRedirect("/index.jsp");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void showAddTransactionForm(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/add-transaction.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private void searchByCountry(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("nameSearch");
         List<User> users = userService.search(name);
-        request.setAttribute("nameSearch",name);
-        request.setAttribute("users",users);
+        request.setAttribute("nameSearch", name);
+        request.setAttribute("users", users);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/find.jsp");
         dispatcher.forward(request, response);
     }
