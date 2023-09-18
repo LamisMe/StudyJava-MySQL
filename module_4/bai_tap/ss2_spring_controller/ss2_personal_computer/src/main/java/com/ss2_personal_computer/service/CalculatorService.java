@@ -6,15 +6,21 @@ import org.springframework.stereotype.Service;
 public class CalculatorService implements ICalculatorService {
 
     @Override
-    public double total(int first_number, int second_number, String allowable) {
+    public double total(int firstNumber, int secondNumber, String allowable) {
         if (allowable.equals("+")) {
-            return first_number + second_number;
+            return firstNumber + secondNumber;
         } else if (allowable.equals("-")) {
-            return first_number - second_number;
+            return firstNumber - secondNumber;
         } else if (allowable.equals("*")) {
-            return first_number * second_number;
+            return firstNumber * secondNumber;
+        } else if (allowable.equals("/")) {
+            if (secondNumber != 0) {
+                return (double) firstNumber / secondNumber;
+            } else {
+                return -1;
+            }
         } else {
-            return (double) first_number / second_number;
+            return -99;
         }
     }
 }

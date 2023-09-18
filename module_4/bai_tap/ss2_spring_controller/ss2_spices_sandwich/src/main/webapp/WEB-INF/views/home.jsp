@@ -21,9 +21,9 @@
     <br>
     <button type="submit">Save</button>
 </form>
-<c:if test="${spices  != null}">
+<c:if test="${condiment  != null}">
     <h3> List condiment to Sandwich</h3>
-    <c:forEach var="spi" items="${spices}">
+    <c:forEach var="spi" items="${condiment}">
         ${spi}
     </c:forEach>
 </c:if>

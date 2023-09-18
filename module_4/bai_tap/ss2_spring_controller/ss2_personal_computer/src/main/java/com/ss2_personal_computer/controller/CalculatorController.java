@@ -25,11 +25,7 @@ public class CalculatorController {
         double result = calculatorService.total(firstNum, secondNum, allowable);
         model.addAttribute("firstNum", firstNum);
         model.addAttribute("secondNum", secondNum);
-        if (secondNum != 0) {
-            model.addAttribute("result", result);
-        } else {
-            model.addAttribute("msg", "Cannot divide by 0");
-        }
+        model.addAttribute("result", result);
         return "home-calculator";
     }
 }

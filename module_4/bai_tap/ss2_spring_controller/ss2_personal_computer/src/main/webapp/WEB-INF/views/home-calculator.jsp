@@ -27,11 +27,14 @@
         <button type="submit" name="allowable" value="/">Division(/)</button>
     </label>
 </form>
-<c:if test="${msg != null}">
-    <h3 style="color: crimson">${msg}</h3>
-</c:if>
-<c:if test="${result != null}">
+<c:if test="${result != -1 && result != -99}">
     <h3>Result: <span style="color: crimson">${result}</span></h3>
+</c:if>
+<c:if test="${result == -99}">
+    <h3>Result: <span style="color: crimson">Please enter number</span></h3>
+</c:if>
+<c:if test="${result == -1}">
+    <h3>Result: <span style="color: crimson">Cannot divide by 0</span></h3>
 </c:if>
 </body>
 </html>
