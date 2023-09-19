@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title> <!--    Boostrap-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+</head>
+<body>
+<h1>Danh sách Sản phẩm tìm kiếm</h1>
+<a href="/product/home">
+  <button type="button" class="btn btn-danger">Quay Lại</button>
+</a>
+<table class="table table-borderless table-striped table-earning">
+  <tr>
+    <th>Tên Sản Phẩm</th>
+    <th>Giá</th>
+    <th>Mô tả</th>
+    <th>Nhà cung cấp</th>
+  </tr>
+  <tr th:each="product,status:${products}">
+    <td th:text="${product.getName()}"></td>
+    <td th:text="${product.getPrice()}"></td>
+    <td th:text="${product.getDescription()}"></td>
+    <td th:text="${product.getSupplier()}"></td>
+  </tr>
+</table>
+</body>
+</html>
