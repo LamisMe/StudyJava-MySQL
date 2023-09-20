@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang hiển thị danh sách</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+
+    <!--    Boostrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+</head>
+<body>
+<h1>Danh Sách Sản Phẩm</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <a href="/product/create">
+                <button class="btn btn-outline-primary">Thêm mới</button>
+            </a>
+        </div>
+        <div class="col-md-9" >
+            <form action="/product/searchName" method="post">
+                <label for="name"></label>
+                <label>
+                    <input class="text-input">
+                </label>
+                <button class="btn btn-primary">Tìm kiếm</button>
+            </form>
+        </div>
+    </div>
+</div>
+<table class="table table-borderless table-striped table-earning">
+    <tr>
+        <th>STT</th>
+        <th>Tên Sản Phẩm</th>
+        <th>Giá</th>
+        <th>Mô tả</th>
+        <th>Nhà cung cấp</th>
+        <th>Sửa</th>
+        <th>Chi tiết</th>
+        <th>Xóa</th>
+    </tr>
+    <tr th:each="product,status:${productList}">
+        <td th:text="${status.count}"></td>
+        <td th:text="${product.getName()}"></td>
+        <td th:text="${product.getPrice()}"></td>
+        <td th:text="${product.getDescription()}"></td>
+        <td th:text="${product.getSupplier()}"></td>
+        <td>
+            <a th:href="@{/product/update/__${product.id}__}">Sửa</a>
+        </td>
+        <td>
+            <a th:href="@{/product/detail(id=${product.getId()})}">Chi tiết sản phẩm</a>
+        </td>
+        <td>
+
+            <button type="button" data-bs-toggle="modal" class="btn btn-outline-danger"
+                    data-bs-target="#delete" th:attr="onclick= |deleteProduct('${product.id}','${product.name}')|">Xóa
+            </button>
+
+        </td>
+    </tr>
+</table>
+<p th:if="${msg}" th:text="${msg}" ></p>
+<script>
+
+</script>
+<!--Modal-->
+
+<div class="modal" tabindex="-1" id="delete" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/product/delete" method="post">
+                <div class="modal-header" style="background-color: #dc3545">
+                    <h5 class="modal-title" style="color: aliceblue">Xóa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="id" name="id">
+                    Bạn có muốn xóa "<span id="name"></span>" hay không ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Xác nhận</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--Boostrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+
+<script>
+    function deleteProduct(id, name) {
+        document.getElementById("id").value = id;
+        document.getElementById("name").innerText = name;
+    }
+</script>
+</body>
+</html>

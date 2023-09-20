@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang thêm mới</title>
+    <style>
+        h1 {
+            color: dodgerblue;
+        }
+    </style>
+</head>
+<body>
+<h1>Thêm mới sản phẩm</h1>
+<form th:object="${product}" action="/product/create" method="post">
+    <table>
+        <tr>
+            <td> Tên Sản Phẩm</td>
+            <td><label>
+                <input th:field="*{name}">
+            </label></td>
+        </tr>
+        <tr>
+            <td>Giá</td>
+            <td><label>
+                <input th:field="*{price}">
+            </label></td>
+        </tr>
+        <tr>
+            <td> Mô tả</td>
+            <td><label>
+                <input th:field="*{description}">
+            </label></td>
+        </tr>
+        <tr>
+            <td> Nhà cung cấp</td>
+            <td><label>
+                <input th:field="*{supplier}">
+            </label></td>
+        </tr>
+        <tr>
+            <td>
+                <button>Thêm mới</button>
+            </td>
+            <td><a href="/product/home">
+                <button type="button">Quay Lại</button>
+            </a></td>
+        </tr>
+    </table>
+</form>
+<p th:if="${msg}" th:text="${msg}"></p>
+</body>
+</html>
