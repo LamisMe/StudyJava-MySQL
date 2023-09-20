@@ -7,11 +7,6 @@
 <body>
 <form th:object="${product}"  action="/product/update" method="post">
     <table>
-        <tr th:colspan="2">
-            <td><label>
-                <input th:field="*{id}" type="hidden">
-            </label></td>
-        </tr>
         <tr>
             <td> Tên Sản Phẩm</td>
             <td><label>

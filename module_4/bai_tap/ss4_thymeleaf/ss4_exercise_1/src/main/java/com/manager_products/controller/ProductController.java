@@ -2,15 +2,14 @@ package com.manager_products.controller;
 
 import com.manager_products.model.Product;
 import com.manager_products.service.IProductService;
-import com.manager_products.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/product")
@@ -19,34 +18,38 @@ public class ProductController {
     private IProductService productService;
 
     @GetMapping("home")
-    public String homeProduct(Model model) {
-        model.addAttribute("productList", productService.getALl());
+    public String showProduct(Model model) {
+        model.addAttribute("productList", productService.getAll());
         return "list";
     }
 
     @GetMapping("create")
-    public String formCreateProduct(Model model) {
+    public String showFormCreateProduct(Model model) {
         model.addAttribute("product", new Product());
         return "create";
     }
 
     @PostMapping("create")
-    public String saveCreateProduct(@ModelAttribute Product product,
+    public String createProduct(@ModelAttribute Product product,
                                     RedirectAttributes redirectAttributes) {
-        productService.add(product);
-        redirectAttributes.addFlashAttribute("msg", "Thêm mới thành công");
+        boolean productNew = productService.add(product);
+       if(!productNew){
+            redirectAttributes.addFlashAttribute("msg", "Sản phẩm đã tồn tại");
+        }else {
+            redirectAttributes.addFlashAttribute("msg", "Thêm mới thành công");
+        }
         return "redirect:create";
     }
 
     @GetMapping("detail")
-    public String detailProduct(Model model, @RequestParam int id) {
+    public String showDetailProduct(Model model, @RequestParam int id) {
         Product product = productService.getById(id);
         model.addAttribute("product", product);
         return "detail";
     }
 
     @GetMapping("update/{id}")
-    public String formUpdateProduct(@PathVariable int id,
+    public String showFormUpdateProduct(@PathVariable int id,
                                     Model model) {
         Product product = productService.getById(id);
         model.addAttribute("product", product);

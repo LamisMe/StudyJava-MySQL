@@ -18,13 +18,18 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public List<Product> getALl() {
+    public List<Product> getAll() {
         return productList;
     }
 
     @Override
-    public void add(Product product) {
-        productList.add(product);
+    public boolean add(Product product) {
+        if (getById(product.getId()) == null){
+            productList.add(product);
+            return true;
+        }else {
+            return false;
+        }
     }
 
     @Override
@@ -34,8 +39,8 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public void update(Product product) {
-     int index = findIndex(product.getId());
-     productList.set(index,product);
+        int index = findIndex(product.getId());
+        productList.set(index, product);
     }
 
     @Override
@@ -47,6 +52,7 @@ public class ProductRepository implements IProductRepository {
         }
         return null;
     }
+
     public int findIndex(int id) {
         int index = -1;
         for (int i = 0; i < productList.size(); i++) {

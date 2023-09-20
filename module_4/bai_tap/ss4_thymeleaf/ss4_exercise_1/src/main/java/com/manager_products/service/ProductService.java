@@ -5,19 +5,23 @@ import com.manager_products.repository.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @Service
-public class ProductService implements IProductService{
+public class ProductService implements IProductService {
     @Autowired
     private IProductRepository productRepository;
+
     @Override
-    public List<Product> getALl() {
-        return productRepository.getALl();
+    public List<Product> getAll() {
+        return productRepository.getAll();
     }
 
     @Override
-    public void add(Product product) {
-        productRepository.add(product);
+    public boolean add(Product product) {
+        return productRepository.add(product);
     }
 
     @Override
@@ -38,5 +42,10 @@ public class ProductService implements IProductService{
     @Override
     public Product getById(int id) {
         return productRepository.getById(id);
+    }
+
+    @Override
+    public int findIndex(int id) {
+        return productRepository.findIndex(id);
     }
 }
