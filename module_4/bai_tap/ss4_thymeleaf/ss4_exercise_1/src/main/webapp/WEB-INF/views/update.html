@@ -5,8 +5,13 @@
     <title>Trang cập nhật</title>
 </head>
 <body>
-<form th:object="${product}"  action="/product/update" method="post">
+<form th:object="${product}"  th:action="@{/product/update}" method="post">
     <table>
+        <tr>
+            <td>
+                <input type="hidden" th:field="*{id}">
+            </td>
+        </tr>
         <tr>
             <td> Tên Sản Phẩm</td>
             <td><label>

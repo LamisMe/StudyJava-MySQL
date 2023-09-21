@@ -20,6 +20,9 @@ public class ProductController {
     @GetMapping("home")
     public String showProduct(Model model) {
         model.addAttribute("productList", productService.getAll());
+        if (productService.getAll().size() == 0) {
+            model.addAttribute("message", "Danh sách rỗng");
+        }
         return "list";
     }
 
@@ -31,28 +34,27 @@ public class ProductController {
 
     @PostMapping("create")
     public String createProduct(@ModelAttribute Product product,
-                                    RedirectAttributes redirectAttributes) {
+                                RedirectAttributes redirectAttributes) {
         boolean productNew = productService.add(product);
-       if(!productNew){
+        if (!productNew) {
             redirectAttributes.addFlashAttribute("msg", "Sản phẩm đã tồn tại");
-        }else {
+        } else {
             redirectAttributes.addFlashAttribute("msg", "Thêm mới thành công");
         }
         return "redirect:create";
     }
 
     @GetMapping("detail")
-    public String showDetailProduct(Model model, @RequestParam int id) {
+    public String showDetailProduct(Model model, @ModelAttribute int id) {
         Product product = productService.getById(id);
         model.addAttribute("product", product);
         return "detail";
     }
 
     @GetMapping("update/{id}")
-    public String showFormUpdateProduct(@PathVariable int id,
-                                    Model model) {
-        Product product = productService.getById(id);
-        model.addAttribute("product", product);
+    public String showFormUpdateProduct(
+            Model model, @PathVariable int id) {
+        model.addAttribute("product", productService.getById(id));
         return "update";
     }
 
@@ -61,7 +63,7 @@ public class ProductController {
                                 RedirectAttributes redirectAttributes) {
         productService.update(product);
         redirectAttributes.addFlashAttribute("msg", "Cập nhật thành công");
-        return "redirect:/product/update/"+product.getId();
+        return "redirect:update/"+product.getId();
     }
 
     @PostMapping("delete")
@@ -72,11 +74,12 @@ public class ProductController {
         redirectAttributes.addFlashAttribute("msg", "Xóa thành công");
         return "redirect:home";
     }
+
     @PostMapping("searchName")
     public String searchByName(@RequestParam String name,
                                Model model) {
         List<Product> products = productService.searchByName(name);
-        model.addAttribute("products",products);
+        model.addAttribute("products", products);
         return "search-name";
     }
 }

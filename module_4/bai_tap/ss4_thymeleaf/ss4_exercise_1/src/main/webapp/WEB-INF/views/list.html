@@ -68,6 +68,7 @@
     </tr>
 </table>
 <p th:if="${msg}" th:text="${msg}" class="text t"></p>
+<p th:if="${productList.size() == 0}" th:text="${message}" class="text t"></p>
 <script>
 
 </script>

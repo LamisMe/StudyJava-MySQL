@@ -54,13 +54,14 @@ public class ProductRepository implements IProductRepository {
     }
 
     public int findIndex(int id) {
-        int index = -1;
+        int index = 0;
         for (int i = 0; i < productList.size(); i++) {
             if (productList.get(i).getId() == id) {
                 index = i;
+                return index;
             }
         }
-        return index;
+       return -1;
     }
 
     @Override
