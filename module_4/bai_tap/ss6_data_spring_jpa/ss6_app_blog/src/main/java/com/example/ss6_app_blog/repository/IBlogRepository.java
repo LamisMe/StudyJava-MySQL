@@ -1,0 +1,22 @@
+package com.example.ss6_app_blog.repository;
+
+import com.example.ss6_app_blog.model.Blog;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import javax.transaction.Transactional;
+
+public interface IBlogRepository extends JpaRepository<Blog,Integer> {
+    @Modifying
+    @Transactional
+    @Query(value = "update blog set " +
+            "blog.name =:name," +
+            "blog.author =:author," +
+            "blog.title =:title," +
+            "blog.content =:content," +
+            "blog.blogging_day =:bloggingDay where blog.id =:id",nativeQuery = true)
+    void updateBlog(@Param("name") String name,@Param("author") String author,@Param("title") String title,@Param("content") String content,
+                    @Param("bloggingDay") String bloggingDay,@Param("id") Integer id);
+}

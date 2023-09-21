@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang hiển thị danh sách</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: dodgerblue;
+        }
+    </style>
+
+    <!--    Boostrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+</head>
+<body>
+<h1>Danh Sách Blog</h1>
+<div class="container-fluid">
+    <a href="/blog/create">
+        <button class="btn btn-outline-primary">Thêm mới</button>
+    </a>
+</div>
+<table class="table table-borderless table-striped table-earning">
+    <tr>
+        <th>STT</th>
+        <th>Tên Blog</th>
+        <th>Tác Giả</th>
+        <th>Tiêu đề</th>
+        <th>Nội dung</th>
+        <th>Ngày viết Blog</th>
+    </tr>
+    <tr th:each="blog,status:${blog}">
+        <td th:text="${status.count}"></td>
+        <td th:text="${blog.getName()}"></td>
+        <td th:text="${blog.getAuthor()}"></td>
+        <td th:text="${blog.getTitle()}"></td>
+        <td th:text="${blog.getContent()}"></td>
+        <td th:text="${blog.getBloggingDayLocalDate()}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
