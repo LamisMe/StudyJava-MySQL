@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang hiển thị danh sách</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            text-align: center;
+        }
+        h1{
+            text-align: center;
+            color: dodgerblue;
+        }
+    </style>
+
+    <!--    Boostrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+</head>
+<body>
+<h1>Danh Sách Danh Mục</h1>
+<div class="container-fluid">
+    <a href="/category/create">
+        <button class="btn btn-outline-primary">Thêm mới danh mục</button>
+    </a>
+</div>
+<table class="table table-borderless table-striped table-earning mt-3">
+    <tr>
+        <th>STT</th>
+        <th>Danh mục</th>
+        <th>Sửa</th>
+        <th>Chi tiết</th>
+        <th>Xóa</th>
+    </tr>
+    <tr th:each="category,status:${categories}">
+        <td th:text="${status.count}"></td>
+        <td th:text="${category.getName()}"></td>
+        <td>
+            <a th:href="@{/category/update/__${category.id}__}">Sửa</a>
+        </td>
+        <td>
+            <a th:href="@{/category/detail(id=${category.getId()})}">Chi tiết</a>
+        </td>
+        <td>
+
+            <button type="button" data-bs-toggle="modal" class="btn btn-outline-danger"
+                    data-bs-target="#delete" th:attr="onclick= |deleteBlog('${category.id}','${category.name}')|">Xóa
+            </button>
+
+        </td>
+    </tr>
+</table>
+<p th:if="${msg}" th:text="${msg}" style="color: #dc3545"></p>
+<script>
+
+</script>
+<!--Modal-->
+
+<div class="modal" tabindex="-1" id="delete" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/blog/delete" method="post">
+                <div class="modal-header" style="background-color: #dc3545">
+                    <h5 class="modal-title" style="color: aliceblue">Xóa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="id" name="id">
+                    Bạn có muốn xóa "<span id="name"></span>" hay không ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Xác nhận</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--Boostrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+
+<script>
+    function deleteBlog(id, name) {
+        document.getElementById("id").value = id;
+        document.getElementById("name").innerText = name;
+    }
+</script>
+</body>
+</html>

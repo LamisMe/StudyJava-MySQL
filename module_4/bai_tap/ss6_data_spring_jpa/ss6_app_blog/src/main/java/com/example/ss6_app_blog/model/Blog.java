@@ -23,6 +23,17 @@ public class Blog {
     @Column(columnDefinition = "date")
 
     private String bloggingDay;
+    @ManyToOne
+    @JoinColumn(columnDefinition = "category_id",referencedColumnName = "id")
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public Blog() {
     }
@@ -34,6 +45,25 @@ public class Blog {
         this.title = title;
         this.content = content;
         this.bloggingDay = bloggingDay;
+    }
+
+    public Blog(int id, String name, String author, String title, String content, String bloggingDay, Category category) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.title = title;
+        this.content = content;
+        this.bloggingDay = bloggingDay;
+        this.category = category;
+    }
+
+    public Blog(String name, String author, String title, String content, String bloggingDay, Category category) {
+        this.name = name;
+        this.author = author;
+        this.title = title;
+        this.content = content;
+        this.bloggingDay = bloggingDay;
+        this.category = category;
     }
 
     public Blog(String name, String author, String title, String content, String bloggingDay) {

@@ -16,7 +16,7 @@
                 <div class="card" style="border-radius: 15px;">
                     <div class="card-body p-5">
                         <div style="text-align: center" class="form-outline mb-4"><h2>Thêm Mới Blog</h2></div>
-                        <p th:if="${msg}" th:text="${msg}" ></p>
+                        <p th:if="${msg}" th:text="${msg}"></p>
                         <form th:object="${blog}" action="/blog/create" method="post">
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="name">Tên Blog</label>
@@ -38,14 +38,19 @@
                                 <textarea th:field="*{content}" id="content" name="content"
                                           class="form-control form-control-lg" required></textarea>
                             </div>
-                            <label for="bloggingDay" >
-                            </label><input th:field="*{bloggingDay}" type="hidden" id="bloggingDay" name="bloggingDay"
-                                                                    class="form-control form-control-lg"/>
+                            <label for="bloggingDay">
+                                <input th:field="*{bloggingDay}" type="hidden" id="bloggingDay" name="bloggingDay"
+                                       class="form-control form-control-lg"/>
+                            </label>
+                            <label for="category"><input th:field:="*{category}" id="category"
+                                                                         name="category"
+                                                                         class="form-control form-control-lg"/>
+                            </label>
                             <h5 id="current-time" style="color: #dc3545"></h5>
                             <div class="form-outline mb-4">
                                 <button style="margin-left: 110px;padding: 15px;border: none;border-radius: 35px;width: 50%;"
                                         id="submitButton" type="submit">
-                                    Done
+                                    Thêm
                                 </button>
                             </div>
                         </form>

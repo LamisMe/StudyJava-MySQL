@@ -3,6 +3,8 @@ package com.example.ss6_app_blog.service;
 import com.example.ss6_app_blog.model.Blog;
 import com.example.ss6_app_blog.repository.IBlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -19,6 +21,16 @@ public class BlogService implements IBlogService {
     }
 
     @Override
+    public Page<Blog> getAll(Pageable pageable) {
+        return blogRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Blog> findAllByNameOrAuthorOrTitle(Pageable pageable, Blog blog) {
+        return blogRepository.findAllByNameOrAuthorOrTitle(pageable, blog.getName(), blog.getAuthor(), blog.getTitle());
+    }
+
+    @Override
     public boolean createBlog(Blog blog) {
         LocalDate currentDate = LocalDate.now();
         blog.setBloggingDay(String.valueOf(currentDate));
@@ -30,7 +42,7 @@ public class BlogService implements IBlogService {
     public void updateBlog(Blog blog) {
         LocalDate currentDate = LocalDate.now();
         blog.setBloggingDay(String.valueOf(currentDate));
-        blogRepository.updateBlog( blog.getName(), blog.getAuthor(), blog.getTitle(), blog.getContent(), blog.getBloggingDay(),blog.getId());
+        blogRepository.updateBlog(blog.getName(), blog.getAuthor(), blog.getTitle(), blog.getContent(), blog.getBloggingDay(), blog.getId());
     }
 
     @Override
@@ -42,5 +54,10 @@ public class BlogService implements IBlogService {
     @Override
     public Blog findById(int id) {
         return blogRepository.findById(id).get();
+    }
+
+    @Override
+    public Page<Blog> findAllByBlog(Pageable pageable,int idCategory) {
+        return blogRepository.findAllByBlog(pageable,idCategory);
     }
 }

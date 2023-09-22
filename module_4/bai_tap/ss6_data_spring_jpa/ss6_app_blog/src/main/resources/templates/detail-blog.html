@@ -36,7 +36,7 @@
         <th>Nội dung</th>
         <th>Ngày viết Blog</th>
     </tr>
-    <tr th:each="blog,status:${blog}">
+    <tr th:each="blog,status:${category}">
         <td th:text="${status.count}"></td>
         <td th:text="${blog.getName()}"></td>
         <td th:text="${blog.getAuthor()}"></td>
