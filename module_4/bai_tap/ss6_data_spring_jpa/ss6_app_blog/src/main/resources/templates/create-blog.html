@@ -17,7 +17,7 @@
                     <div class="card-body p-5">
                         <div style="text-align: center" class="form-outline mb-4"><h2>Thêm Mới Blog</h2></div>
                         <p th:if="${msg}" th:text="${msg}"></p>
-                        <form th:object="${blog}" action="/blog/create" method="post">
+                        <form th:object="${blog}" th:action="@{/blog/create}" method="post">
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="name">Tên Blog</label>
                                 <input th:field="*{name}" type="text" id="name" name="name"
@@ -42,10 +42,9 @@
                                 <input th:field="*{bloggingDay}" type="hidden" id="bloggingDay" name="bloggingDay"
                                        class="form-control form-control-lg"/>
                             </label>
-                            <label for="category"><input th:field:="*{category}" id="category"
-                                                                         name="category"
-                                                                         class="form-control form-control-lg"/>
-                            </label>
+                            <label for="category">Danh Mục</label>
+                                <input th:field="*{category}" id="category" name="category" class="form-control form-control-lg" />
+
                             <h5 id="current-time" style="color: #dc3545"></h5>
                             <div class="form-outline mb-4">
                                 <button style="margin-left: 110px;padding: 15px;border: none;border-radius: 35px;width: 50%;"

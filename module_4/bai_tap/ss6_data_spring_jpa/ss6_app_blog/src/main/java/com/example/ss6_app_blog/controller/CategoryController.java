@@ -36,7 +36,7 @@ public class CategoryController {
         }else {
             redirectAttributes.addFlashAttribute("msg","Thêm mới thất bại");
         }
-        return "redirect:";
+        return "home-category";
     }
     @PostMapping("delete")
     public String deleteCategory(@ModelAttribute Category category,

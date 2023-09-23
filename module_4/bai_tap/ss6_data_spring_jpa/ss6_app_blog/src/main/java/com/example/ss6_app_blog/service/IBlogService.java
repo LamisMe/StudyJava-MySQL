@@ -11,7 +11,7 @@ public interface IBlogService {
 
     Page<Blog> getAll(Pageable pageable);
 
-    Page<Blog> findAllByNameOrAuthorOrTitle(Pageable pageable, Blog blog);
+    Page<Blog> findAllByName(Pageable pageable, String searchName);
 
     boolean createBlog(Blog blog);
 

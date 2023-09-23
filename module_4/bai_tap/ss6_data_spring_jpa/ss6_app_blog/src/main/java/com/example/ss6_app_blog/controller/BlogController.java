@@ -6,8 +6,8 @@ import com.example.ss6_app_blog.service.IBlogService;
 import com.example.ss6_app_blog.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,38 +21,51 @@ public class BlogController {
     private IBlogService blogService;
     @Autowired
     private ICategoryService categoryService;
+
     @GetMapping("/{categoryId}")
-    public String showBlogList(@PageableDefault(value = 0,size = 2) Pageable pageable,
+    public String showBlogList(@RequestParam(defaultValue = "0", required = false) int page,
+                               @RequestParam(defaultValue = "", required = false) String searchName,
                                Model model,
-                               @PathVariable int categoryId){
-        Page<Blog> pageBlog = blogService.findAllByBlog(pageable,categoryId);
+                               @PathVariable int categoryId) {
+        Pageable pageable = PageRequest.of(page, 4);
+        Page<Blog> pageBlog = blogService.findAllByName(pageable, searchName);
         Category category = categoryService.findById(categoryId);
-        model.addAttribute("pageBlog",pageBlog);
-        model.addAttribute("category",category);
+        model.addAttribute("pageBlog", pageBlog);
+        model.addAttribute("category", category);
         return "home-blog";
     }
+
     @GetMapping("create")
-    public String showFormCreateBlog(Model model){
-        model.addAttribute("blog",new Blog());
+    public String showFormCreateBlog(Model model) {
+        model.addAttribute("blog", new Blog());
         return "create-blog";
     }
+
     @PostMapping("create")
     public String createBlog(@ModelAttribute Blog blog,
-                             RedirectAttributes redirectAttributes){
+                             RedirectAttributes redirectAttributes) {
         boolean blogCreate = blogService.createBlog(blog);
-        if(blogCreate){
-            redirectAttributes.addFlashAttribute("msg","Thêm mới thành công");
-        }else {
-            redirectAttributes.addFlashAttribute("msg","Thêm mới thất bại");
+        if (blogCreate) {
+            redirectAttributes.addFlashAttribute("msg", "Thêm mới thành công");
+        } else {
+            redirectAttributes.addFlashAttribute("msg", "Thêm mới thất bại");
         }
         return "redirect:create";
     }
+
     @PostMapping("delete")
     public String deleteBlog(@ModelAttribute Blog blog,
-                             RedirectAttributes redirectAttributes){
+                             @RequestParam int categoryId,
+                             Model model,
+                             @RequestParam(defaultValue = "0", required = false) int page,
+                             @RequestParam(defaultValue = "", required = false) String searchName) {
+        Category category = categoryService.findById(categoryId);
         blogService.deleteBlog(blog);
-        redirectAttributes.addFlashAttribute("msg","Xóa thành công");
-        return "redirect:home-blog";
+        Pageable pageable = PageRequest.of(page, 4);
+        Page<Blog> pageBlog = blogService.findAllByName(pageable, searchName);
+        model.addAttribute("pageBlog", pageBlog);
+        model.addAttribute("category", category);
+        return "redirect:/blog/"+categoryId;
     }
 
     @GetMapping("detail")
@@ -60,6 +73,7 @@ public class BlogController {
         model.addAttribute("blog", blogService.findById(id));
         return "detail-blog";
     }
+
     @GetMapping("update/{id}")
     public String showFormUpdateProduct(@PathVariable int id,
                                         Model model) {
