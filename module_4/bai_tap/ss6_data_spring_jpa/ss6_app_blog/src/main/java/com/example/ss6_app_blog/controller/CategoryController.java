@@ -1,6 +1,5 @@
 package com.example.ss6_app_blog.controller;
 
-import com.example.ss6_app_blog.model.Blog;
 import com.example.ss6_app_blog.model.Category;
 import com.example.ss6_app_blog.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ public class CategoryController {
         return "home-category";
     }
     @GetMapping("create")
-    public String showFormCreate(Model model){
+    public String showFormCreateCategory(Model model){
         model.addAttribute("category",new Category());
         return "create-category";
     }
@@ -36,7 +35,7 @@ public class CategoryController {
         }else {
             redirectAttributes.addFlashAttribute("msg","Thêm mới thất bại");
         }
-        return "home-category";
+        return "redirect:/category";
     }
     @PostMapping("delete")
     public String deleteCategory(@ModelAttribute Category category,
@@ -61,7 +60,7 @@ public class CategoryController {
         return "redirect:";
     }
     @GetMapping("detail")
-    public String detailCategory(Model model, @RequestParam int id) {
+    public String showDetailCategory(Model model, @RequestParam int id) {
         model.addAttribute("category", categoryService.findById(id));
         return "redirect:/blog/"+id;
     }

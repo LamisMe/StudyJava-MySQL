@@ -1,5 +1,7 @@
 package com.example.ss6_app_blog.model;
 
+import org.hibernate.mapping.UniqueKey;
+import org.springframework.boot.context.properties.bind.Name;
 import org.thymeleaf.util.DateUtils;
 
 import javax.persistence.*;
@@ -13,10 +15,11 @@ public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(unique = true)
     private String name;
     private String author;
     private String title;
-    @Column(columnDefinition = "text")
+    @Column(columnDefinition = "text",nullable = false)
 
     private String content;
 
@@ -24,7 +27,7 @@ public class Blog {
 
     private String bloggingDay;
     @ManyToOne
-    @JoinColumn(columnDefinition = "category_id",referencedColumnName = "id")
+    @JoinColumn(columnDefinition = "category_id", referencedColumnName = "id")
     private Category category;
 
     public Category getCategory() {

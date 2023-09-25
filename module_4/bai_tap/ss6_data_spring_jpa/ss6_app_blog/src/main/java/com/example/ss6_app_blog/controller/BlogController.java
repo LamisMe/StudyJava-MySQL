@@ -28,7 +28,7 @@ public class BlogController {
                                Model model,
                                @PathVariable int categoryId) {
         Pageable pageable = PageRequest.of(page, 4);
-        Page<Blog> pageBlog = blogService.findAllByName(pageable, searchName);
+        Page<Blog> pageBlog = blogService.findAllByBlog(pageable,categoryId, searchName);
         Category category = categoryService.findById(categoryId);
         model.addAttribute("pageBlog", pageBlog);
         model.addAttribute("category", category);
@@ -69,13 +69,13 @@ public class BlogController {
     }
 
     @GetMapping("detail")
-    public String detailProduct(Model model, @RequestParam int id) {
+    public String showDetailBlog(Model model, @RequestParam int id) {
         model.addAttribute("blog", blogService.findById(id));
         return "detail-blog";
     }
 
     @GetMapping("update/{id}")
-    public String showFormUpdateProduct(@PathVariable int id,
+    public String showFormUpdateBlog(@PathVariable int id,
                                         Model model) {
         Blog blog = blogService.findById(id);
         model.addAttribute("blog", blog);
@@ -83,7 +83,7 @@ public class BlogController {
     }
 
     @PostMapping("update")
-    public String updateProduct(@ModelAttribute Blog blog,
+    public String updateBlog(@ModelAttribute Blog blog,
                                 RedirectAttributes redirectAttributes) {
         blogService.updateBlog(blog);
         redirectAttributes.addFlashAttribute("msg", "Cập nhật thành công");

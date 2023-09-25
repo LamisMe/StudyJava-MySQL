@@ -21,10 +21,10 @@ public interface IBlogRepository extends JpaRepository<Blog,Integer> {
             "blog.blogging_day =:bloggingDay where blog.id =:id",nativeQuery = true)
     void updateBlog(@Param("name") String name,@Param("author") String author,@Param("title") String title,@Param("content") String content,
                     @Param("bloggingDay") String bloggingDay,@Param("id") Integer id);
-    @Query(value = "select b from Blog b where b.name =:name or b.author =:author or b.title =:title")
+    @Query(value = "select b from Blog b where b.name =:name or b.author =:author or b.title =:title",nativeQuery = true)
     Page<Blog> findAllByNameOrAuthorOrTitle(Pageable pageable, @Param("name") String name, @Param("author") String author, @Param("title") String title);
 
-    @Query(value = "select * from blog b where b.category_id =:category ",nativeQuery = true)
-    Page<Blog> findAllByBlog(Pageable pageable, @Param("category") int category);
+    @Query(value = "select * from blog b where b.category_id =:category and b.name like:searchName",nativeQuery = true)
+    Page<Blog> findAllByBlog(Pageable pageable, @Param("category") int category,@Param("searchName") String searchName);
     Page<Blog> findAllByNameContaining(Pageable pageable,String searchName);
 }
