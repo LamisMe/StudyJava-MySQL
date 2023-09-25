@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Thêm Mới</title>
+
+    <!--    Boostrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+    <style>
+        * small{
+            color: crimson;
+        }
+    </style>
+</head>
+<body>
+<div class="mask d-flex align-items-center gradient-custom-3">
+    <div class="container ">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                        <div style="text-align: center" class="form-outline mb-4"><h2>Thêm Mới User</h2></div>
+                        <p th:if="${msg}" th:text="${msg}"></p>
+                        <form th:object="${userDto}" action="/user/create" method="post">
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="firstName">Họ</label>
+                                <input th:field="*{firstName}" type="text" id="firstName" name="firstName"
+                                       class="form-control form-control-lg" required/>
+                                <small style="color: crimson" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></small><br>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="lastName">Tên</label>
+                                <input th:field="*{lastName}" type="text" id="lastName" name="firstName"
+                                       class="form-control form-control-lg" required/>
+                                <small style="color: crimson" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></small><br>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="phoneNumber">Số điện thoại</label>
+                                <input th:field="*{phoneNumber}" type="text" id="phoneNumber" name="phoneNumber"
+                                       class="form-control form-control-lg" required/>
+                                <small style="color: crimson" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></small><br>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="age">Tuổi</label>
+                                <input th:field="*{age}" type="number" id="age" name="age"
+                                       class="form-control form-control-lg" required/>
+                                <small style="color: crimson" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></small><br>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="email">Email</label>
+                                <input th:field="*{email}" type="text" id="email" name="email"
+                                       class="form-control form-control-lg" required/>
+                                <small style="color: crimson" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small><br>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <button class="button btn-success"
+                                        style="margin-left: 110px;padding: 15px;border: none;border-radius: 35px;width: 50%;"
+                                        id="submitButton" type="submit">
+                                    Thêm
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

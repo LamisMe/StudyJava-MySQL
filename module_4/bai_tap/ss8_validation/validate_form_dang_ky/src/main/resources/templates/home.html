@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang hiển thị</title>
+
+    <!--    Boostrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+</head>
+<body>
+<div class="container-fluid mt-3">
+    <a href="/user/create">
+        <button class="btn btn-success">Thêm mới User</button>
+    </a>
+    <table class="table table-borderless table-striped table-earning mt-3">
+        <tr>
+            <th>STT</th>
+            <th>Họ</th>
+            <th>Tên</th>
+            <th>Số điện thoại</th>
+            <th>Tuổi</th>
+            <th>Email</th>
+        </tr>
+        <tr th:each="user,status:${userPage}">
+            <td th:text="${status.count}"></td>
+            <td th:text="${user.getFirstName()}"></td>
+            <td th:text="${user.getLastName()}"></td>
+            <td th:text="${user.getPhoneNumber()}"></td>
+            <td th:text="${user.getAge()}"></td>
+            <td th:text="${user.getEmail()}"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
