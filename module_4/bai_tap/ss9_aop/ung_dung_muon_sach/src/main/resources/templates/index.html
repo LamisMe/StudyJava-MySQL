@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang đặt mượn sách</title>
+    <!--    Boostrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="col-md-5 m-3">
+    <a th:href="@{/book}">
+        <button class="btn btn-outline-primary">Quay Lại</button>
+    </a></div>
+<table class="table table-borderless table-striped table-earning mt-3">
+    <tr>
+        <th>STT</th>
+        <th>Tên Người Mượn</th>
+        <th>Ngày Mượn Sách</th>
+        <th>Ngày Trả Sách</th>
+        <th>Mã Mượn Sách</th>
+        <th>Sách</th>
+    </tr>
+    <tr th:each="order,status:${ordersDetails}">
+        <td th:text="${status.count}"></td>
+        <td th:text="${order.getNamePerson()}"></td>
+        <td th:text="${order.getBorrowedDays()}"></td>
+        <td th:text="${order.getGiveBookDays()}"></td>
+        <td th:text="${order.getBookLoanCode()}"></td>
+        <td th:text="${book.getNameBook()}"></td>
+    </tr>
+</table>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-7">
+        </div>
+        <div class="col-md-5 right">
+            <div class="row">
+                <div class="col-md-4">
+                    <a th:if="${ordersDetails.number ==0}">
+                        <button class="btn btn-outline-primary" disabled>Trang Trước</button>
+                    </a>
+                    <a th:if="${ordersDetails.hasPrevious()}"
+                       th:href="@{/orders-details(page=${ordersDetails.number-1})}">
+                        <button class="btn btn-primary">Trang Trước</button>
+                    </a>
+                </div>
+                <div class="col-md-2">
+                    <a>
+                        <button class="btn btn-outline-primary" th:text="${ordersDetails.number+1}" disabled></button>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a th:if="${ordersDetails.number == ordersDetails.totalPages-1}">
+                        <button class="btn btn-outline-primary" disabled>Trang Sau</button>
+                    </a>
+                    <a th:if="${ordersDetails.hasNext()}" th:href="@{/orders-details(page=${ordersDetails.number+1})}">
+                        <button class="btn btn-primary">Trang Sau</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

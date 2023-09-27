@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    Boostrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="col-md-5 m-3">
+    <a th:href="@{/book}">
+        <button class="btn btn-outline-primary">Quay Lại</button>
+    </a></div>
+<table class="table table-borderless table-striped table-earning mt-3">
+    <tr>
+        <th>STT</th>
+        <th>Tên Sách</th>
+        <th>Tác giả</th>
+        <th>Thể Loại</th>
+        <th>Mượn</th>
+        <th>Trả</th>
+    </tr>
+    <tr th:each="book,status:${book}">
+        <td th:text="${status.count}"></td>
+        <td th:text="${book.getNameBook()}"></td>
+        <td th:text="${book.getAuthor()}"></td>
+        <td th:text="${book.getKindOfBook()}"></td>
+       <td>
+           <a th:href="@{/order-details/create/__${book.id}__}">Mượn</a>
+       </td>
+        <td>
+            <a th:href="@{/order-details/give/__${book.id}__}">Trả</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

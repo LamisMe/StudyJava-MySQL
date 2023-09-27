@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm sách</title>
+    <!--    Boostrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="col-md-5 m-3">
+    <a th:href="@{/book}">
+        <button class="btn btn-outline-primary">Quay Lại</button>
+    </a></div>
+
+<div class="mask d-flex align-items-center gradient-custom-3">
+    <div class="container ">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                        <div style="text-align: center" class="form-outline mb-4"><h2>Thêm Mới Sách</h2></div>
+                        <form th:object="${bookDTO}" th:action="@{/book/create}" method="post">
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="name">Tên Sách</label>
+                                <input th:field="*{nameBook}" type="text" id="name" name="name"
+                                       class="form-control form-control-lg" required/>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="author">Tác giả</label>
+                                <input th:field="*{author}" type="text" id="author" name="author"
+                                       class="form-control form-control-lg" required/>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="title">Thể Loại</label>
+                                <input th:field="*{kindOfBook}" type="text" id="title" name="title"
+                                       class="form-control form-control-lg" required/>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="content">Số Lượng</label>
+                                <textarea th:field="*{quantity}" id="content" name="content"
+                                          class="form-control form-control-lg" required></textarea>
+                            </div>
+                            <h5 id="current-time" style="color: #dc3545"></h5>
+                            <div class="form-outline mb-4">
+                                <button style="margin-left: 110px;padding: 15px;border: none;border-radius: 35px;width: 50%;"
+                                        id="submitButton" type="submit">
+                                    Thêm
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
