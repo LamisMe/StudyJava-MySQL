@@ -47,7 +47,9 @@
         <tr th:each="product,status:${productPage}">
             <td th:text="${status.count}"></td>
             <td th:text="${product.getName()}"></td>
-            <td th:text="${product.getImage()}"></td>
+            <td >
+                <img th:src="${product.getImage()}" alt="">
+            </td>
             <td th:text="${product.getDescription()}"></td>
             <td th:text="${product.getDiscount()}"></td>
             <td th:text="${product.getQuantity()}"></td>
