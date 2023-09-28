@@ -7,18 +7,22 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 @Service
 public class OrderDetailService implements IOrderDetailsService {
     @Autowired
     private IOrderDetailsRepository orderDetailsRepository;
 
     @Override
-    public Page<OrdersDetail> getAll(Pageable pageable,String code) {
-        return orderDetailsRepository.getAllOrderDetail(pageable,code);
+    public Page<OrdersDetail> getAll(Pageable pageable) {
+        return orderDetailsRepository.findAll(pageable);
     }
 
     @Override
     public boolean addOrders(OrdersDetail ordersDetail) {
+        LocalDate localDate = LocalDate.now();
+        ordersDetail.setBorrowedDays(String.valueOf(localDate));
         OrdersDetail ordersDetailEntity = orderDetailsRepository.save(ordersDetail);
         return ordersDetailEntity != null;
     }

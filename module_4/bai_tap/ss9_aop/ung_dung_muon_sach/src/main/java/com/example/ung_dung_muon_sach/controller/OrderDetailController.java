@@ -29,11 +29,10 @@ public class OrderDetailController {
 
     @GetMapping("")
     public String showOrderList(@RequestParam(defaultValue = "0", required = false) int page,
-                                @RequestParam(defaultValue = "", required = false) String codeNumber,
                                 Model model) {
         List<Book> bookList = bookService.findAll();
         Pageable pageable = PageRequest.of(page, 4);
-        Page<OrdersDetail> ordersDetails = orderDetailsService.getAll(pageable, codeNumber);
+        Page<OrdersDetail> ordersDetails = orderDetailsService.getAll(pageable);
         model.addAttribute("ordersDetails", ordersDetails);
         model.addAttribute("bookList", bookList);
         return "index";
@@ -61,7 +60,7 @@ public class OrderDetailController {
         BeanUtils.copyProperties(orderDTO, ordersDetail);
         ordersDetail.setBook(book);
         orderDetailsService.addOrders(ordersDetail);
-        return "redirect:/order-details";
+        return "redirect:/book";
     }
     @GetMapping("/give")
     public String showFormGiveBookBack() {
@@ -71,6 +70,10 @@ public class OrderDetailController {
     @PostMapping("/give")
     public String giveBookBack(@RequestParam String code) {
         orderDetailsService.giveBook(code);
-        return "redirect:/order-details";
+        return "redirect:/order-details/give-success";
+    }
+    @GetMapping("/give-success")
+    public String showFormGiveSuccess() {
+        return "give-book-success";
     }
 }
