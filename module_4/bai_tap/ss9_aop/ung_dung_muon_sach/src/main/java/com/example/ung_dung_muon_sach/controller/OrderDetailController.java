@@ -79,6 +79,7 @@ public class OrderDetailController {
             orderDetailsService.giveBook(code);
             Book book = bookService.findById(ordersDetail.getBook().getId());
             book.setQuantity(book.getQuantity()+1);
+            bookService.addBook(book);
             return "redirect:/order-details/give-success";
         }
         return "redirect:/order-details/give-fail";
