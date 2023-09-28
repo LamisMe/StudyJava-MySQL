@@ -7,4 +7,5 @@ import org.springframework.data.domain.Pageable;
 public interface IProductService {
     Page<Product> findAll(Pageable pageable);
     Product findById(int id);
+    Product createProduct(Product product);
 }

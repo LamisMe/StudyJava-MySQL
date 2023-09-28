@@ -1,6 +1,9 @@
 package com.example.gio_hang.dto;
 
-public class ProductDTO {
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+
+public class ProductDTO implements Validator {
     private int id;
     private String name;
     private double price;
@@ -66,5 +69,15 @@ public class ProductDTO {
 
     public void setQuantity(short quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+
     }
 }

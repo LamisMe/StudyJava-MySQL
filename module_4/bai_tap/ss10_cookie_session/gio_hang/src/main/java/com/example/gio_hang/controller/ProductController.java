@@ -11,7 +11,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/shop")
@@ -42,4 +46,36 @@ public class ProductController {
         }
         return "redirect:/cart";
     }
+    @GetMapping("minus/{id}")
+    public String minus(@PathVariable int id,
+                        @SessionAttribute(value = "cart",required = false) CartDTO cartDTO){
+        Product product = productService.findById(id);
+        if(product != null){
+            ProductDTO productDto = new ProductDTO();
+            BeanUtils.copyProperties(product,productDto);
+            cartDTO.downProductQuantity(productDto);
+        }
+        return "redirect:/cart";
+    }
+    @GetMapping("/create")
+    public String showFormCreate(Model model) {
+        model.addAttribute("productDto", new ProductDTO());
+        return "create-product";
+    }
+
+    @PostMapping("/create")
+    public String saveInfo(@Valid @ModelAttribute ProductDTO productDto,
+                           BindingResult bindingResult,
+                           RedirectAttributes redirectAttributes) {
+//        new ProductDTO().validate(productDto,bindingResult);
+        if (bindingResult.hasErrors()) {
+            return "create-product";
+        }
+        Product product = new Product();
+        BeanUtils.copyProperties(productDto, product);
+        productService.createProduct(product);
+        redirectAttributes.addFlashAttribute("mess", "Created Success!!");
+        return "redirect:/shop";
+    }
+
 }

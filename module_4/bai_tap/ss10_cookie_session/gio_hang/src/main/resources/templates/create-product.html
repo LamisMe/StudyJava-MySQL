@@ -20,7 +20,7 @@
                 <div class="card" style="border-radius: 15px;">
                     <div class="card-body p-5">
                         <div style="text-align: center" class="form-outline mb-4"><h2>Thêm Mới Sản Phẩm</h2></div>
-                        <form th:object="${bookDTO}" th:action="@{/book/create}" method="post">
+                        <form th:object="${productDto}" th:action="@{/shop/create}" method="post">
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="name">Tên Sản Phẩm</label>
                                 <input th:field="*{name}" type="text" id="name" name="name"
