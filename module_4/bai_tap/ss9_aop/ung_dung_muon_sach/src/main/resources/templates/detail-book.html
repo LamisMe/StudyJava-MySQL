@@ -19,7 +19,6 @@
         <th>Tác giả</th>
         <th>Thể Loại</th>
         <th>Mượn</th>
-        <th>Trả</th>
     </tr>
     <tr th:each="book,status:${book}">
         <td th:text="${status.count}"></td>
@@ -29,9 +28,6 @@
        <td>
            <a th:href="@{/order-details/create/__${book.id}__}">Mượn</a>
        </td>
-        <td>
-            <a th:href="@{/order-details/give/__${book.id}__}">Trả</a>
-        </td>
     </tr>
 </table>
 </body>

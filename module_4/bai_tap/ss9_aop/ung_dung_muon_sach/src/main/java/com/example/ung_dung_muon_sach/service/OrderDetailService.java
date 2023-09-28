@@ -13,8 +13,8 @@ public class OrderDetailService implements IOrderDetailsService {
     private IOrderDetailsRepository orderDetailsRepository;
 
     @Override
-    public Page<OrdersDetail> getAll(Pageable pageable, String bookLoanCode) {
-        return orderDetailsRepository.getAllOrderDetail(pageable, "%" + bookLoanCode + "%");
+    public Page<OrdersDetail> getAll(Pageable pageable,String code) {
+        return orderDetailsRepository.getAllOrderDetail(pageable,code);
     }
 
     @Override
@@ -24,9 +24,10 @@ public class OrderDetailService implements IOrderDetailsService {
     }
 
     @Override
-    public void updateOrder(OrdersDetail ordersDetail) {
-        orderDetailsRepository.save(ordersDetail);
+    public void giveBook(String bookLoanCode) {
+        orderDetailsRepository.giveBook(bookLoanCode);
     }
+
 
     @Override
     public String generateFiveNumberRandom() {

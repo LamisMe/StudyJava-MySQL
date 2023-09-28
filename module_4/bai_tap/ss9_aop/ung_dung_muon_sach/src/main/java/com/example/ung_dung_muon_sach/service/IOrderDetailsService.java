@@ -5,8 +5,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface IOrderDetailsService {
-    Page<OrdersDetail> getAll(Pageable pageable, String bookLoanCode);
+    Page<OrdersDetail> getAll(Pageable pageable,String code);
     boolean addOrders(OrdersDetail ordersDetail);
-    void updateOrder(OrdersDetail ordersDetail);
+    void giveBook(String bookLoanCode);
     String generateFiveNumberRandom();
 }

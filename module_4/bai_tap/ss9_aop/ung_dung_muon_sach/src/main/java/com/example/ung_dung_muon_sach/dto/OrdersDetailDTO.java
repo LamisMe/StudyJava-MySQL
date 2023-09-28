@@ -8,15 +8,16 @@ public class OrdersDetailDTO implements Validator {
     private String namePerson;
     private String borrowedDays;
     private String bookLoanCode;
-
+    private int bookId;
     public OrdersDetailDTO() {
     }
 
-    public OrdersDetailDTO(int id, String namePerson, String borrowedDays, String bookLoanCode) {
+    public OrdersDetailDTO(int id, String namePerson, String borrowedDays, String bookLoanCode, int bookId) {
         this.id = id;
         this.namePerson = namePerson;
         this.borrowedDays = borrowedDays;
         this.bookLoanCode = bookLoanCode;
+        this.bookId = bookId;
     }
 
     public int getId() {
@@ -49,6 +50,14 @@ public class OrdersDetailDTO implements Validator {
 
     public void setBookLoanCode(String bookLoanCode) {
         this.bookLoanCode = bookLoanCode;
+    }
+
+    public int getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
     @Override

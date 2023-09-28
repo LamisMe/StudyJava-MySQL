@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/order-details")
@@ -25,32 +26,33 @@ public class OrderDetailController {
     private IOrderDetailsService orderDetailsService;
     @Autowired
     private IBookService bookService;
-    @GetMapping("/{id}")
-    public String showOrderList(@RequestParam(defaultValue = "0",required = false )int page,
-                                @RequestParam(defaultValue = "",required = false) String codeNumber,
-                                @PathVariable int id,
-                                Model model){
-        Book book = bookService.findById(id);
-        Pageable pageable = PageRequest.of(page,4);
-        Page<OrdersDetail> ordersDetails = orderDetailsService.getAll(pageable,codeNumber);
-        model.addAttribute("ordersDetails",ordersDetails);
-        model.addAttribute("book",book);
+
+    @GetMapping("")
+    public String showOrderList(@RequestParam(defaultValue = "0", required = false) int page,
+                                @RequestParam(defaultValue = "", required = false) String codeNumber,
+                                Model model) {
+        List<Book> bookList = bookService.findAll();
+        Pageable pageable = PageRequest.of(page, 4);
+        Page<OrdersDetail> ordersDetails = orderDetailsService.getAll(pageable, codeNumber);
+        model.addAttribute("ordersDetails", ordersDetails);
+        model.addAttribute("bookList", bookList);
         return "index";
     }
+
     @GetMapping("/create/{id}")
     public String showFormCreateOrder(@PathVariable int id,
                                       Model model) {
         Book book = bookService.findById(id);
-        model.addAttribute("book",book);
-        model.addAttribute("code",orderDetailsService.generateFiveNumberRandom());
+        model.addAttribute("book", book);
+        model.addAttribute("code", orderDetailsService.generateFiveNumberRandom());
         model.addAttribute("orderDTO", new OrdersDetailDTO());
         return "orders-detail";
     }
 
     @PostMapping("/create")
     public String createOrder(@Valid @ModelAttribute OrdersDetailDTO orderDTO,
-                             @RequestParam int id,
-                             BindingResult bindingResult) {
+                              @RequestParam int id,
+                              BindingResult bindingResult) {
         Book book = bookService.findById(id);
         if (bindingResult.hasErrors()) {
             return "orders-detail";
@@ -59,7 +61,16 @@ public class OrderDetailController {
         BeanUtils.copyProperties(orderDTO, ordersDetail);
         ordersDetail.setBook(book);
         orderDetailsService.addOrders(ordersDetail);
-        return "redirect:/order-details/"+id;
+        return "redirect:/order-details";
+    }
+    @GetMapping("/give")
+    public String showFormGiveBookBack() {
+        return "give-book";
     }
 
+    @PostMapping("/give")
+    public String giveBookBack(@RequestParam String code) {
+        orderDetailsService.giveBook(code);
+        return "redirect:/order-details";
+    }
 }

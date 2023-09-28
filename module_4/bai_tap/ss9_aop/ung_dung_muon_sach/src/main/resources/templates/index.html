@@ -11,6 +11,7 @@
     <a th:href="@{/book}">
         <button class="btn btn-outline-primary">Quay Lại</button>
     </a></div>
+
 <table class="table table-borderless table-striped table-earning mt-3">
     <tr>
         <th>STT</th>
@@ -26,7 +27,9 @@
         <td th:text="${order.getBorrowedDays()}"></td>
         <td th:text="${order.getGiveBookDays()}"></td>
         <td th:text="${order.getBookLoanCode()}"></td>
-        <td th:text="${book.getNameBook()}"></td>
+        <td th:text="${order.getBook()}">
+
+        </td>
     </tr>
 </table>
 <div class="container-fluid">
