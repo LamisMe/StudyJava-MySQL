@@ -69,11 +69,19 @@ public class OrderDetailController {
 
     @PostMapping("/give")
     public String giveBookBack(@RequestParam String code) {
-        orderDetailsService.giveBook(code);
-        return "redirect:/order-details/give-success";
+        OrdersDetail ordersDetail = orderDetailsService.findByLoadCode(code);
+        if(ordersDetail!=null){
+            orderDetailsService.giveBook(code);
+            return "redirect:/order-details/give-success";
+        }
+                return "redirect:/order-details/give-fail";
     }
     @GetMapping("/give-success")
     public String showFormGiveSuccess() {
         return "give-book-success";
+    }
+    @GetMapping("/give-fail")
+    public String showFormGiveBookFail() {
+        return "give-fail";
     }
 }

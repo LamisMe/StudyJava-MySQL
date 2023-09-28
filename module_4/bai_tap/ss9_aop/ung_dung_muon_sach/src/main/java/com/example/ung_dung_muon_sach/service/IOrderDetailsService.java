@@ -9,4 +9,5 @@ public interface IOrderDetailsService {
     boolean addOrders(OrdersDetail ordersDetail);
     void giveBook(String bookLoanCode);
     String generateFiveNumberRandom();
+    OrdersDetail findByLoadCode(String code);
 }

@@ -10,11 +10,15 @@ import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 
-public interface IOrderDetailsRepository extends JpaRepository<OrdersDetail,Integer> {
-    @Query(value = "select * from orders_detail where book_loan_code like:code",nativeQuery = true)
+public interface IOrderDetailsRepository extends JpaRepository<OrdersDetail, Integer> {
+    @Query(value = "select * from orders_detail where book_loan_code like:code", nativeQuery = true)
     Page<OrdersDetail> getAllOrderDetail(Pageable pageable, @Param("code") String codeNumber);
+
+    @Query(value = "select * from orders_detail where book_loan_code =:code", nativeQuery = true)
+    OrdersDetail findByLoadCode(@Param("code") String codeNumber);
+
     @Modifying
     @Transactional
-    @Query(value = "delete from orders_detail where book_loan_code =:code",nativeQuery = true)
+    @Query(value = "delete from orders_detail where book_loan_code =:code", nativeQuery = true)
     void giveBook(@Param("code") String codeNumber);
 }

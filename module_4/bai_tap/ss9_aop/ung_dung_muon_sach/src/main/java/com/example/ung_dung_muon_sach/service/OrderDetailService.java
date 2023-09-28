@@ -41,4 +41,9 @@ public class OrderDetailService implements IOrderDetailsService {
         return String.valueOf(randomNum);
     }
 
+    @Override
+    public OrdersDetail findByLoadCode(String code) {
+        return orderDetailsRepository.findByLoadCode(code);
+    }
+
 }
