@@ -24,8 +24,9 @@
             </div>
         </div>
         <div class="col-md-4" style="float: right;position: relative;text-align: right">
+            <a th:href="@{/cart}">
             <span style="font-size: 40px"><i class='bx bxs-cart bx-flip-horizontal'
-                                             style='color:white'></i></span>
+                                             style='color:white'></i></span></a>
         </div>
     </div>
 </nav>
@@ -47,8 +48,8 @@
         <tr th:each="product,status:${productPage}">
             <td th:text="${status.count}"></td>
             <td th:text="${product.getName()}"></td>
-            <td >
-                <img th:src="${product.getImage()}" alt="">
+            <td>
+                <img th:src="${product.getImage()}" alt="" style="width: 30%;height: 30%">
             </td>
             <td th:text="${product.getDescription()}"></td>
             <td th:text="${product.getDiscount()}"></td>
