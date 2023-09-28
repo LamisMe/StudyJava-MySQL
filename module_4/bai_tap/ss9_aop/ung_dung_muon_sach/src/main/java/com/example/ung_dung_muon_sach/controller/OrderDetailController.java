@@ -56,12 +56,17 @@ public class OrderDetailController {
         if (bindingResult.hasErrors()) {
             return "orders-detail";
         }
+        if (book.getQuantity() == 0){
+            return "old-quantity";
+        }
         OrdersDetail ordersDetail = new OrdersDetail();
         BeanUtils.copyProperties(orderDTO, ordersDetail);
         ordersDetail.setBook(book);
+        book.setQuantity(book.getQuantity() - 1);
         orderDetailsService.addOrders(ordersDetail);
         return "redirect:/book";
     }
+
     @GetMapping("/give")
     public String showFormGiveBookBack() {
         return "give-book";
@@ -70,16 +75,20 @@ public class OrderDetailController {
     @PostMapping("/give")
     public String giveBookBack(@RequestParam String code) {
         OrdersDetail ordersDetail = orderDetailsService.findByLoadCode(code);
-        if(ordersDetail!=null){
+        if (ordersDetail != null) {
             orderDetailsService.giveBook(code);
+            Book book = bookService.findById(ordersDetail.getBook().getId());
+            book.setQuantity(book.getQuantity()+1);
             return "redirect:/order-details/give-success";
         }
-                return "redirect:/order-details/give-fail";
+        return "redirect:/order-details/give-fail";
     }
+
     @GetMapping("/give-success")
     public String showFormGiveSuccess() {
         return "give-book-success";
     }
+
     @GetMapping("/give-fail")
     public String showFormGiveBookFail() {
         return "give-fail";
