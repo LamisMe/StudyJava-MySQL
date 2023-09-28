@@ -24,7 +24,6 @@ public class ProductController {
     @Autowired
     private IProductService productService;
     @GetMapping("")
-
     public String showProductPage(@RequestParam(defaultValue = "0",required = false) int page,
             Model model){
         Pageable pageable = PageRequest.of(page,3);
