@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class OrderDetailService implements IOrderDetailsService {
@@ -29,6 +30,10 @@ public class OrderDetailService implements IOrderDetailsService {
 
     @Override
     public void giveBook(String bookLoanCode) {
+        OrdersDetail ordersDetail = findByLoadCode(bookLoanCode);
+        LocalDate localDate = LocalDate.now();
+        ordersDetail.setGiveBookDays(String.valueOf(localDate));
+        orderDetailsRepository.save(ordersDetail);
         orderDetailsRepository.giveBook(bookLoanCode);
     }
 
@@ -38,6 +43,10 @@ public class OrderDetailService implements IOrderDetailsService {
         int min = 100000;
         int max = 999999;
         int randomNum = min + (int) (Math.random() * ((max - min) + 1));
+        OrdersDetail ordersDetail = orderDetailsRepository.findByLoadCode(String.valueOf(randomNum));
+        if (ordersDetail!=null){
+            return generateFiveNumberRandom();
+        }
         return String.valueOf(randomNum);
     }
 

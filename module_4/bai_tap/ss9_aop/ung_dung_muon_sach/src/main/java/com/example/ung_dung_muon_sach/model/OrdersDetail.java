@@ -1,7 +1,8 @@
 package com.example.ung_dung_muon_sach.model;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 public class OrdersDetail {
@@ -16,6 +17,7 @@ public class OrdersDetail {
     private String giveBookDays;
     @Column(unique = true)
     private String bookLoanCode;
+    private boolean status;
     @ManyToOne
     @JoinColumn(name = "book_id",referencedColumnName = "id")
     private Book book;
@@ -24,13 +26,22 @@ public class OrdersDetail {
     public OrdersDetail() {
     }
 
-    public OrdersDetail(int id, String namePerson, String borrowedDays, String giveBookDays, String bookLoanCode, Book book) {
+    public OrdersDetail(int id, String namePerson, String borrowedDays, String giveBookDays, String bookLoanCode, boolean status, Book book) {
         this.id = id;
         this.namePerson = namePerson;
         this.borrowedDays = borrowedDays;
         this.giveBookDays = giveBookDays;
         this.bookLoanCode = bookLoanCode;
+        this.status = status;
         this.book = book;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public int getId() {
@@ -50,7 +61,8 @@ public class OrdersDetail {
     }
 
     public String getBorrowedDays() {
-        return borrowedDays;
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return LocalDate.parse(borrowedDays, dateTimeFormatter).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
     public void setBorrowedDays(String borrowedDays) {
@@ -58,7 +70,11 @@ public class OrdersDetail {
     }
 
     public String getGiveBookDays() {
-        return giveBookDays;
+        if (giveBookDays!=null){
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            return LocalDate.parse(giveBookDays, dateTimeFormatter).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        }
+       return giveBookDays;
     }
 
     public void setGiveBookDays(String giveBookDays) {

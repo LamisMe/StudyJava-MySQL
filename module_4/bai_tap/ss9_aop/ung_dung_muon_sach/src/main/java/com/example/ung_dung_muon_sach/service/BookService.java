@@ -31,6 +31,20 @@ public class BookService implements IBookService{
 
     @Override
     public List<Book> findAll() {
-        return null;
+        return bookRepository.findAll();
     }
+
+    @Override
+    public void updateQuantityGiveBook(Book book) {
+        book.setQuantity(book.getQuantity()+1);
+        bookRepository.save(book);
+    }
+
+    @Override
+    public void updateQuantityBorrowBook(Book book) {
+        book.setQuantity(book.getQuantity()-1);
+        bookRepository.save(book);
+    }
+
+
 }

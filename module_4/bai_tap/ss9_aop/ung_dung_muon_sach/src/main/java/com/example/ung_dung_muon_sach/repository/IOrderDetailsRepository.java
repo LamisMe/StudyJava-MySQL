@@ -14,11 +14,16 @@ public interface IOrderDetailsRepository extends JpaRepository<OrdersDetail, Int
     @Query(value = "select * from orders_detail where book_loan_code like:code", nativeQuery = true)
     Page<OrdersDetail> getAllOrderDetail(Pageable pageable, @Param("code") String codeNumber);
 
-    @Query(value = "select * from orders_detail where book_loan_code =:code", nativeQuery = true)
-    OrdersDetail findByLoadCode(@Param("code") String codeNumber);
+    @Query(value = "select * from orders_detail", nativeQuery = true)
+    Page<OrdersDetail> getAllOrderDetailHistory(Pageable pageable, @Param("code") String codeNumber);
 
     @Modifying
     @Transactional
-    @Query(value = "delete from orders_detail where book_loan_code =:code", nativeQuery = true)
+    @Query(value = "update orders_detail set status = 1 where book_loan_code =:code", nativeQuery = true)
     void giveBook(@Param("code") String codeNumber);
+
+    @Query(value = "select * from orders_detail where book_loan_code =:code", nativeQuery = true)
+    OrdersDetail findByLoadCode(@Param("code") String codeNumber);
+    @Query(value = "select * from orders_detail where book_loan_code =:code", nativeQuery = true)
+    boolean checkNumberRandom(@Param("code") String codeNumber);
 }

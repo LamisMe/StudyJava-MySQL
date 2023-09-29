@@ -17,7 +17,7 @@ public class Book {
     private String kindOfBook;
     private int quantity;
     @OneToMany(mappedBy = "book" )
-    Set<OrdersDetail> ordersDetailSet;
+    private Set<OrdersDetail> ordersDetailSet;
 
     public Book() {
     }
@@ -28,6 +28,14 @@ public class Book {
         this.author = author;
         this.kindOfBook = kindOfBook;
         this.quantity = quantity;
+        this.ordersDetailSet = ordersDetailSet;
+    }
+
+    public Set<OrdersDetail> getOrdersDetailSet() {
+        return ordersDetailSet;
+    }
+
+    public void setOrdersDetailSet(Set<OrdersDetail> ordersDetailSet) {
         this.ordersDetailSet = ordersDetailSet;
     }
 

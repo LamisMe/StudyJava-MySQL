@@ -13,8 +13,8 @@
             <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                 <div class="card" style="border-radius: 15px;">
                     <div class="card-body p-5">
-                        <div style="text-align: center" class="form-outline mb-4"><h2>Thêm Mới Sách</h2></div>
-                        <form th:object="${orderDTO}" th:action="@{/order-details/create(id=${book.id})}" method="post">
+                        <div style="text-align: center" class="form-outline mb-4"><h2>Mượn Sách</h2></div>
+                        <form th:object="${orderDTO}" th:action="@{/order-details/create(id=${book.id},code=${code})}" method="post">
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="name">Tên Người Mượn</label>
                                 <input th:field="*{namePerson}" type="text" id="name" name="name"
@@ -25,15 +25,9 @@
                                        class="form-control form-control-lg" required/>
                             </div>
                             <div class="form-outline mb-4">
-                                <label class="form-label" for="title">Mã Mượn Sách</label>
-                                <small th:text="${code}" style="color: crimson"> Hãy nhâp mã này để mượn sách</small>
-                                <input th:field="*{bookLoanCode}" type="text" id="title" name="title"
-                                       class="form-control form-control-lg" required/>
-                            </div>
-                            <div class="form-outline mb-4">
                                 <button style="margin-left: 110px;padding: 15px;border: none;border-radius: 35px;width: 50%;"
                                         id="submitButton" type="submit">
-                                    Thêm
+                                    Mượn
                                 </button>
                             </div>
                         </form>

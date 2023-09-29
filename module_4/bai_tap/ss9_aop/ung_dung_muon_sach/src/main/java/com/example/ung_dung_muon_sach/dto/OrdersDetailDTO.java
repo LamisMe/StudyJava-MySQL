@@ -4,29 +4,31 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 public class OrdersDetailDTO implements Validator {
-    private int id;
     private String namePerson;
     private String borrowedDays;
     private String bookLoanCode;
+    private boolean status;
     private int bookId;
+
     public OrdersDetailDTO() {
     }
 
-    public OrdersDetailDTO(int id, String namePerson, String borrowedDays, String bookLoanCode, int bookId) {
-        this.id = id;
+    public OrdersDetailDTO( String namePerson, String borrowedDays, String bookLoanCode, boolean status, int bookId) {
         this.namePerson = namePerson;
         this.borrowedDays = borrowedDays;
         this.bookLoanCode = bookLoanCode;
+        this.status = status;
         this.bookId = bookId;
     }
 
-    public int getId() {
-        return id;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
+
 
     public String getNamePerson() {
         return namePerson;

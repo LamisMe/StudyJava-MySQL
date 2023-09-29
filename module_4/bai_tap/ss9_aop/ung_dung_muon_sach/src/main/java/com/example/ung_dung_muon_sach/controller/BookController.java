@@ -23,10 +23,10 @@ public class BookController {
     private IBookService bookService;
     @GetMapping("")
     public String showBookList(@RequestParam(defaultValue = "0",required = false )int page,
-                               @RequestParam(defaultValue = "",required = false) String nameSearch,
+                               @RequestParam(defaultValue = "",required = false) String searchName,
                                Model model){
         Pageable pageable = PageRequest.of(page,4);
-        Page<Book> bookPage = bookService.getAll(pageable,nameSearch);
+        Page<Book> bookPage = bookService.getAll(pageable,searchName);
         model.addAttribute("bookPage",bookPage);
         return "book-list";
     }

@@ -19,6 +19,7 @@
         <th>Ngày Mượn Sách</th>
         <th>Ngày Trả Sách</th>
         <th>Mã Mượn Sách</th>
+        <th>Trạng Thái</th>
         <th>Sách</th>
     </tr>
     <tr th:each="order,status:${ordersDetails}">
@@ -27,7 +28,11 @@
         <td th:text="${order.getBorrowedDays()}"></td>
         <td th:text="${order.getGiveBookDays()}"></td>
         <td th:text="${order.getBookLoanCode()}"></td>
-        <td th:text="${order.getBook()}">
+        <td>
+            <small th:if="${order.status == false} " style="color: #dc3545"> Đang Mượn</small>
+            <small th:if="${order.status == true} " style="color: green"> Đã Trả</small>
+        </td>
+        <td th:text="${order.getBook().nameBook}">
 
         </td>
     </tr>
@@ -43,7 +48,7 @@
                         <button class="btn btn-outline-primary" disabled>Trang Trước</button>
                     </a>
                     <a th:if="${ordersDetails.hasPrevious()}"
-                       th:href="@{/orders-details(page=${ordersDetails.number-1})}">
+                       th:href="@{/order-details(page=${ordersDetails.number-1})}">
                         <button class="btn btn-primary">Trang Trước</button>
                     </a>
                 </div>
@@ -56,7 +61,7 @@
                     <a th:if="${ordersDetails.number == ordersDetails.totalPages-1}">
                         <button class="btn btn-outline-primary" disabled>Trang Sau</button>
                     </a>
-                    <a th:if="${ordersDetails.hasNext()}" th:href="@{/orders-details(page=${ordersDetails.number+1})}">
+                    <a th:if="${ordersDetails.hasNext()}" th:href="@{/order-details(page=${ordersDetails.number+1})}">
                         <button class="btn btn-primary">Trang Sau</button>
                     </a>
                 </div>

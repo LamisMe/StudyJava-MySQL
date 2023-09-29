@@ -51,6 +51,7 @@ public class OrderDetailController {
     @PostMapping("/create")
     public String createOrder(@Valid @ModelAttribute OrdersDetailDTO orderDTO,
                               @RequestParam int id,
+                              @RequestParam String code,
                               BindingResult bindingResult) {
         Book book = bookService.findById(id);
         if (bindingResult.hasErrors()) {
@@ -62,9 +63,10 @@ public class OrderDetailController {
         OrdersDetail ordersDetail = new OrdersDetail();
         BeanUtils.copyProperties(orderDTO, ordersDetail);
         ordersDetail.setBook(book);
-        book.setQuantity(book.getQuantity() - 1);
+        ordersDetail.setBookLoanCode(code);
+        bookService.updateQuantityBorrowBook(book);
         orderDetailsService.addOrders(ordersDetail);
-        return "redirect:/book";
+        return "redirect:/order-details/borrow-success/"+code;
     }
 
     @GetMapping("/give")
@@ -78,7 +80,7 @@ public class OrderDetailController {
         if (ordersDetail != null) {
             orderDetailsService.giveBook(code);
             Book book = bookService.findById(ordersDetail.getBook().getId());
-            book.setQuantity(book.getQuantity()+1);
+            bookService.updateQuantityGiveBook(book);
             bookService.addBook(book);
             return "redirect:/order-details/give-success";
         }
@@ -93,5 +95,12 @@ public class OrderDetailController {
     @GetMapping("/give-fail")
     public String showFormGiveBookFail() {
         return "give-fail";
+    }
+    @GetMapping("/borrow-success/{code}")
+    public String showFormBorrowSuccess(@PathVariable String code,
+                                        Model model) {
+        OrdersDetail ordersDetail = orderDetailsService.findByLoadCode(code);
+        model.addAttribute("ordersDetail",ordersDetail);
+        return "borrow-success";
     }
 }

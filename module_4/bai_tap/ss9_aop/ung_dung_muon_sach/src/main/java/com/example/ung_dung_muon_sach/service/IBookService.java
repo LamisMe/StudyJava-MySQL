@@ -11,4 +11,6 @@ public interface IBookService {
     boolean addBook(Book book);
     Book findById(int id);
     List<Book> findAll();
+    void updateQuantityGiveBook(Book book);
+    void updateQuantityBorrowBook(Book book);
 }
