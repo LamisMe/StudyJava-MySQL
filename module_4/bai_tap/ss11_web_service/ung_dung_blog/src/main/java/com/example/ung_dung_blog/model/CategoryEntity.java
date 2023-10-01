@@ -14,7 +14,7 @@ public class CategoryEntity {
 
     private String name;
     @JsonBackReference
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "categoryEntity")
     private Set<BlogEntity> blogEntitySet;
 
     public CategoryEntity() {
