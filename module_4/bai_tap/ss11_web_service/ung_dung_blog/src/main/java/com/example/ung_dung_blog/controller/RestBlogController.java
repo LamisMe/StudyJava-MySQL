@@ -30,7 +30,7 @@ public class RestBlogController {
     public ResponseEntity<BlogEntity> showBlogInCategory(@PathVariable int id) {
         BlogEntity blogEntity = blogService.findById(id);
         if (blogEntity == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);//404
         }
         return new ResponseEntity<>(blogEntity, HttpStatus.OK);//200
     }
@@ -39,7 +39,7 @@ public class RestBlogController {
     public ResponseEntity<List<BlogEntity>> showBlogByCategoryId(@PathVariable int id) {
         List<BlogEntity> blogEntities = blogService.searchBlogByCategory(id);
         if (blogEntities == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);//204
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);//404
         }
         return new ResponseEntity<>(blogEntities, HttpStatus.OK);//200
     }
