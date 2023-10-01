@@ -1,12 +1,12 @@
 package com.example.ung_dung_blog.service;
 
-import com.example.ung_dung_blog.model.Blog;
+import com.example.ung_dung_blog.model.BlogEntity;
 
 import java.util.List;
 
 public interface IBlogService {
-    List<Blog> getListBlog();
+    List<BlogEntity> getListBlog();
 
-    Blog findById(int id);
-    List<Blog> searchBlogByCategory(int categoryId);
+    BlogEntity findById(int id);
+    List<BlogEntity> searchBlogByCategory(int categoryId);
 }

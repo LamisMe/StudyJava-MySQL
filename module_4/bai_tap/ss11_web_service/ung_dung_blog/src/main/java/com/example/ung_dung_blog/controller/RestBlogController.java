@@ -1,6 +1,6 @@
 package com.example.ung_dung_blog.controller;
 
-import com.example.ung_dung_blog.model.Blog;
+import com.example.ung_dung_blog.model.BlogEntity;
 import com.example.ung_dung_blog.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,22 +17,31 @@ import java.util.List;
 public class RestBlogController {
     @Autowired
     private IBlogService blogService;
-    @GetMapping("")
-    public ResponseEntity<List<Blog>> getList(){
-        List<Blog> blogList = blogService.getListBlog();
-        if(blogList.isEmpty()){
+    @GetMapping
+    public ResponseEntity<List<BlogEntity>> showListAllBlog() {
+        List<BlogEntity> blogEntityList = blogService.getListBlog();
+        if (blogEntityList == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(blogList,HttpStatus.OK);
         }
+        return new ResponseEntity<>(blogEntityList, HttpStatus.OK);//200
     }
+
     @GetMapping("/{id}")
-    public ResponseEntity<Blog> findBlogById(@PathVariable int id){
-        Blog blog = blogService.findById(id);
-        if(blog == null){
+    public ResponseEntity<BlogEntity> showBlogInCategory(@PathVariable int id) {
+        BlogEntity blogEntity = blogService.findById(id);
+        if (blogEntity == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }else {
-            return new ResponseEntity<>(blog,HttpStatus.OK);
         }
+        return new ResponseEntity<>(blogEntity, HttpStatus.OK);//200
     }
+
+    @GetMapping("/details/{id}")
+    public ResponseEntity<List<BlogEntity>> showBlogByCategoryId(@PathVariable int id) {
+        List<BlogEntity> blogEntities = blogService.searchBlogByCategory(id);
+        if (blogEntities == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(blogEntities, HttpStatus.OK);//200
+    }
+
 }

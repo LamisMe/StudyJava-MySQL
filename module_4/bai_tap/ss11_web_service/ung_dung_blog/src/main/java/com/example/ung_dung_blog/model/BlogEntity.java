@@ -5,8 +5,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @Entity
-@Table(name = "books")
-public class Blog {
+@Table(name = "blogs")
+public class BlogEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -19,12 +19,12 @@ public class Blog {
     private String bloggingDay;
     @ManyToOne
     @JoinColumn(name = "category_id",referencedColumnName = "id")
-    private Category category;
+    private CategoryEntity categoryEntity;
 
-    public Blog() {
+    public BlogEntity() {
     }
 
-    public Blog(int id, String title, String content, String author, String bloggingDay) {
+    public BlogEntity(int id, String title, String content, String author, String bloggingDay) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -32,13 +32,13 @@ public class Blog {
         this.bloggingDay = bloggingDay;
     }
 
-    public Blog(int id, String title, String content, String author, String bloggingDay, Category category) {
+    public BlogEntity(int id, String title, String content, String author, String bloggingDay, CategoryEntity categoryEntity) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.author = author;
         this.bloggingDay = bloggingDay;
-        this.category = category;
+        this.categoryEntity = categoryEntity;
     }
 
     public int getId() {
@@ -62,8 +62,8 @@ public class Blog {
         return LocalDate.parse(bloggingDay, dateTimeFormatter).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
-    public Category getCategory() {
-        return category;
+    public CategoryEntity getCategory() {
+        return categoryEntity;
     }
 
     public void setId(int id) {
@@ -86,7 +86,7 @@ public class Blog {
         this.bloggingDay = time;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategory(CategoryEntity categoryEntity) {
+        this.categoryEntity = categoryEntity;
     }
 }

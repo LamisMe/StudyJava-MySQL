@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "categories")
-public class Category {
+public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -15,12 +15,12 @@ public class Category {
     private String name;
     @JsonBackReference
     @OneToMany(mappedBy = "category")
-    private Set<Blog> blogSet;
+    private Set<BlogEntity> blogEntitySet;
 
-    public Category() {
+    public CategoryEntity() {
     }
 
-    public Category(int id, String name) {
+    public CategoryEntity(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -43,11 +43,11 @@ public class Category {
         this.name = name;
     }
 
-    public Set<Blog> getBlogSet() {
-        return blogSet;
+    public Set<BlogEntity> getBlogSet() {
+        return blogEntitySet;
     }
 
-    public void setBlogSet(Set<Blog> blogSet) {
-        this.blogSet = blogSet;
+    public void setBlogSet(Set<BlogEntity> blogEntitySet) {
+        this.blogEntitySet = blogEntitySet;
     }
 }

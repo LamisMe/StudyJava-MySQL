@@ -1,8 +1,7 @@
 package com.example.ung_dung_blog.repository;
 
-import com.example.ung_dung_blog.model.Category;
+import com.example.ung_dung_blog.model.CategoryEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
-public interface ICategoryRepository extends JpaRepository<Category,Integer> {
+public interface ICategoryRepository extends JpaRepository<CategoryEntity,Integer> {
 }
