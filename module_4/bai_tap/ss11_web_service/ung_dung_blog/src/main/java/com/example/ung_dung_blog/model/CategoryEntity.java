@@ -13,8 +13,9 @@ public class CategoryEntity {
     private int id;
 
     private String name;
-    @JsonBackReference
+
     @OneToMany(mappedBy = "categoryEntity")
+    @JsonBackReference
     private Set<BlogEntity> blogEntitySet;
 
     public CategoryEntity() {
@@ -43,11 +44,10 @@ public class CategoryEntity {
         this.name = name;
     }
 
-    public Set<BlogEntity> getBlogSet() {
+    public Set<BlogEntity> getBlogEntitySet() {
         return blogEntitySet;
     }
-
-    public void setBlogSet(Set<BlogEntity> blogEntitySet) {
+    public void setBlogEntitySet(Set<BlogEntity> blogEntitySet) {
         this.blogEntitySet = blogEntitySet;
     }
 }
