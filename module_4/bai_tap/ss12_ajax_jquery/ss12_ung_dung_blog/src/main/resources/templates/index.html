@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../static/code.jquery.com_jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<!--Tìm kiếm-->
+<label for="authorSearch" style="margin: 520px">
+    <input placeholder="Nhập tên cần tìm kiếm" id="authorSearch">
+    <button id="button-search">Tìm kiếm</button>
+</label>
+<!--Hiển thị-->
+<h1 style="text-align: center">Danh Sách Blog</h1>
+<div style="position: absolute;right: auto">
+    <table border="1px" style="border-collapse: collapse;margin-left: 480px" >
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tiêu Đề</th>
+            <th>Nội dung</th>
+            <th>Tác Giả</th>
+            <th>Ngày viết Blog</th>
+        </tr>
+        </thead>
+        <tbody id="content">
+        </tbody>
+    </table>
+    <button id="button-next-page" style="margin-left: 400px;margin-top: 20px">Thêm dữ liệu</button>
+</div>
+
+<script>
+    let page = 0;
+    $(document).ready(function () {
+        display(page);
+        $("#button-next-page").click(function (){
+            page++;
+            display(page);
+        })
+        $("#button-search").click(function (){
+            page = 0;
+           let authorSearch = $('#authorSearch').val();
+           searchByAuthor(page,authorSearch);
+        })
+    })
+
+    function display(page) {
+        let content = "";
+        $.ajax({
+            contentType: 'application/json',
+            method: 'GET',
+            url: `http://localhost:8080/api/blogs?page=${page}`,
+            success: function (data) {
+                data = data.content;
+                for (let i = 0; i < data.length; i++) {
+                    content += `<tr>
+                                    <td>${data[i].id}</td>
+                                    <td>${data[i].title}</td>
+                                    <td>${data[i].content}</td>
+                                    <td>${data[i].author}</td>
+                                    <td>${data[i].bloggingDay}</td>
+                                </tr>`
+                }
+                $("#content").append(content);
+            },
+            // catch: function () {
+            //     console.log("errors")
+            // }
+        })
+    }
+    function searchByAuthor(page,authorSearch) {
+        let content = "";
+        $.ajax({
+            contentType: 'application/json',
+            method: 'GET',
+            url: `http://localhost:8080/api/blogs?page=${page}&authorSearch=${authorSearch}`,
+            success: function (data) {
+                data = data.content;
+                for (let i = 0; i < data.length; i++) {
+                    content += `<tr>
+                                    <td>${data[i].id}</td>
+                                    <td>${data[i].title}</td>
+                                    <td>${data[i].content}</td>
+                                    <td>${data[i].author}</td>
+                                    <td>${data[i].bloggingDay}</td>
+                                </tr>`
+                }
+                $("#content").html(content);
+            },
+            // catch: function () {
+            //     console.log("errors")
+            // }
+        })
+    }
+</script>
+</body>
+</html>
