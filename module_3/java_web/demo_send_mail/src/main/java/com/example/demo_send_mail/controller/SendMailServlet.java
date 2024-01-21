@@ -54,7 +54,7 @@ public class SendMailServlet extends HttpServlet {
         String email = request.getParameter("email");
         Map<String, String> err = new LinkedHashMap<>();
         StringBuilder html = new StringBuilder();
-        html.append("Cảm ơn bạn đã đồng hành cùng Nuối Em.\n" +
+        html.append("Cảm ơn bạn đã đồng hành cùng Nuôi Em.\n" +
                 "Nhập mã xác minh để hoàn tất cập nhật địa chỉ email: "
         );
         html.append("<strong style='color: red'>"+sendEmail.codeRandom()+"</strong>");
