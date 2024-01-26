@@ -8,24 +8,27 @@
 </head>
 <body>
 <div class="container-fluid">
-    <div class="col-md-5 m-3">
-        <a th:href="@{/order-details/give}">
-            <button class="btn btn-outline-primary">Trả Sách</button>
-        </a></div>
-    <div class="col-md-5 m-3">
-        <a th:href="@{/order-details}">
-            <button class="btn btn-outline-primary">Lịch sử mượn sách</button>
-        </a>
+    <div class="row">
+        <div class="col-md-6 m-3">
+            <a th:href="@{/order-details/give}">
+                <button class="btn btn-outline-primary">Trả Sách</button>
+            </a></div>
+        <div class="col-md-5 m-3">
+            <a th:href="@{/order-details}">
+                <button class="btn btn-outline-primary">Lịch sử mượn sách</button>
+            </a>
+        </div>
     </div>
 </div>
+
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-5 m-3">
+        <div class="col-md-4 m-3">
             <a th:href="@{/book/create}">
                 <button class="btn btn-outline-primary">Thêm mới Sách</button>
             </a>
         </div>
-        <div class="col-md-7 m-3">
+        <div class="col-md-7 m-3" style="position: relative;right: 4rem">
             <form class="row g-3" th:action="@{/book}" method="get">
                 <div class="col-auto">
                     <label for="inputPassword2" class="visually-hidden">Book</label>
@@ -39,6 +42,7 @@
         </div>
     </div>
 </div>
+
 <table class="table table-borderless table-striped table-earning mt-3">
     <tr>
         <th>STT</th>

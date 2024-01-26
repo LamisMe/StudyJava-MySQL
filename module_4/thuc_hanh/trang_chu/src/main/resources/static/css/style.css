@@ -1,0 +1,54 @@
+.navbar {
+    padding-top: 0;
+    padding-right: 0;
+}
+
+.search-register {
+    font: 14px/18px Helvetica, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+    width: 250px;
+    float: right;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.btn-register-partner {
+    background: #fff;
+    display: block;
+    width: calc(100% - 50px);
+    float: right;
+    text-align: center;
+    height: 53px;
+    box-sizing: border-box;
+    clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
+    color: #2f285a;
+    padding-top: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.navbar .container-fluid .collapse .navbar-nav .nav-item .nav-link a:hover {
+    color: green;
+}
+
+.st-events__title {
+    text-align: center;
+    font-family: "CruyffSansVN", sans-serif;
+    position: relative;
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: large;
+}
+
+.wrapper {
+    background-color: whitesmoke;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    text-align: center;
+    color: #36b3a8;
+}

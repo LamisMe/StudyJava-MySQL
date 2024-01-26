@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:ital@1&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f48c362c28.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    body{
+        font-family: 'Chivo Mono', monospace;
+    }
+    button{
+        margin-left: 200px;
+        height: 35px;
+    }
+
+    h1{
+        color: whitesmoke;
+        background-color: #0a64ff;
+        width: 40%;
+    }
+    div {
+        color: black;
+        background-color: whitesmoke;
+        width: 40%;
+    }
+    .name{
+        margin-left: 55px;
+    }
+    hr{
+        width: 40%;
+    }
+    p{
+        width: 40%;
+    }
+</style>
+<body>
+<h1 align="center">WANT TO KNOW YOUR SALARY COME TO ME <label><i class="fa-solid fa-hand-holding-dollar fa-bounce"></i></label></h1>
+<hr align="left">
+<div><strong>Enter working hours</strong><input type="text" placeholder="Time" id="time"></div>
+<hr align="left">
+<div><strong>Enter salary</strong> <input  class="name" type="text" placeholder="Wage" id="wage" ></div>
+<hr align="left">
+<button onclick="clinkResult()">Result</button>
+<p id="print"></p>
+
+<script>
+    function clinkResult() {
+        let time = document.getElementById("time").value;
+        let wage = document.getElementById("wage").value;
+        let bonus
+        if (time >= 200) {
+            bonus = (wage * 20) / 100;
+            document.getElementById("print").innerText = bonus + " Here is your bonus. Because you deserve <3";
+        } else if (time >= 100) {
+            bonus = (wage * 10) / 100;
+            document.getElementById("print").innerText = bonus + " Here is your bonus. Because you deserve <3";
+        } else {
+            document.getElementById("print").innerText = " You have no bonus this month. Try harder next month";
+        }
+    }
+</script>
+</body>
+</html>

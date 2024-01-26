@@ -40,7 +40,7 @@ public class RestBlogController {
     public ResponseEntity<Page<BlogEntity>> showBlogListSearchByAuthor(@RequestParam(defaultValue = "", required = false) String authorSearch,
                                                                        @RequestParam(defaultValue = "0", required = false) int page
     ) {
-        Pageable pageable = PageRequest.of(page, 4);
+        Pageable pageable = PageRequest.of(page, 2);
         Page<BlogEntity> blogEntityList = blogService.searchByAuthor(pageable, authorSearch);
         if (blogEntityList == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);//204

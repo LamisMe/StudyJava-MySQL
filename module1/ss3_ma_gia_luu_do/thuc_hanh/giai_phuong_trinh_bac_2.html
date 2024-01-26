@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Giải phương trình bậc 2</title>
+</head>
+<body>
+<script>
+    let a = +prompt("Mời bạn nhập giá trị a");
+    let b = +prompt("Mời bạn nhập giá trị b");
+    let c = +prompt("Mời bạn nhập giá trị c");
+    let delta = (b * b) - 4 * a * c;
+    alert("Delta của phương trình bậc 2 là: " + delta);
+    if (delta > 0) {
+        let x1 = 0;
+        let x2 = 0;
+        x1 = (-b + Math.sqrt(delta)) / 2 * a;
+        x2 = (-b - Math.sqrt(delta)) / 2 * a;
+        alert("Phương trình có 2 nghiệm " + x1 + "và" + x2);
+    }
+</script>
+</body>
+</html>

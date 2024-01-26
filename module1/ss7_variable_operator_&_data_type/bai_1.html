@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twc Inc.</title>
+    <!--    css icon-->
+    <script src="https://kit.fontawesome.com/f48c362c28.js" crossorigin="anonymous"></script>
+    <!--    css font gg-->
+    <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@500&display=swap" rel="stylesheet">
+    <style>
+        form {
+            width: 30%;
+            margin: 5rem auto;
+            background-color: darkslateblue;
+        }
+
+        h1 {
+            font-family: 'Alkatra', cursive;
+            background-color: darkslateblue;
+            color: white;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 1px solid blue;
+            width: 95%;
+            background-color: tan;
+        }
+
+        button {
+            background-color: purple;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <h1 align="center" style="color: lawngreen">CALCULATOR<sup><label style="color: tomato">t</label>
+        <label style="color: lightsteelblue">IP.</label></sup></h1>
+    <table align="center">
+        <tr align="left">
+            <th style="font-family: 'Alkatra', cursive;">How much was your bill?</th>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="USD/Dollar" id="bill"></td>
+        </tr>
+        <tr>
+            <td style="font-family: 'Alkatra', cursive;">How was your service?</td>
+        </tr>
+        <tr align="center">
+            <td style=""><select style="height: 50px; width: 60%;font-family: 'Alkatra', cursive;" id="service">
+                <option value="30">Outstanding: 30%</option>
+                <option value="20">Good: 20%</option>
+                <option value="15">It was OK: 15%</option>
+                <option value="10">BAD: 10%</option>
+                <option value="5">Terrible: 5%</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td style="font-family: 'Alkatra', cursive;">How many people are sharing the bill?</td>
+        </tr>
+
+        <tr>
+            <td><input type="text" placeholder="People/Person" id="people"></td>
+        </tr>
+        <tr>
+            <td><br></td>
+        </tr>
+        <tr align="center">
+            <td>
+                <button type="button" onclick="clinkCalculate()"
+                        style="height: 50px;width: 60%;font-family: 'Alkatra', cursive;">
+                    CALCULATE
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td><br></td>
+        </tr>
+        <tr align="center">
+            <td style="font-family: 'Alkatra', cursive;">TIP AMOUNT</td>
+        </tr>
+        <tr align="center">
+            <td><p id="print" style="font-family: 'Alkatra', cursive;color: #e82121"></p></td>
+        </tr>
+        <tr align="center">
+            <td style="font-family: 'Alkatra', cursive;">each.</td>
+        </tr>
+    </table>
+</form>
+<script>
+    function clinkCalculate() {
+        let bill = +document.getElementById("bill").value;
+        let people = +document.getElementById("people").value;
+        let service = +document.getElementById("service").value;
+        let tip = ((bill * service) / 100) / people;
+        //     switch (service) {
+        //         case 30:
+        //             document.getElementById("print").innerText = tip + " USD";
+        //             break;
+        //         case 20:
+        //             document.getElementById("print").innerText = tip + " USD";
+        //             break;
+        //         case 15:
+        //             document.getElementById("print").innerText = tip + " USD";
+        //             break;
+        //         case 10:
+        //             document.getElementById("print").innerText = tip + " USD";
+        //             break;
+        //         case 5:
+        //             document.getElementById("print").innerText = tip + " USD";
+        //             break;
+        //     }
+        // }
+        if (service === 30) {
+            document.getElementById("print").innerText = tip + " USD";
+        } else if (service === 20) {
+            document.getElementById("print").innerText = tip + " USD";
+        } else if (service === 15) {
+            document.getElementById("print").innerText = tip + " USD";
+        } else if (service === 10) {
+            document.getElementById("print").innerText = tip + " USD";
+        } else {
+            document.getElementById("print").innerText = tip + " USD";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let fatherYearOld, sonYearOld;
+    do {
+        fatherYearOld = prompt("Enter father's age ");
+        sonYearOld = prompt("Enter the child's age (25 years younger than the father's age)");
+    } while (fatherYearOld - sonYearOld !== 25);
+    let count = 0;
+    while (fatherYearOld / sonYearOld !== 2) {
+        fatherYearOld++;
+        sonYearOld++;
+        count++;
+    }
+    alert("After " + count + " in another year, father will be twice as old as son");
+</script>
+</body>
+</html>

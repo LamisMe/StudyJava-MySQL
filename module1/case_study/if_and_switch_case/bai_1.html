@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+ body{
+   text-align: center;
+ }
+ h1{
+   color: #e82121;
+ }
+</style>
+<body>
+<h1>Thuế Thu Nhập Cá Nhân</h1>
+<hr>
+<input type="text" name="" id="luong" placeholder="Money">
+<button onclick="thueThuNhapCaNhan()">Result</button>
+<p id="print" style="color: #0a64ff"></p>
+<p id="print1" style="color: #e82121"></p>
+<script>
+  function thueThuNhapCaNhan(){
+      let luong = document.getElementById("luong").value;
+      let thue;
+      let luongRong;
+      if(luong>15000000){
+          thue = luong*20/100;
+          luongRong = luong-thue;
+          document.getElementById("print").innerHTML = thue + "VND đây là tiền bạn phải nop thue";
+          document.getElementById("print1").innerHTML = luongRong+ "VND đây là tiền bạn nhận, bạn thật là chăm chỉ";
+      }else if(luong>7000000){
+          thue = luong*10/100;
+          luongRong = luong-thue;
+          document.getElementById("print").innerHTML = thue + "VND đây là tiền bạn phải nop thue";
+          document.getElementById("print1").innerHTML = luongRong+ "VND đây là tiền bạn nhận, bạn gioi qua";
+      }else if (luong>0) {
+          thue = luong*5/100;
+          luongRong = luong-thue;
+          document.getElementById("print").innerHTML = thue + "VND đây là tiền bạn phải nop thue";
+          document.getElementById("print1").innerHTML = luongRong+ "VND đây là tiền bạn nhận, co len ban nhe";
+      }else {
+          document.getElementById("print").innerText= "Moi ban nhap lai";
+      }
+  }
+</script>
+</body>
+</html>

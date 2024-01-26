@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let viTriCanInRa = parseInt(prompt('Nhập vào vị trí cần in ra: '));
+    let number1 = 50, count;
+    let arr = [];
+    for (let i = 0; i <= viTriCanInRa; i++) {
+        arr.push(number1);
+        count = i + 1;
+        number1 += count;
+    }
+    console.log("Dãy vô hạn " + arr);
+    alert("Số thứ "+viTriCanInRa+" trong dãy vô hạn là " + arr[viTriCanInRa-1]);
+</script>
+</body>
+</html>

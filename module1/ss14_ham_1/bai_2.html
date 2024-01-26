@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arrLength = prompt("Nhập vào độ dài mảng") * 1;
+    let arr = [];
+    for (let i = 0; i < arrLength; i++) {
+        let number = prompt("Nhập phần tử trong mảng");
+        arr.push(number);
+    }
+    function checkArr() {
+        let checkNumber = 0;
+        let checkText = 0;
+        let check = 0;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] % 1 === 0) {
+                checkNumber++;
+            } else {
+                checkText++;
+            }
+            check++;
+        }
+        if (checkNumber === check) {
+            return alert("Mảng Số");
+        } else if (checkText === check) {
+            return alert("Mảng Chữ");
+        } else {
+            return alert(" Mảng Thập Cẩm")
+        }
+    }
+    checkArr();
+</script>
+</body>
+</html>

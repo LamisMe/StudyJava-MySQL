@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 align="center">Kiểm tra Mảng</h1>
+<button onclick="kiemTraMangSo()">Clink By Me</button>
+<script>
+    function kiemTraMangSo() {
+        let n = prompt("Nhập độ dài của mảng");
+        let mang = [];
+        let mangChan = [];
+        let mangLe = [];
+        let chanLe = [];
+        for (let i = 0; i < n; i++) {
+            mang[i] = prompt("Nhập phần tử thứ " + i + " của mảng");
+        }
+        alert(mang);
+        for (let i = 0; i < mang.length; i++) {
+            if (mang[i] % 2 === 0) {
+                mangChan.push(mang[i]);
+            } else if (mang[i] % 2 !== 0) {
+                mangLe.push(mang[i]);
+            } else {
+                chanLe.push(mang[i]);
+            }
+        }if(mangChan.length !==0 && mangLe.length===0 && chanLe.length===0){
+            alert("1");
+        }else if(mangLe.length!==0 && mangChan.length===0 && chanLe.length===0){
+            alert("0");
+        }else{
+            alert("-1");
+        }
+    }
+</script>
+</body>
+</html>

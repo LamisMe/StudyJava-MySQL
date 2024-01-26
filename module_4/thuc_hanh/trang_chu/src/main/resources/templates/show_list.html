@@ -2,9 +2,121 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Title</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <!--BootStraps 5.0.2-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!--Box Icon-->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-$END$
+<!--Header Start-->
+<div class="container-fluid" style="padding: 0">
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light m-0"
+       style="padding-top: 0;padding-bottom:0 ;">
+    <div class="container-fluid" style="padding-right: 0;padding-left: 0">
+      <a class="navbar-brand ml-3" href="/main"
+         style="margin-left: 7rem; color: white;margin-right: 150px; font-size: large;font-weight: bold"
+         title="Trang chủ">DAT<span style="color: #007836">SAN</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+              aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class='bx bx-menu' style='color:#ffffff'></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style=" font-weight: bold;font-size: smaller;">
+          <li class="nav-item" style="width: 7rem">
+            <a class="nav-link active" aria-current="page" href="/main"
+               style="color: white; margin-left: 17px;"
+               title="Trang chủ">Trang chủ</a>
+          </li>
+          <li class="nav-item" style="margin-left: 1rem;width: 7rem">
+            <a class="nav-link" href="/yards" style="color: white" title="Sân Bóng">Sân Bóng</a>
+          </li>
+          <li class="nav-item" style="margin-left: 1rem;width: 7rem">
+            <a class="nav-link" href="#" style="color: white" title="Quản Lý">Quản Lý</a>
+          </li>
+          <li class="nav-item" style="margin-left: 1rem;width: 12rem">
+            <a class="nav-link" href="/main/privacy_policy" style="color: white" title="Chính sách bảo mật">Chính
+              sách bảo mật</a>
+          </li>
+          <li class="nav-item" style="margin-left: 1rem;width: 7rem; display: block; float: right">
+            <a class="nav-link" href="#" style="color: white" title="Đăng nhập">Đăng nhập</a>
+          </li>
+        </ul>
+        <div class="search-register">
+          <a class="btn-register-partner" href="/main/developing" title="Đăng ký Đối tác"
+             style="text-decoration: none">Đăng
+            ký Đối tác</a>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+</div>
+<!--Header End-->
+
+<!--main start-->
+<div class="search" STYLE="text-align: center">
+  <form action="/yards" class="request-form ftco-animate bg-light w-20 mt-2"
+        style="width:100%; border-radius: 20px">
+    <h2 class="st-events__title " style="color: black; text-align: center;padding-top: 10px">TÌM KIẾM SÂN CHƠI
+      CỦA BẠN</h2>
+    <small style="color: black">Tìm kiếm sân chơi bóng đá và sân thi đấu khắp thành phố Đà Nẵng</small>
+    <div class="input-group mb-3">
+      <select class="form-select" aria-label="Disabled select example" disabled>
+        <option selected style="text-align: center">Đà Nẵng</option>
+      </select>
+      <label class="input-group-text" for="inputGroupSelect01"><i
+              class='bx bxs-map'></i></label>
+      <select class="form-select" id="inputGroupSelect01" name="nameSearch" style="text-align: center">
+        <option selected>Quận/Huyện</option>
+        <option value="lien chieu">Liên Chiểu</option>
+        <option value="hoa vang">Hòa Vang</option>
+        <option value="hai chau">Hải Châu</option>
+        <option value="thanh-khe">Thanh Khê</option>
+        <option value="ngu-hanh-son">Ngũ Hành Sơn</option>
+        <option value="son-tra">Sơn Trà</option>
+        <option value="cam-le">Cẩm Lệ</option>
+      </select>
+    </div>
+    <div class="form-group" style="margin-bottom: 2px">
+      <button class="btn mb-3"
+              style="background-color: #36b3a8;color: white; border-radius: 300px; font-size: large;font-weight: bold">
+        Tìm kiếm sân bóng
+      </button>
+    </div>
+  </form>
+</div>
+<!--main end-->
+
+<!--footer start-->
+<footer class="ftco-footer bg-dark ftco-section mt-5">
+  <div class="container">
+    <div class="col-md-12" style="text-align: center;color: white; ">
+      <div class="mt-3" style="padding-top: 10px">
+        <a href="/main" style="text-decoration: none; color: white; margin-left: 30px">Giới thiệu</a>
+        <a href="/main" style="text-decoration: none; color: white; margin-right: 20px;margin-left: 20px">Điều
+          khoản sử dụng</a>
+        <a href="/main" style="text-decoration: none; color: white;">Chính sách bảo mật</a>
+      </div>
+    </div>
+    <div class="col-md-12 mt-3" style="text-align: center">
+      <i class='bx bxl-meta bx-lg' style='color:#6383ef'></i>
+      <i class='bx bxl-gmail bx-lg' style='color:#6383ef'></i>
+    </div>
+    <div class="col-md-12 text-center mt-3">
+      <p style="color: white">
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+        All rights reserved
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+    </div>
+  </div>
+</footer>
+<!--footer end-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 </html>

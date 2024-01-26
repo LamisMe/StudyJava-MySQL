@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Month</title>
+</head>
+<body>
+<script>
+    let month = +prompt("Nhập vào THÁNG bạn muốn kiểm tra");
+    switch (month) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            alert("Tháng có 31 ngày");
+            break;
+        case 2:
+            let year = prompt("Nhập vào NĂM bạn muốn kiểm tra");
+            if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+                alert("Tháng có 29 ngày");
+            } else {
+                alert("Tháng có 28 ngày");
+            }
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            alert("Tháng có 30 ngày");
+            break;
+        default:
+            alert("Bạn đã nhập sai! Mời bạn nhập lại");
+    }
+</script>
+</body>
+</html>

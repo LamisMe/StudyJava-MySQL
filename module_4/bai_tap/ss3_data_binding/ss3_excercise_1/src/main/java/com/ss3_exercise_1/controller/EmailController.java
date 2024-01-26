@@ -40,4 +40,5 @@ public class EmailController {
         redirectAttributes.addFlashAttribute("msg","Update successful");
         return "redirect:/setting";
     }
+
 }

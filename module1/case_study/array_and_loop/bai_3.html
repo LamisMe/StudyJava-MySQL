@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let numerators = [5, 2, 5];
+    let denominators = [6, 3, 4];
+    let max = numerators[0] / denominators[0];
+    for (let i = 0; i < numerators.length; i++) {
+        if (numerators[i] / denominators[i] > max)
+            max = numerators[i] / denominators[i];
+        max = i;
+    }
+    alert(numerators[max] + "/" + denominators[max]+ " là phân số lớn nhất, có chỉ số là  "+max);
+</script>
+</body>
+</html>

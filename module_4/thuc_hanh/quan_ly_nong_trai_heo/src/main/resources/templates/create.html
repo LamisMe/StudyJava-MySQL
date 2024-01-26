@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--    Boostrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+</head>
+<body>
+<div class="mask d-flex align-items-center gradient-custom-3">
+    <div class="container ">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                        <div style="text-align: center" class="form-outline mb-4"><h2>Thêm mới Heo</h2></div>
+                        <form th:object="${pigDto}" action="/pigs/create" method="post">
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="pigId">Mã số Heo</label>
+                                <input th:field="*{pigId}" type="text" id="pigId" name="pigId"
+                                       class="form-control form-control-lg" required/>
+                                <div th:if="${#fields.hasErrors('pigId')}" th:errors="*{pigId}" class="error-message"></div>
+
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="barnEntryTime">Ngày nhập chuồng</label>
+                                <input th:field="*{barnEntryTime}" type="date" id="barnEntryTime" name="barnEntryTime"
+                                       class="form-control form-control-lg" required/>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="weightBarn">Trọng lượng khi nhập chuồng</label>
+                                <input th:field="*{weightBarn}" type="text" id="weightBarn" name="weightBarn"
+                                       class="form-control form-control-lg" required/>
+                                <div th:if="${#fields.hasErrors('weightBarn')}" th:errors="*{weightBarn}" class="error-message"></div>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="releaseTime">Thời gian xuất chuồng</label>
+                                <input th:field="*{releaseTime}" type="date" id="releaseTime" name="releaseTime"
+                                       class="form-control form-control-lg" required/>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="weightRelease">Trọng lượng khi xuất chuồng</label>
+                                <input th:field="*{weightRelease}" type="text" id="weightRelease" name="weightRelease"
+                                       class="form-control form-control-lg" required/>
+                                <div th:if="${#fields.hasErrors('weightRelease')}" th:errors="*{weightRelease}" class="error-message"></div>
+
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label>
+                                    <select th:field="*{location}">
+                                        <option  th:value="${location.id}" th:each="location:${locationList}">
+                                            <p th:text="${location.name}"></p>
+                                        </option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="form-outline mb-4">
+                            <select th:field="*{status}">
+                                    <option value="true" disabled> Đang nuôi</option>
+                                </select>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <button class="button btn-success"
+                                        style="margin-left: 110px;padding: 15px;border: none;border-radius: 35px;width: 50%;"
+                                        id="submitButton" type="submit">
+                                    Thêm mới
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

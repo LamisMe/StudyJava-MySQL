@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let n1 = +prompt("Nhập vào số lượng mảng");
+    let m1 = +prompt("Nhập vào độ dài của mảng");
+    let arr = new Array(n1);
+    for (let i = 0; i < n1; i++) {
+        arr[i] = new Array(m1)
+        for (let j = 0; j < arr[i].length; j++) {
+            arr[i][j] = prompt("Nhập phần tủ thứ " + j + " của mảng " + i);
+        }
+    }
+    alert(arr);
+
+    function maxArray(arr) {
+        let max = arr[0][0];
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (max < arr[i][j]) {
+                    max = arr[i][j];
+                }
+            }
+        }
+        return max;
+    }
+
+    function minArray(arr) {
+        let min = arr[0][0];
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (min > arr[i][j]) {
+                    min = arr[i][j];
+                }
+            }
+        }
+        return min;
+    }
+
+    alert(maxArray(arr));
+    alert(minArray(arr));
+
+</script>
+</body>
+</html>

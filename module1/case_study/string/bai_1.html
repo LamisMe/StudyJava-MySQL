@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function chuanHoaKyTu(str) {
+        let arr = str.toLocaleLowerCase();
+        let newArr = arr.split(" ");
+        let newArr1 = [];
+        for (let i = 0; i < newArr.length; i++) {
+            if (newArr[i] !== "") {
+                newArr1.push(newArr[i]);
+            }
+        }
+        alert(newArr1);
+        let newArr2 = [];
+        for (let i = 0; i < newArr1.length; i++) {
+            let a = newArr1[i].charAt(0).toUpperCase() + newArr1[i].slice(1);
+            newArr2.push(a);
+        }
+        return newArr2.join(" ");
+    }
+
+    function findMax(str) {
+        let arr = str.split(" ");
+        let max = '';
+        for (let i = 0; i < arr.length; i++) {
+            if (max.length < arr[i].length) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+
+    let n = prompt("Nhập chuỗi ký tự cần chuẩn Hóa");
+    alert(chuanHoaKyTu(n));
+    alert(findMax(n));
+</script>
+</body>
+</html>

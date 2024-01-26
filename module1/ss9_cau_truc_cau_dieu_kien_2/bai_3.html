@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 3</title>
+</head>
+<body>
+<script>
+    let numberOfBreaks = prompt("Nhập số buổi vắng/nghỉ trong module");
+    let sessionNumber = prompt("Nhập số buổi trong module");
+    let percent = (numberOfBreaks/sessionNumber)*100;
+    if(percent>=20){
+        alert("Chuyển lớp thôi bạn ơi");
+    }else if(percent>10){
+        alert("Warning đừng nghỉ nữa bạn ơi");
+    }else{
+        alert("Làm tốt lắm phát huy bạn nhé");
+    }
+</script>
+</body>
+</html>

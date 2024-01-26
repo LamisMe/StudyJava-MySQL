@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 3</title>
+</head>
+<body>
+<script>
+    let n = prompt("Nhập độ dài mảng");
+    let arr = [];
+    for (let i = 0; i < n; i++){
+        if (arr[i] < 100 && arr[i] > 10) {
+            arr[i] = +prompt("Nhập phần tử arr[" + i + "] (Điều kiện 10<arr[i]<100)");
+        }
+    }
+</script>
+</body>
+</html>

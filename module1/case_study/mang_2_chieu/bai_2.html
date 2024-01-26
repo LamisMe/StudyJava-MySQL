@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let n1 = +prompt("Nhập vào số lượng mảng");
+    let m1 = +prompt("Nhập vào độ dài của mảng");
+        let arr = new Array(n1);
+    for (let i = 0; i <n1; i++) {
+        arr[i] = new Array(m1)
+        for (let j = 0; j < arr[i].length; j++) {
+            arr[i][j] = prompt("Nhập phần tủ thứ " + j+" của mảng "+i);
+        }
+    }alert(arr);
+    function soNguyenTo(so) {
+        let flag = true;
+        if (so < 2) {
+            flag = false;
+        } else {
+
+            for (let i = 2; i < so - 1; i++) {
+                if (so % i == 0) {
+                    flag = false;
+                    break;
+                }
+            }
+        }return flag;
+    }
+        let arrSNT = [];
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr[i].length; j++) {
+            if(soNguyenTo(arr[i][j])){
+                arrSNT.push(arr[i][j]);
+            }
+        }
+    }
+    alert(arrSNT);
+</script>
+</body>
+</html>

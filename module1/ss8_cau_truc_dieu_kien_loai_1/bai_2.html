@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+</style>
+<body>
+<script>
+    let month = +prompt("Nhập vào THÁNG cần kiểm tra");
+    switch (month) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            alert("31 days");
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            alert("30 days");
+            break;
+        case 2:
+            let year = prompt("Mời bạn nhập NĂM cần kiểm tra");
+            if ((year % 4 === 0 && year && year % 100 !== 0) || year % 400 === 0) {
+                alert("29 days. This is a leap year");
+            } else {
+                alert("28 days. This is not a leap year");
+            }
+            break;
+        default:
+            alert("Bạn đã nhập sai mời bạn nhập lại");
+    }
+</script>
+</body>
+</html>

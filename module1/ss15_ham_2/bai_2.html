@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function checkTriangle() {
+        let edgeA = +prompt("Nhập vào cạnh a");
+        let edgeB = +prompt("Nhập vào cạnh b");
+        let edgeC = +prompt("Nhập vào cạnh c");
+        let condition1 = (edgeC * edgeC) === (edgeA * edgeA) + (edgeB * edgeB);
+        let condition2 = (edgeA * edgeA) === (edgeC * edgeC) + (edgeB * edgeB);
+        let condition3 = (edgeB * edgeB) === (edgeA * edgeA) + (edgeC * edgeC);
+        let condition4 = edgeA + edgeB <= edgeC;
+        let condition5 = edgeB + edgeC <= edgeA;
+        let condition6 = edgeA + edgeC <= edgeB;
+        if (edgeA < 0 || edgeB < 0 || edgeC < 0 || condition4 || condition5 || condition6) {
+            alert("Đây không phải là tam giác");
+        } else if (condition1 || condition2 || condition3) {
+            alert("Đây là tam giác vuông");
+        } else if (edgeA === edgeB || edgeA === edgeC || edgeB === edgeC) {
+            alert("Đây là một tam giác cân");
+        } else {
+            alert("Đây là một tam giác");
+        }
+    }
+    checkTriangle();
+</script>
+</body>
+</html>

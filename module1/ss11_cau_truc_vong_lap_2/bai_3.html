@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let flag = true;
+    do {
+        let so = prompt(" Nhập số cần kiểm tra");
+        if (so < 2) {
+            flag = false;
+        } else {
+
+            for (let i = 2; i < so - 1; i++) {
+                if (so % i == 0) {
+                    flag = false;
+                    break;
+                }
+            }
+        }
+        if (flag == true) {
+            alert(so+" là số nguyên tố! this is ok");
+            break;
+        } else {
+            alert(so +" không phải số nguyên tố ");
+        }
+    }
+    while (flag == false) ;
+</script>
+</body>
+</html>

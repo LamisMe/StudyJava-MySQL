@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function checkString(str) {
+        let str1 = str.split('');
+        let str2 = [];
+        let str3 = [];
+        for (let i = 0; i < str1.length; i++) {
+            if (str1[i] === 'u' || str1[i] === 'e' || str1[i] === 'o' || str1[i] === 'a' || str1[i] ==='i' || str1[i] === 'U' || str1[i] === 'E' || str1[i] === 'O'|| str1[i] === 'A'|| str1[i] === 'I') {
+                str2.push(str1[i]);
+            }else {
+                str3.push(str1[i]);
+            }
+        }
+        return str3;
+    }
+        let str4 = prompt("Nhập vào chuỗi cần kiểm tra");
+        alert(checkString(str4));
+</script>
+</body>
+</html>

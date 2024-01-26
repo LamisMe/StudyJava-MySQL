@@ -1,10 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--    Boostrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
-$END$
+<div class="mask d-flex align-items-center gradient-custom-3">
+    <div class="container ">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                        <div style="text-align: center" class="form-outline mb-4"><h2>Cập nhật Heo</h2></div>
+
+                        <form th:object="${pigDto}" action="/pigs/update" method="post">
+                            <input th:field="*{id}" type="hidden" id="id" name="id"
+                                   class="form-control form-control-lg" readonly/>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="pigId">Mã số Heo</label>
+                                <input th:field="*{pigId}" type="text" id="pigId" name="pigId"
+                                       class="form-control form-control-lg" required/>
+                                <small style="color: crimson" th:if="${#fields.hasErrors('pigId')}"
+                                       th:errors="*{pigId}"></small><br>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="barnEntryTime">Ngày nhập chuồng</label>
+                                <input th:field="*{barnEntryTime}" type="date" id="barnEntryTime" name="barnEntryTime"
+                                       class="form-control form-control-lg" required/>
+                                <small style="color: crimson" th:if="${#fields.hasErrors('barnEntryTime')}"
+                                       th:errors="*{barnEntryTime}"></small><br>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="weightBarn">Trọng lượng khi nhập chuồng</label>
+                                <input th:field="*{weightBarn}" type="text" id="weightBarn" name="weightBarn"
+                                       class="form-control form-control-lg" required/>
+                                <small style="color: crimson" th:if="${#fields.hasErrors('weightBarn')}"
+                                       th:errors="*{weightBarn}"></small><br>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="releaseTime">Thời gian xuất chuồng</label>
+                                <input th:field="*{releaseTime}" type="date" id="releaseTime" name="releaseTime"
+                                       class="form-control form-control-lg" required/>
+                                <small style="color: crimson" th:if="${#fields.hasErrors('releaseTime')}"
+                                       th:errors="*{releaseTime}"></small><br>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="weightRelease">Trọng lượng khi xuất chuồng</label>
+                                <input th:field="*{weightRelease}" type="text" id="weightRelease" name="weightRelease"
+                                       class="form-control form-control-lg" required/>
+                                <small style="color: crimson" th:if="${#fields.hasErrors('weightRelease')}"
+                                       th:errors="*{weightRelease}"></small><br>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="location">Xuất xứ</label>
+                                <input th:field="*{location}" type="text" id="location" name="location"
+                                       class="form-control form-control-lg" readonly/>
+                                <small style="color: crimson" th:if="${#fields.hasErrors('location')}"
+                                       th:errors="*{location}"></small><br>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <div class="form-outline mb-4">
+                                    <select th:field="*{status}">
+                                        <option value="true" > Đang nuôi</option>
+                                        <option value="false" > Đang bán</option>
+                                    </select>
+                                    <small style="color: crimson" th:if="${#fields.hasErrors('status')}"
+                                           th:errors="*{status}"></small><br>
+                                </div>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <button class="button btn-success"
+                                        style="margin-left: 110px;padding: 15px;border: none;border-radius: 35px;width: 50%;"
+                                        id="submitButton" type="submit">
+                                    Cập nhật
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 1</title>
+</head>
+<style>
+    table {
+        border-collapse: collapse;
+        margin: 2rem auto;
+        width: 80%;
+    }
+
+    th, td {
+        background-color: whitesmoke;
+        border: 2px solid white;
+        width: 1%;
+    }
+
+    input {
+        width: 95%;
+    }
+
+    select {
+        width: 100%;
+    }
+
+    .usd, .gbp {
+        color: #0a64ff;
+        background-color: whitesmoke;
+    }
+
+    .vnd {
+        color: #e82121;
+        background-color: yellow;
+    }
+
+    .jpy {
+        color: wheat;
+        background-color: #0a64ff;
+    }
+
+    .rmb {
+        color: whitesmoke;
+        background-color: tomato;
+    }
+
+    .button {
+        background-color: white;
+    }
+
+    button {
+        background-color: #0a64ff;
+        color: white;
+    }
+</style>
+<body>
+<table>
+    <thead align="center" >
+    <tr>
+        <td>Amount</td>
+        <td>From Currency</td>
+        <td>To Currency</td>
+        <td>Result</td>
+
+    </tr>
+    </thead>
+    <tbody align="center">
+    <tr>
+        <td><input id="money" placeholder="Money"></td>
+        <td><select id="list1">
+            <option class="usd" value="1">USD(Dollar)</option>
+            <option class="jpy" value="133.45">JPY(Yên)</option>
+            <option class="vnd" value="23448.50">VND(Việt Nam Đồng)</option>
+            <option class="rmb" value="6.88">RMB(Tệ)</option>
+            <option class="gbp" value="0.81">GBP(Pound-Bảng Anh)</option>
+        </select></td>
+        <td><select id="list2">
+            <option class="usd" value="1">USD(Dollar)</option>
+            <option class="jpy" value="133.45">JPY(Yên)</option>
+            <option class="vnd" value="23448.50">VND(Việt Nam Đồng)</option>
+            <option class="rmb" value="6.88">RMB(Tệ)</option>
+            <option class="gbp" value="0.81">GBP(Pound-Bảng Anh)</option>
+        </select></td>
+        <td><p id="print"></p></td>
+        <td class="button">
+            <button onclick="clinkConvert()">Convert</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<script>
+    function clinkConvert() {
+        let price = +document.getElementById("money").value;
+        let from = +document.getElementById("list1").value;
+        let to = +document.getElementById("list2").value;
+        let result = price * to / from;
+        document.getElementById("print").innerText = result +"";
+    }
+    //     if (from == "usd" && to == "vnd") {
+    //         result = price * 23000;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "usd" && to == "jpy") {
+    //         result = price * 133.6;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "usd" && to == "rmb") {
+    //         result = price * 6.88;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "usd" && to == "gbp") {
+    //         result = price * 0.81;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "vnd" && to == "usd") {
+    //         result = price / 23000;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "vnd" && to == "jpy") {
+    //         result = price * 0.0057;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "vnd" && to == "rmb") {
+    //         result = price * 0.00029;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "vnd" && to == "gbp") {
+    //         result = price * 0.000034;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "jpy" && to == "usd") {
+    //         result = price * 0.0075;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "jpy" && to == "vnd") {
+    //         result = price * 175.44;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "jpy" && to == "rmb") {
+    //         result = price * 0.051;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "jpy" && to == "gbp") {
+    //         result = price * 0.006;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "rmb" && to == "jpy") {
+    //         result = price * 19.41;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "rmb" && to == "usd") {
+    //         result = price * 0.15;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "rmb" && to == "vnd") {
+    //         result = price * 3405.07;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "rmb" && to == "gbp") {
+    //         result = price * 0.12;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "gbp" && to == "jpy") {
+    //         result = price * 165.5;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "gbp" && to == "usd") {
+    //         result = price * 1.24;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "gbp" && to == "vnd") {
+    //         result = price * 29052.12;
+    //         document.getElementById("print").innerText = result;
+    //     } else if (from == "gbp" && to == "rmb") {
+    //         result = price * 8.54;
+    //         document.getElementById("print").innerText = result;
+    //     } else {
+    //         result = price;
+    //         document.getElementById("print").innerText = result;
+    //     }
+    // }
+</script>
+</body>
+</html>

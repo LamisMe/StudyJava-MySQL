@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="display"></div>
+<script>
+    class accountACB {
+        constructor(idAccount, userAccount, moneyAccount) {
+            this.idAccount = idAccount;
+            this.userAccount = userAccount;
+            this.moneyAccount = moneyAccount;
+        }
+
+        getIdAccount() {
+            return this.idAccount;
+        }
+
+        setIdAccount(idAccount) {
+            this.idAccount = idAccount;
+        }
+
+        getUserAccount() {
+            return this.userAccount;
+        }
+
+        setUserAccount(userAccount) {
+            this.userAccount = userAccount;
+        }
+
+        getMoneyAccount() {
+            return this.moneyAccount;
+        }
+
+        setMoneyAccount(moneyAccount) {
+            this.moneyAccount = moneyAccount;
+        }
+
+        themTien(tien) {
+            this.moneyAccount += tien;
+        }
+
+        truTien(tien) {
+            this.moneyAccount -= tien;
+        }
+        toString() {
+            return "idAccount: " + this.idAccount + "userAccount: " + this.userAccount + "moneyAccount: " + this.moneyAccount;
+        }
+    }
+
+    let user1 = new accountACB('001', 'Acount1', 1000);
+    let user2 = new accountACB('002', 'Acount2', 2000);
+    let user3 = new accountACB('003', 'Acount3', 10000);
+    let listUser = [];
+    listUser.push(user1, user2, user3);
+    function displayListUser(listUser) {
+        listUser.sort(function (c1,c2){
+            return c1.moneyAccount - c2.moneyAccount;
+        })
+        let table = "<table border='1'>";
+        table += "<tr>" +
+            "<th>ID</th>" +
+            "<th>User</th>" +
+            "<th>Money</th>" +
+            "<th colspan='2'>Edit</th>" +
+            "</tr>";
+        for (let i = 0; i < listUser.length; i++) {
+            table += "<tr>" +
+                "<td>" + listUser[i].idAccount + "</td>" +
+                "<td>" + listUser[i].userAccount + "</td>" +
+                "<td>" + listUser[i].moneyAccount + "</td>" +
+                "<td><button onclick='addmoney (" + i + ")'>AddMoney</button></td>" +
+                "<td><button onclick='submoney(" + i + ")'>SubMoney</button></td>" +
+                "</tr>";
+        }
+        table += "</table>";
+        document.getElementById("display").innerHTML = table;
+    }
+
+    function addmoney(i) {
+        let m = +prompt("Số tiền cần nhập");
+        listUser[i].themTien(m);
+        displayListUser(listUser);
+    }
+
+    function submoney(i) {
+        let m;
+        let flag = false;
+        do {
+            m = +prompt("Số tiền ");
+            if (m > listUser[i].moneyAccount) {
+                alert("Số Dư Không Khả Dụng");
+                flag = true;
+            }
+        } while (flag);
+        listUser[i].truTien(m);
+        displayListUser(listUser);
+    }
+    displayListUser(listUser);
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let n = prompt("Nhập độ dài của mảng");
+    let mang = [];
+    let mangChan = [];
+    let mangLe = [];
+    for (let i = 0; i < n; i++) {
+        mang[i] = +prompt("Nhâp phần tử thứ " + i + " của mảng");
+    }
+    alert(mang);
+    for (let j = 0; j < mang.length; j++) {
+        if (mang[j] % 2 == 0) {
+            mangChan.push(mang[j]);
+        } else {
+            mangLe.push(mang[j]);
+        }
+    }
+    alert("Số lượng phần tử mảng chẵn " + mangChan);
+    alert("Số lượng phần tử mảng lẻ " + mangLe);
+    if (mangChan.length == mangLe.length) {
+        alert("Ok. This is OK");
+    } else {
+        alert("No, please wait");
+    }
+
+</script>
+</body>
+</html>

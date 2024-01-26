@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let sumMoney = 0;
+    let drinkList = ['1.cafe\n2.cam vắt\n3.Nước ép cà rốt\n4.Nước ép cà chua\n5.Nước lọc\n6.Nước Dừa\n7.Thoát gọi món\n'];
+    let n;
+    let menu=0;
+    let money1=0;
+    let money2=0;
+    let money3 =0;
+    let money4=0;
+    let money5=0;
+    let money6=0;
+    do {
+        n = +prompt("Nhập món bạn muốn oder\n"+drinkList);
+       if(n ===1){
+           menu = +prompt("Mời bạn nhập số lượng");
+           money1 = menu*17000;
+           console.log(money1);
+       }else if (n===2){
+           menu = +prompt("Mời bạn nhập số lượng");
+           money2 = menu * 25000;
+           console.log(money2);
+       }else if (n===3){
+           menu = +prompt("Mời bạn nhập số lượng");
+           money3 = menu*20000;
+           console.log(money3);
+       }else if (n===4){
+           menu = +prompt("Mời bạn nhập số lượng");
+           money4 = menu*18000;
+           console.log(money4);
+       }else if (n===5){
+           menu = +prompt("Mời bạn nhập số lượng");
+           money5 = menu*10000;
+           console.log(money5);
+       }else if (n===6){
+           menu = +prompt("Mời bạn nhập số lượng");
+           money6= menu*15000;
+           console.log(money6);
+       }
+           sumMoney = money1+money2+money3+money4+money5+money6;
+    } while ((n>=0&&n<=6));
+    alert("Tổng số tiền bạn phải trả là: "+ sumMoney+" VND");
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tam giác vuông cân</title>
+</head>
+<body>
+<script>
+    let edgeA = +prompt("Nhập vào cạnh a");
+    let edgeB = +prompt("Nhập vào cạnh b");
+    let edgeC = +prompt("Nhập vào cạnh c");
+    if((edgeC*edgeC)===(edgeA*edgeA)+(edgeB*edgeB)||(edgeA*edgeA)===(edgeC*edgeC)+(edgeB*edgeB)||(edgeB*edgeB)===(edgeA*edgeA)+(edgeC*edgeC) ){
+        alert("Đây là tam giác vuông");
+    }else{
+        alert("Đây không phải là tam giác vuông");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ENGLISH</title>
+</head>
+<body>
+<img src="https://i1-vnexpress.vnecdn.net/2020/09/12/English-4241-1599884287.jpg?w=0&h=0&q=100&dpr=2&fit=crop&s=lXq1p7RniKkjCoSZHhQ5PQ" width="400" height="200">
+<h1 style="color: red">ENGLISH EVERYDAY</h1>
+Nhập chữ cái mà bạn muốn kiểm tra: <input type="text" id="text" placeholder="alphabet">
+<button onclick="kiemTraNguyenAm()">Kiểm Tra</button>
+<p id="print"></p>
+<script>
+    function kiemTraNguyenAm(){
+        let nhapChuCai= document.getElementById("text").value;
+        switch (nhapChuCai){
+            case 'U':
+            case 'E':
+            case 'O':
+            case 'A':
+            case 'I':
+            case 'u':
+            case 'e':
+            case 'o':
+            case 'a':
+            case 'i':
+                document.getElementById("print").style.color='blue';
+                document.getElementById("print").innerText= nhapChuCai + " là nguyên âm, great!"
+                break;
+            default:
+                document.getElementById("print").style.color='blue';
+                document.getElementById("print").innerText= nhapChuCai + " là phụ âm, great!"
+        }
+    }
+</script>
+</body>
+</html>

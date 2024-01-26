@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let n = +prompt("Nhập độ dài mảng");
+    let array = [];
+    for (let i = 0; i < n; i++) {
+        array[i] = +prompt("Nhập phần tử thứ " + i + " của mảng");
+    }
+    alert(array);
+    let perfectSquare = [];
+    for (let j = 0; j < array.length; j++) {
+        if (Math.sqrt(array[j]) % 1 === 0) {
+            perfectSquare.push(array[j]);
+        }
+    }alert(perfectSquare)
+</script>
+</body>
+</html>

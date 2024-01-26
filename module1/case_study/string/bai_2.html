@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Bài 2: Cho xâu kí tự. Hãy đếm số lượng ký tự khác nhau trong xâu đó
+    // Ví dụ: s = "cabca", thì kết quả differentSymbolsNaive(s) = 3.
+    // Có 3 ký tự khác nhau là a, b và c.
+    let s = prompt("Nhập chuoi ký tự ");
+    alert(kiemTraKyTu(s));
+    function kiemTraKyTu(str) {
+        let arr = str.split('');
+        // let arr = str.split('').sort();
+        let newArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            if(!newArr.includes(arr[i])){
+                newArr.push(arr[i]);
+            }
+    }return newArr.length;
+    }
+</script>
+</body>
+</html>

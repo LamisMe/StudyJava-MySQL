@@ -1,10 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Đặt Sân</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <!--BootStraps 5.0.2-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--Box Icon-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-$END$
+<!--Header Start-->
+<div class="container-fluid" style="padding: 0">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light m-0"
+         style="padding-top: 0;padding-bottom:0 ;">
+        <div class="container-fluid" style="padding-right: 0;">
+            <a class="navbar-brand ml-3" href="/main"
+               style="margin-left: 7rem; color: white;margin-right: 150px; font-size: large;font-weight: bold"
+               title="Trang chủ">DAT<span style="color: #007836">SAN</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span><i class='bx bx-menu' style='color:#ffffff'></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style=" font-weight: bold;font-size: smaller;">
+                    <li class="nav-item" style="width: 7rem">
+                        <a class="nav-link active" aria-current="page" href="/main"
+                           style="color: white; margin-left: 17px;"
+                           title="Trang chủ">Trang chủ</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 1rem;width: 7rem">
+                        <a class="nav-link" href="/yards" style="color: white" title="Sân Bóng">Sân Bóng</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 1rem;width: 7rem">
+                        <a class="nav-link" href="#" style="color: white" title="Quản Lý">Quản Lý</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 1rem;width: 12rem">
+                        <a class="nav-link" href="/main/privacy_policy" style="color: white" title="Chính sách bảo mật">Chính
+                            sách bảo mật</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 1rem;width: 7rem; display: block; float: right">
+                        <a class="nav-link" href="#" style="color: white" title="Đăng nhập">Đăng nhập</a>
+                    </li>
+                </ul>
+                <div class="search-register">
+                    <a class="btn-register-partner" href="/main/developing" title="Đăng ký Đối tác"
+                       style="text-decoration: none">Đăng
+                        ký Đối tác</a>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+</div>
+<!--Header End-->
+
+<!--main start-->
+<div class="container" style="margin-top: 200px">
+    <div style="text-align: center">
+        <h1>Đang được xây dựng</h1>
+        <small>Phần này hiện đang được phát triển. Mời bạn quay lại trang chủ để tiếp tục sử dụng những tiện ích khác từ chúng tôi</small>
+        <div class="form-group mt-2" style="margin-bottom: 2px">
+            <a href="/main">
+                <button class="btn mt-3"
+                        style="background-color: #36b3a8;color: white; border-radius: 300px; font-size: large;font-weight: bold">
+                    <i class='bx bx-arrow-back'></i> Về trang chủ <<span id="seconds"></span>>
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+<!--main end-->
+
+<!--footer start-->
+<footer class="ftco-footer bg-dark ftco-section mt-5">
+    <div class="container" style="margin-top: 170px">
+        <div class="col-md-12" style="text-align: center;color: white; ">
+            <div class="mt-3" style="padding-top: 10px">
+                <a href="/main" style="text-decoration: none; color: white; margin-left: 30px">Giới thiệu</a>
+                <a href="/main" style="text-decoration: none; color: white; margin-right: 20px;margin-left: 20px">Điều
+                    khoản sử dụng</a>
+                <a href="/main" style="text-decoration: none; color: white;">Chính sách bảo mật</a>
+            </div>
+        </div>
+        <div class="col-md-12 mt-3" style="text-align: center">
+            <i class='bx bxl-meta bx-lg' style='color:#6383ef'></i>
+            <i class='bx bxl-gmail bx-lg' style='color:#6383ef'></i>
+        </div>
+        <div class="col-md-12 text-center mt-3">
+            <p style="color: white">
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                All rights reserved
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+        </div>
+    </div>
+</footer>
+<!--footer end-->
+
+<script>
+    var count = 10; // Số lượng đếm ban đầu
+
+    // Hàm thực hiện đếm ngược
+    function countdown() {
+        var secondsElement = document.getElementById("seconds"); // Lấy tham chiếu đến phần tử hiển thị số giây
+        if (count >= 0) {
+            secondsElement.innerHTML = count;
+            count--; // Giảm số lượng đếm đi 1
+        } else {
+            clearInterval(timer); // Dừng đếm ngược khi đạt đến 0
+            window.location.href = "/main";
+        }
+    }
+
+    // Thiết lập đếm ngược sau mỗi giây
+    var timer = setInterval(countdown, 1000);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 </html>
